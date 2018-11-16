@@ -16,7 +16,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         turnSpeed = 150.0f;
-        moveSpeed = 3.0f;
+        moveSpeed = 5.0f;
         jumpPower = 8.0f;
         gravity = 1.0f;
 

@@ -13,10 +13,12 @@ public class WorldGeneration : MonoBehaviour {
 
     struct cellObject
     {
-        public Dictionary<string, cellObject> neighbours;
+        //neighbours ints in clockwise postions 
+        public Dictionary<int, cellObject> neighbours;
         public List<GameObject> objects;
+        public GameObject cellCube; //for debug purpose
         public float PostionX;
-        public float PostionY;
+        public float PostionZ;
         public float Width;
         public float Height;
         public bool isLoaded;
@@ -50,7 +52,7 @@ public class WorldGeneration : MonoBehaviour {
         playersCurenntCell = 0;
         GenerationLayer = 9;
         // create cells array
-        Cells = new List<cellObject>();
+        Cells = new List<cellObject>();//should be a list of cell script pointers 
         //define node postions
         CreateGrid();
         //find nodes neighbours
@@ -76,9 +78,11 @@ public class WorldGeneration : MonoBehaviour {
 
                 cellObject cell = new cellObject();
                 cell.isLoaded = false;
+                cell.objects = new List<GameObject>();
+                cell.neighbours = new Dictionary<int, cellObject>();
 
-                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                cube.transform.localScale = new Vector3(scale.x, 1, scale.z);
+                cell.cellCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cell.cellCube.transform.localScale = new Vector3(scale.x, 1, scale.z);
 
                 cell.Width = scale.x;
                 cell.Height = scale.z;
@@ -86,10 +90,10 @@ public class WorldGeneration : MonoBehaviour {
                 float postionX = startPos.x + x;//* cell.Width;
                 float postionY = startPos.z + z;//* cell.Height;
 
-                cube.transform.position = new Vector3(postionX, 30, postionY);
+                cell.cellCube.transform.position = new Vector3(postionX, 30, postionY);
 
                 cell.PostionX = postionX;
-                cell.PostionY = postionY;
+                cell.PostionZ = postionY;
 
                 Cells.Add(cell);
             }
@@ -98,33 +102,80 @@ public class WorldGeneration : MonoBehaviour {
 
     void findNeighbouringNodes()
     {
-       /* rows = (gridHeghit / (int)scale.z)+1;
+       
+        rows = (gridHeghit / (int)scale.z)+1;
         columes =  (gridwidth / (int)scale.x)+1;
-        for(int i = 0; i < Cells.Count;i++)
+        int currentRow = 0, currentColume = 0;
+        for (int i = 0; i < Cells.Count; i++)
         {
-            int T, TL, TR, R, BR, B, BL, L;
-            cellObject cell = Cells[i];
-            T = i-rows;
-            TL = i-(rows + 1);
-            TR = i-(rows - 1);
-            R = i+ 1;
-            L = i-1;
-            B = i-rows;
-            BR = i+(rows + 1);
-            BL = i+(rows - 1);
-            if (T < rows)
-            {      
-                cell.neighbours.Add("TOP", Cells[T]);
-            }
-            if (R < columes)
-            {
-                cell.neighbours.Add("RIGHT", Cells[R]);
-            }
-            if(L)
-            cell.neighbours.Add("LEFT", Cells[L]);
-            cell.neighbours.Add("BOTTOM",Cells[B])
+            currentColume++;
 
-        }*/
+            cellObject cell = Cells[i];
+            ////TOPLEFT
+            if (currentColume - 1 >= 0 
+                && currentRow + 1 <= rows
+                && i + (rows + 1) <= Cells.Count - 1)
+            {
+                cell.neighbours.Add(0, Cells[i + (rows + 1)]);
+            }
+
+            //TOP
+            if (currentRow + 1 <= rows 
+                && i + columes <= Cells.Count-1)
+            {
+                cell.neighbours.Add(1, Cells[i + columes]);
+            }
+            ////TOPRIGHT
+            if (currentColume + 1 <= columes 
+                && currentRow + 1 <= rows
+                && i + (rows - 1) <= Cells.Count - 1)
+            {
+                cell.neighbours.Add(2, Cells[i + (rows - 1)]);
+            }
+
+            //RIGHT
+            if (currentColume + 1 <= columes 
+                && i + 1 <= Cells.Count-1)
+            {
+                cell.neighbours.Add(3, Cells[i + 1]);
+            }
+
+            ////BOTTOMRIGHT
+            if (currentColume + 1 <= columes 
+                && currentRow - 1 >= 0
+                && i - (rows + 1) >= 0)
+            {
+                cell.neighbours.Add(4, Cells[i - (rows - 1)]);
+            }
+
+            //BOTTOM
+            if (currentRow - 1 >= 0 
+                && i - columes >= 0)
+            {
+                cell.neighbours.Add(5, Cells[i - columes]);
+            }
+
+            ////BOTTOMLEFT
+            if (currentColume - 1 >= 0 
+                && currentRow - 1 >= 0
+                && i - (rows + 1) >= 0)
+            {
+                cell.neighbours.Add(6, Cells[i - (rows + 1)]);
+            }
+
+            //LEFT
+            if (currentColume - 1 >= 0 
+                && i - 1 >= 0)
+            {
+                cell.neighbours.Add(7, Cells[i - 1]);
+            }
+           
+            if (currentColume >= columes)
+            {
+                currentColume = 0;
+                currentRow++;
+            }
+        }
     }
 
     void findCellsObjects()
@@ -141,17 +192,20 @@ public class WorldGeneration : MonoBehaviour {
             if (obj.layer == GenerationLayer)
             {
                 Transform t = obj.transform;
-
+               
                 for (int i = 0; i < Cells.Count; i++)
                 {
                     cellObject cell = Cells[i];
-
                     //if objects postion inside of cell then add it cells list 
-                    if (cellCollison(cell, t.position.x, t.position.z))
+                    if (cellCollison(cell, t.localPosition.x, t.localPosition.z))
                     {
                         cell.objects.Add(obj);
+                        obj.transform.parent = cell.cellCube.transform;
+                        obj.SetActive(false);
+                        Cells[i] = cell;
                         i = Cells.Count;
                     }
+                    cell.cellCube.SetActive(false);
                 }
             }
         }
@@ -170,7 +224,6 @@ public class WorldGeneration : MonoBehaviour {
         //check all cells to find which one the player is currently in 
         for (int i = 0; i < Cells.Count; i++)
         {
-            //cellObject cell = Cells[i];
             if(cellCollison(Cells[i], player.transform.position.x,player.transform.position.z))
             {
                 if (playersCurenntCell != i)
@@ -182,18 +235,20 @@ public class WorldGeneration : MonoBehaviour {
         }
     }
 
-    bool cellCollison(cellObject cell,float PosX,float PosY)
+    bool cellCollison(cellObject cell,float px,float pz)
    {
-        if (PosX >= (cell.PostionX + cell.Width))
+        if (px >= cell.PostionX - (cell.Width / 2)
+            && px <= cell.PostionX + (cell.Width / 2)
+            && pz >= cell.PostionZ - (cell.Height / 2)
+            && pz <= cell.PostionZ + (cell.Height) / 2)
         {
-            if (PosY >= (cell.PostionY + cell.Height))
-            {
-                return true;
-            }
+            return true;
         }
+        
         return false;
     }
 
+    // should be run in corouten
     void LoadNodes()
     {
         // find current player node 
@@ -203,15 +258,30 @@ public class WorldGeneration : MonoBehaviour {
         if(!PlyCell.isLoaded)
         {
             //load cell
-        }
-        // load of of nabiour cells if not done 
-        for(int i =0; i < PlyCell.neighbours.Count;i++)
-        {
-            cellObject cell = PlyCell.neighbours[i];
-            if(!cell.isLoaded)
+           // loading objects should be its own function
+            foreach(GameObject obj in PlyCell.objects)
             {
-                //load in cell 
-                cell.isLoaded = true;
+                PlyCell.cellCube.SetActive(true);
+                obj.SetActive(true);
+            }
+        }
+        // load nabiour cells if not done 
+        for (int i = 0; i < PlyCell.neighbours.Count+1; i++)
+        {
+            if (PlyCell.neighbours.ContainsKey(i))
+            {
+                cellObject cell = PlyCell.neighbours[i];
+                if (!cell.isLoaded)
+                {
+                    //load in cell 
+                    cell.isLoaded = true;
+                    cell.cellCube.SetActive(true);
+                    foreach (GameObject obj in cell.objects)
+                    {
+                        obj.SetActive(true);
+                    }
+                    PlyCell.neighbours[i] = cell;
+                }
             }
         }
     }
