@@ -39,11 +39,18 @@ public class WorldGeneration : MonoBehaviour {
     public int rows,columes;
     int NumberOfObjects;
     int GenerationLayer;
-    Vector3 scale; 
+    Vector3 scale;
+
+    //createXML createxml;
+    //createXML.AssetContainer AssetContainerRef;
+
 
     // Use this for initialization
     void Start()
     {
+        //temp
+        //createxml = new createXML();
+        //AssetContainerRef = new createXML.AssetContainer();
         initialiseCells();  
     }
 
@@ -74,8 +81,6 @@ public class WorldGeneration : MonoBehaviour {
         {
             for (int x = 0; x < gridwidth; x = x + 1 * (int)scale.x)
             {
-                
-
                 cellObject cell = new cellObject();
                 cell.isLoaded = false;
                 cell.objects = new List<GameObject>();
@@ -94,6 +99,11 @@ public class WorldGeneration : MonoBehaviour {
 
                 cell.PostionX = postionX;
                 cell.PostionZ = postionY;
+               
+                //temp
+               // createXML.Node node = new createXML.Node();
+                //node.NodeID = Cells.Count.ToString();
+               // AssetContainerRef.Nodes.Add(node);
 
                 Cells.Add(cell);
             }
@@ -111,65 +121,75 @@ public class WorldGeneration : MonoBehaviour {
             currentColume++;
 
             cellObject cell = Cells[i];
+            int neighbouId = 0;
+
             ////TOPLEFT
             if (currentColume - 1 >= 0 
                 && currentRow + 1 <= rows
-                && i + (rows + 1) <= Cells.Count - 1)
+                && i + (columes + 1) <= Cells.Count - 1)
             {
-                cell.neighbours.Add(0, Cells[i + (rows + 1)]);
+                cell.neighbours.Add(neighbouId, Cells[i + (columes + 1)]);
+                neighbouId++;
             }
 
             //TOP
             if (currentRow + 1 <= rows 
                 && i + columes <= Cells.Count-1)
             {
-                cell.neighbours.Add(1, Cells[i + columes]);
+                cell.neighbours.Add(neighbouId, Cells[i + columes]);
+                neighbouId++;
             }
             ////TOPRIGHT
             if (currentColume + 1 <= columes 
                 && currentRow + 1 <= rows
-                && i + (rows - 1) <= Cells.Count - 1)
+                && i + (columes - 1) <= Cells.Count - 1)
             {
-                cell.neighbours.Add(2, Cells[i + (rows - 1)]);
+                cell.neighbours.Add(neighbouId, Cells[i + (columes - 1)]);
+                neighbouId++;
             }
 
             //RIGHT
             if (currentColume + 1 <= columes 
                 && i + 1 <= Cells.Count-1)
             {
-                cell.neighbours.Add(3, Cells[i + 1]);
+                cell.neighbours.Add(neighbouId, Cells[i + 1]);
+                neighbouId++;
             }
 
             ////BOTTOMRIGHT
             if (currentColume + 1 <= columes 
                 && currentRow - 1 >= 0
-                && i - (rows + 1) >= 0)
+                && i - (columes + 1) >= 0)
             {
-                cell.neighbours.Add(4, Cells[i - (rows - 1)]);
+                cell.neighbours.Add(neighbouId, Cells[i - (columes - 1)]);
+                neighbouId++;
             }
 
             //BOTTOM
             if (currentRow - 1 >= 0 
                 && i - columes >= 0)
             {
-                cell.neighbours.Add(5, Cells[i - columes]);
+                cell.neighbours.Add(neighbouId, Cells[i - columes]);
+                neighbouId++;
             }
 
             ////BOTTOMLEFT
             if (currentColume - 1 >= 0 
                 && currentRow - 1 >= 0
-                && i - (rows + 1) >= 0)
+                && i - (columes + 1) >= 0)
             {
-                cell.neighbours.Add(6, Cells[i - (rows + 1)]);
+                cell.neighbours.Add(neighbouId, Cells[i - (columes + 1)]);
+                neighbouId++;
             }
 
             //LEFT
             if (currentColume - 1 >= 0 
                 && i - 1 >= 0)
             {
-                cell.neighbours.Add(7, Cells[i - 1]);
+                cell.neighbours.Add(neighbouId, Cells[i - 1]);
+                neighbouId++;
             }
-           
+
             if (currentColume >= columes)
             {
                 currentColume = 0;
@@ -199,26 +219,41 @@ public class WorldGeneration : MonoBehaviour {
                     //if objects postion inside of cell then add it cells list 
                     if (cellCollison(cell, t.localPosition.x, t.localPosition.z))
                     {
+                        //addToXML(obj, i);
                         cell.objects.Add(obj);
                         obj.transform.parent = cell.cellCube.transform;
                         obj.SetActive(false);
                         Cells[i] = cell;
+
                         i = Cells.Count;
                     }
                     cell.cellCube.SetActive(false);
                 }
             }
         }
+       // AssetContainerRef.Save(createXML.path);
     }
+    //Temp
+    //void addToXML(GameObject obj,int i)
+    //{
+    //    Transform t = obj.transform;
+
+    //    createXML.StreamingAsset asset = new createXML.StreamingAsset();
+    //    asset.Name = obj.name;
+    //    asset.postion = t.localPosition;
+    //    asset.Rotation = new Vector3(t.localRotation.x, t.localRotation.y, t.localRotation.z);
+    //    asset.Scale = t.localScale;
+    //    AssetContainerRef.Nodes[i].assets.Add(asset);
+    //}
 
     // Update is called once per frame
     void Update()
-    {
+    {//run in coruntine 
         numCell = Cells.Count;
-        checkPlayersCell(); 
+        StartCoroutine(checkPlayersCell()); 
     }
 
-    void checkPlayersCell()
+    IEnumerator checkPlayersCell()
     {
         // get players postion
         //check all cells to find which one the player is currently in 
@@ -228,11 +263,13 @@ public class WorldGeneration : MonoBehaviour {
             {
                 if (playersCurenntCell != i)
                 {
+                    unLoadNodes();
                     playersCurenntCell = i;
                     LoadNodes();
                 }
             }
         }
+        yield return null;
     }
 
     bool cellCollison(cellObject cell,float px,float pz)
@@ -266,10 +303,10 @@ public class WorldGeneration : MonoBehaviour {
             }
         }
         // load nabiour cells if not done 
-        for (int i = 0; i < PlyCell.neighbours.Count+1; i++)
+        for (int i = 0; i < PlyCell.neighbours.Count; i++)
         {
-            if (PlyCell.neighbours.ContainsKey(i))
-            {
+           // if (PlyCell.neighbours.ContainsKey(i))
+           // {
                 cellObject cell = PlyCell.neighbours[i];
                 if (!cell.isLoaded)
                 {
@@ -282,6 +319,29 @@ public class WorldGeneration : MonoBehaviour {
                     }
                     PlyCell.neighbours[i] = cell;
                 }
+          //  }
+        }
+    }
+
+    void unLoadNodes()
+    {
+        // find current player node 
+        cellObject PlyCell = Cells[playersCurenntCell];
+
+        // load nabiour cells if not done 
+        for (int i = 0; i < PlyCell.neighbours.Count; i++)
+        {
+            cellObject cell = PlyCell.neighbours[i];
+            if (cell.isLoaded)
+            {
+                //load in cell 
+                cell.isLoaded = false;
+                cell.cellCube.SetActive(false);
+                foreach (GameObject obj in cell.objects)
+                {
+                    obj.SetActive(false);
+                }
+                PlyCell.neighbours[i] = cell;
             }
         }
     }
