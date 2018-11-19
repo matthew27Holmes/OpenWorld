@@ -24,9 +24,6 @@ public class WorldGeneration : MonoBehaviour {
         public bool isLoaded;
     }
 
-    
-
-
     List<cellObject> Cells;
     public BoxCollider floor;
     private Vector3 startPos;
@@ -142,7 +139,7 @@ public class WorldGeneration : MonoBehaviour {
             ////TOPRIGHT
             if (currentColume + 1 <= columes 
                 && currentRow + 1 <= rows
-                && i + (columes - 1) <= Cells.Count - 1)
+                && i + (rows - 1) <= Cells.Count - 1)
             {
                 cell.neighbours.Add(neighbouId, Cells[i + (columes - 1)]);
                 neighbouId++;
