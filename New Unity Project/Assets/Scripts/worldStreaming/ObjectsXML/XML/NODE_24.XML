@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Streaming_GameObjects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Assets>
+    <Asset name="wall_H10m_L15m">
+      <postion>
+        <x>154.47</x>
+        <y>0</y>
+        <z>42.9</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>330.000061</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1.36554348</z>
+      </Scale>
+    </Asset>
+    <Asset name="castle_tower_round (3)">
+      <postion>
+        <x>151.17</x>
+        <y>-10.33</y>
+        <z>61.8000031</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>348.75</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1.432774</x>
+        <y>1.432774</y>
+        <z>1.22564507</z>
+      </Scale>
+    </Asset>
+    <Asset name="wall_H10m_corner">
+      <postion>
+        <x>157.54</x>
+        <y>0</y>
+        <z>40.7700043</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>345.000031</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1.365543</z>
+      </Scale>
+    </Asset>
+  </Assets>
+</Streaming_GameObjects>

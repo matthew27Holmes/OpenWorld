@@ -11,47 +11,38 @@ using System.Linq;
 
 public class createXML : MonoBehaviour
 {
-
     [XmlRoot("Streaming_GameObjects")]
-    public class AssetContainer
+    public class Node
     {
-        [XmlArray("Nodes")]
-        [XmlArrayItem("Node")]
-        public List<Node> Nodes = new List<Node>();
+        [XmlArray("Assets")]
+        [XmlArrayItem("Asset")]
+
+        public List<StreamingAsset> assets = new List<StreamingAsset>();
 
         public void Save(string path)
         {
-            var serializer = new XmlSerializer(typeof(AssetContainer));
+            var serializer = new XmlSerializer(typeof(Node));
             using (var stream = new FileStream(path, FileMode.Create))
             {
                 serializer.Serialize(stream, this);
             }
         }
 
-        public static AssetContainer Load(string path)
+        public static Node Load(string path)
         {
-            var serializer = new XmlSerializer(typeof(AssetContainer));
+            var serializer = new XmlSerializer(typeof(Node));
             using (var stream = new FileStream(path, FileMode.Open))
             {
-                return serializer.Deserialize(stream) as AssetContainer;
+                return serializer.Deserialize(stream) as Node;
             }
         }
 
         //Loads the xml directly from the given string. Useful in combination with www.text.
-        public static AssetContainer LoadFromText(string text)
+        public static Node LoadFromText(string text)
         {
-            var serializer = new XmlSerializer(typeof(AssetContainer));
-            return serializer.Deserialize(new StringReader(text)) as AssetContainer;
+            var serializer = new XmlSerializer(typeof(Node));
+            return serializer.Deserialize(new StringReader(text)) as Node;
         }
-    };
-
-    public class Node
-    {
-        public string NodeID;
-        [XmlArray("Assets")]
-        [XmlArrayItem("Asset")]
-        public List<StreamingAsset> assets = new List<StreamingAsset>();
-
     }
     public class StreamingAsset
     {
@@ -63,5 +54,5 @@ public class createXML : MonoBehaviour
 
     };
 
-    public const string path = "Assets/WorldGeneration.XML";
+    public const string path = "Assets/Scripts/worldStreaming/ObjectsXML/XML/NODE_";
 }
