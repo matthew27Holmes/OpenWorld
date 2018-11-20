@@ -17,7 +17,7 @@ public class WorldGeneration : MonoBehaviour {
         public int cellID;
         public Dictionary<int, cellObject> neighbours;
         public List<GameObject> objects;
-        //public GameObject cellCube; //for debug purpose
+        public GameObject cellCube; //for debug purpose
         public float PostionX;
         public float PostionZ;
         public float Width;
@@ -80,8 +80,8 @@ public class WorldGeneration : MonoBehaviour {
                 cell.objects = new List<GameObject>();
                 cell.neighbours = new Dictionary<int, cellObject>();
 
-                //cell.cellCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-               // cell.cellCube.transform.localScale = new Vector3(scale.x, 1, scale.z);
+                cell.cellCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cell.cellCube.transform.localScale = new Vector3(scale.x, 1, scale.z);
 
                 cell.Width = scale.x;
                 cell.Height = scale.z;
@@ -89,14 +89,16 @@ public class WorldGeneration : MonoBehaviour {
                 float postionX = startPos.x + x;//* cell.Width;
                 float postionY = startPos.z + z;//* cell.Height;
 
-               // cell.cellCube.transform.position = new Vector3(postionX, 30, postionY);
+                cell.cellCube.transform.position = new Vector3(postionX, 30, postionY);
 
                 cell.PostionX = postionX;
                 cell.PostionZ = postionY;
 
                 ////temp
-                createXML.Node node = new createXML.Node();
-                NodeContainerRefs.Add(node);
+                //createXML.Node node = new createXML.Node();
+                //NodeContainerRefs.Add(node);
+
+                cell.cellCube.SetActive(cell.isLoaded);
                 cell.cellID = Cells.Count;
                 Cells.Add(cell);
             }
@@ -265,6 +267,7 @@ public class WorldGeneration : MonoBehaviour {
             {
                 if (playersCurenntCell != i)
                 {
+                    int LastPlayerCell = playersCurenntCell;
                     unLoadNodes();
                     playersCurenntCell = i;
                     LoadNodes();
@@ -290,81 +293,83 @@ public class WorldGeneration : MonoBehaviour {
     void LoadNodes()
     {
         // find current player node 
+
         cellObject PlyCell = Cells[playersCurenntCell];
 
-        // load in current players current cell if not done
-        if (!PlyCell.isLoaded)
-        {
-            //load player cell
-            PlyCell.isLoaded = true;
-            PlyCell.objects = LoadObjects(PlyCell.cellID);
-        }
+        PlyCell = LoadObjects(PlyCell.cellID);
 
         // load neighbours cells if not done 
         for (int i = 0; i < PlyCell.neighbours.Count; i++)
         {
             cellObject cell = PlyCell.neighbours[i];
-            if (!cell.isLoaded)
-            {
-                //load in cell 
-                cell.isLoaded = true;
-                cell.objects = LoadObjects(cell.cellID);
-                PlyCell.neighbours[i] = cell;
-            }
+
+            PlyCell.neighbours[i] = LoadObjects(cell.cellID);
         }
     }
 
-    List<GameObject> LoadObjects(int NodeID)
+    cellObject LoadObjects(int NodeID)
     {
-        List<GameObject> nodeObjects = new List<GameObject>();
-
-        createXML.Node NodeContainerRef = createXML.Node.Load(
-            createXML.path + NodeID.ToString() + ".XML");
-        
-        foreach(createXML.StreamingAsset  asset in NodeContainerRef.assets)
+        cellObject cell = Cells[NodeID];
+        if (!cell.isLoaded)
         {
-            // format asset path
+            //load in cell 
+            cell.isLoaded = true;
+            cell.cellCube.SetActive(cell.isLoaded);
 
-            string assetName = asset.Name.Split(' ')[0];
-            string assetPath = "OpenWorldObjects/"
-                + assetName;
+            createXML.Node NodeContainerRef = createXML.Node.Load(
+                createXML.path + NodeID.ToString() + ".XML");
 
+            foreach (createXML.StreamingAsset asset in NodeContainerRef.assets)
+            {
+                // format asset path
 
-            GameObject instance = Instantiate(
-                Resources.Load<GameObject>(assetPath))as GameObject;
+                string assetName = asset.Name.Split(' ')[0];
+                string assetPath = "OpenWorldObjects/" + assetName;
 
-            instance.transform.position = asset.postion;
-            instance.transform.localScale = asset.Scale;
-            instance.transform.eulerAngles = asset.Rotation;
-               //.asset.Rotation.x, asset.Rotation.y, asset.Rotation.z);
+                GameObject instance = Instantiate(
+                    Resources.Load<GameObject>(assetPath)) as GameObject;
 
-            instance.name = asset.Name;
-            nodeObjects.Add(instance);
+                instance.transform.position = asset.postion;
+                instance.transform.localScale = asset.Scale;
+                instance.transform.eulerAngles = asset.Rotation;
+
+                instance.name = asset.Name;
+                cell.objects.Add(instance);
+            }
         }
-        
-        return nodeObjects;
+        Cells[NodeID] = cell;
+        return cell;
     }
 
     void unLoadNodes()
     {
         cellObject PlyCell = Cells[playersCurenntCell];
-
+        
         for (int i = 0; i < PlyCell.neighbours.Count; i++)
         {
             cellObject cell = PlyCell.neighbours[i];
-
-            //needs to check if neighbours is gonna be loaded wth the next object  
-            if (cell.isLoaded)
-            {
-                cell.isLoaded = false;
-
-                foreach (GameObject obj in cell.objects)
-                {
-                    Destroy(obj);
-                }
-                cell.objects.Clear();
-                PlyCell.neighbours[i] = cell;
-            }
+            PlyCell.neighbours[i] = UnLoadObjects(cell.cellID);
         }
     }
+
+    cellObject UnLoadObjects(int NodeID)
+    {
+        cellObject cell = Cells[NodeID];
+
+        //needs to check if neighbours is gonna be loaded wth the next object  
+        if (cell.isLoaded)
+        {
+            cell.isLoaded = false;
+            cell.cellCube.SetActive(cell.isLoaded);
+
+            foreach (GameObject obj in cell.objects)
+            {
+                Destroy(obj);
+            }
+            cell.objects.Clear();     
+        }
+        Cells[NodeID] = cell;
+        return cell;
+    }
+
 }
