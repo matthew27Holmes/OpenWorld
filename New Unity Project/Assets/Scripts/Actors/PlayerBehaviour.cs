@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour {
 
     float turnSpeed;
-    float moveSpeed;
+   public float moveSpeed;
     float jumpPower;
 
     public Transform floor;

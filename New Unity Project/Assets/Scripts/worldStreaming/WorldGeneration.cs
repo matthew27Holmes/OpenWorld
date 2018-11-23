@@ -107,7 +107,6 @@ public class WorldGeneration : MonoBehaviour {
 
     void findNeighbouringNodes()
     {
-       
         rows = (gridHeghit / (int)scale.z)+1;
         columes =  (gridwidth / (int)scale.x)+1;
         int currentRow = 0, currentColume = 0;
@@ -119,8 +118,8 @@ public class WorldGeneration : MonoBehaviour {
             int neighbouId = 0;
 
             ////TOPLEFT
-            if (currentColume - 1 >= 0 
-                && currentRow + 1 <= rows
+            if (currentColume > 0 
+                && currentRow  < rows
                 && i + (columes + 1) <= Cells.Count - 1)
             {
                 cell.neighbours.Add(neighbouId, Cells[i + (columes + 1)]);
@@ -128,15 +127,15 @@ public class WorldGeneration : MonoBehaviour {
             }
 
             //TOP
-            if (currentRow + 1 <= rows 
+            if (currentRow  < rows 
                 && i + columes <= Cells.Count-1)
             {
                 cell.neighbours.Add(neighbouId, Cells[i + columes]);
                 neighbouId++;
             }
             ////TOPRIGHT
-            if (currentColume + 1 <= columes 
-                && currentRow + 1 <= rows
+            if (currentColume  < columes 
+                && currentRow  < rows
                 && i + (rows - 1) <= Cells.Count - 1)
             {
                 cell.neighbours.Add(neighbouId, Cells[i + (columes - 1)]);
@@ -144,7 +143,7 @@ public class WorldGeneration : MonoBehaviour {
             }
 
             //RIGHT
-            if (currentColume + 1 <= columes 
+            if (currentColume  < columes 
                 && i + 1 <= Cells.Count-1)
             {
                 cell.neighbours.Add(neighbouId, Cells[i + 1]);
@@ -152,8 +151,8 @@ public class WorldGeneration : MonoBehaviour {
             }
 
             ////BOTTOMRIGHT
-            if (currentColume + 1 <= columes 
-                && currentRow - 1 >= 0
+            if (currentColume  < columes 
+                && currentRow > 0
                 && i - (columes + 1) >= 0)
             {
                 cell.neighbours.Add(neighbouId, Cells[i - (columes - 1)]);
@@ -161,7 +160,7 @@ public class WorldGeneration : MonoBehaviour {
             }
 
             //BOTTOM
-            if (currentRow - 1 >= 0 
+            if (currentRow  > 0 
                 && i - columes >= 0)
             {
                 cell.neighbours.Add(neighbouId, Cells[i - columes]);
@@ -169,8 +168,8 @@ public class WorldGeneration : MonoBehaviour {
             }
 
             ////BOTTOMLEFT
-            if (currentColume - 1 >= 0 
-                && currentRow - 1 >= 0
+            if (currentColume  > 0 
+                && currentRow  > 0
                 && i - (columes + 1) >= 0)
             {
                 cell.neighbours.Add(neighbouId, Cells[i - (columes + 1)]);
@@ -178,14 +177,14 @@ public class WorldGeneration : MonoBehaviour {
             }
 
             //LEFT
-            if (currentColume - 1 >= 0 
+            if (currentColume  > 0 
                 && i - 1 >= 0)
             {
                 cell.neighbours.Add(neighbouId, Cells[i - 1]);
                 neighbouId++;
             }
 
-            if (currentColume >= columes)
+            if (currentColume == columes)
             {
                 currentColume = 0;
                 currentRow++;
@@ -254,7 +253,7 @@ public class WorldGeneration : MonoBehaviour {
     void Update()
     {//run in coruntine 
         numCell = Cells.Count;
-        StartCoroutine(checkPlayersCell()); 
+        StartCoroutine(checkPlayersCell()); //should check to see if its inside player view port instead
     }
 
     IEnumerator checkPlayersCell()
@@ -268,9 +267,9 @@ public class WorldGeneration : MonoBehaviour {
                 if (playersCurenntCell != i)
                 {
                     int LastPlayerCell = playersCurenntCell;
-                    unLoadNodes();
+                    StartCoroutine(unLoadNodes());
                     playersCurenntCell = i;
-                    LoadNodes();
+                    StartCoroutine(LoadNodes());
                 }
             }
         }
@@ -290,13 +289,14 @@ public class WorldGeneration : MonoBehaviour {
     }
 
     // should be run in corouten
-    void LoadNodes()
+    IEnumerator LoadNodes()
     {
         // find current player node 
 
         cellObject PlyCell = Cells[playersCurenntCell];
 
         PlyCell = LoadObjects(PlyCell.cellID);
+        StartCoroutine(addPlayerNodeColliders(PlyCell.cellID));
 
         // load neighbours cells if not done 
         for (int i = 0; i < PlyCell.neighbours.Count; i++)
@@ -305,6 +305,7 @@ public class WorldGeneration : MonoBehaviour {
 
             PlyCell.neighbours[i] = LoadObjects(cell.cellID);
         }
+        yield return null;
     }
 
     cellObject LoadObjects(int NodeID)
@@ -325,14 +326,14 @@ public class WorldGeneration : MonoBehaviour {
 
                 string assetName = asset.Name.Split(' ')[0];
                 string assetPath = "OpenWorldObjects/" + assetName;
-
+                
                 GameObject instance = Instantiate(
                     Resources.Load<GameObject>(assetPath)) as GameObject;
 
                 instance.transform.position = asset.postion;
                 instance.transform.localScale = asset.Scale;
                 instance.transform.eulerAngles = asset.Rotation;
-
+               
                 instance.name = asset.Name;
                 cell.objects.Add(instance);
             }
@@ -341,7 +342,17 @@ public class WorldGeneration : MonoBehaviour {
         return cell;
     }
 
-    void unLoadNodes()
+    IEnumerator addPlayerNodeColliders(int NodeID)
+    {
+        cellObject cell = Cells[NodeID];
+        foreach(GameObject obj in cell.objects)
+        {
+            obj.AddComponent<MeshCollider>();
+        }
+        yield return null;
+    }
+   
+    IEnumerator unLoadNodes()
     {
         cellObject PlyCell = Cells[playersCurenntCell];
         
@@ -350,6 +361,7 @@ public class WorldGeneration : MonoBehaviour {
             cellObject cell = PlyCell.neighbours[i];
             PlyCell.neighbours[i] = UnLoadObjects(cell.cellID);
         }
+        yield return null;
     }
 
     cellObject UnLoadObjects(int NodeID)
