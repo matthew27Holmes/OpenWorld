@@ -11,7 +11,11 @@ public class PlayerBehaviour : MonoBehaviour {
     public Transform floor;
 
     bool alive;
+    int health;
+    int CollectableNum;
     public bool grounded;
+    enum ChcaterStates {Idel,Dead,Punching,Kicking,Hit};
+    ChcaterStates PlayerState;
 	// Use this for initialization
 	void Start () {
         turnSpeed = 150.0f;
@@ -33,7 +37,10 @@ public class PlayerBehaviour : MonoBehaviour {
 
     void playerStateMachine()
     {
+        switch(PlayerState)
+        {
 
+        }
     }
 
     void Move()
@@ -53,6 +60,14 @@ public class PlayerBehaviour : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Collectable")
+        {
+            CollectableNum++;
+            other.gameObject.SetActive(false);
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
         if (LayerMask.LayerToName(other.gameObject.layer) == "floor")

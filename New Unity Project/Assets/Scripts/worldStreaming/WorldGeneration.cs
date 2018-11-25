@@ -296,7 +296,7 @@ public class WorldGeneration : MonoBehaviour {
         cellObject PlyCell = Cells[playersCurenntCell];
 
         PlyCell = LoadObjects(PlyCell.cellID);
-        StartCoroutine(addPlayerNodeColliders(PlyCell.cellID));
+       // StartCoroutine(addPlayerNodeColliders(PlyCell.cellID));
 
         // load neighbours cells if not done 
         for (int i = 0; i < PlyCell.neighbours.Count; i++)
