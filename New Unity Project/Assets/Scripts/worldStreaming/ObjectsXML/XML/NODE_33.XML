@@ -1,89 +1,21 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <Streaming_GameObjects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Assets>
-    <Asset name="castle_wall_10m">
+    <Asset name="Plane(Clone)">
       <postion>
-        <x>45.98</x>
+        <x>95</x>
         <y>0</y>
-        <z>256.62</z>
+        <z>290</z>
       </postion>
       <Rotation>
-        <x>270</x>
-        <y>29.9999466</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="castle_wall_2,5m (1)">
-      <postion>
-        <x>54.59</x>
-        <y>-5</y>
-        <z>244.73</z>
-      </postion>
-      <Rotation>
-        <x>270</x>
-        <y>239.999939</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="castle_tower_round (2)">
-      <postion>
-        <x>57.62</x>
+        <x>0</x>
         <y>0</y>
-        <z>250.77</z>
-      </postion>
-      <Rotation>
-        <x>270</x>
-        <y>348.75</y>
         <z>0</z>
       </Rotation>
       <Scale>
-        <x>1.432774</x>
-        <y>1.432774</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="castle_wall_corner_a">
-      <postion>
-        <x>59.37</x>
-        <y>-5</y>
-        <z>247.47</z>
-      </postion>
-      <Rotation>
-        <x>270</x>
-        <y>45.0000343</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
+        <x>10</x>
         <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="castle_wall_10m">
-      <postion>
-        <x>45.98</x>
-        <y>0</y>
-        <z>256.62</z>
-      </postion>
-      <Rotation>
-        <x>270</x>
-        <y>29.9999466</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
+        <z>10</z>
       </Scale>
     </Asset>
   </Assets>

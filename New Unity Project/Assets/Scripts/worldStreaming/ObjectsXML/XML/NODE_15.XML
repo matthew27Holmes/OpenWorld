@@ -1,157 +1,72 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <Streaming_GameObjects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Assets>
-    <Asset name="dead_tree_j (2)">
+    <Asset name="Plane(Clone)">
       <postion>
-        <x>-169.851868</x>
+        <x>-205</x>
         <y>0</y>
-        <z>19.3691177</z>
+        <z>-10</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>10</x>
+        <y>1</y>
+        <z>10</z>
+      </Scale>
+    </Asset>
+    <Asset name="cliff_06 (3)">
+      <postion>
+        <x>-206.483047</x>
+        <y>-24.8</y>
+        <z>32.7303772</z>
       </postion>
       <Rotation>
         <x>270</x>
-        <y>0</y>
+        <y>251.548462</y>
         <z>0</z>
       </Rotation>
       <Scale>
         <x>1</x>
-        <y>1</y>
+        <y>1.27683377</y>
         <z>1</z>
       </Scale>
     </Asset>
-    <Asset name="civilian_house_20 (3)">
+    <Asset name="cliff_02 (1)">
       <postion>
-        <x>-186.42</x>
-        <y>0</y>
-        <z>31.9899979</z>
+        <x>-173.9</x>
+        <y>-24.7</y>
+        <z>-2.3</z>
       </postion>
       <Rotation>
         <x>270</x>
-        <y>255</y>
+        <y>213.319458</y>
         <z>0</z>
       </Rotation>
       <Scale>
-        <x>1</x>
-        <y>1</y>
+        <x>1.414968</x>
+        <y>1.50729287</y>
         <z>1</z>
       </Scale>
     </Asset>
-    <Asset name="civilian_house_28 (7)">
+    <Asset name="cliff_03 (1)">
       <postion>
-        <x>-187.98</x>
-        <y>0</y>
-        <z>39.2400055</z>
-      </postion>
-      <Rotation>
-        <x>270.019775</x>
-        <y>164.999969</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="castle_tower_round (2)">
-      <postion>
-        <x>-182.13</x>
-        <y>0</y>
-        <z>17.0999985</z>
+        <x>-161.5</x>
+        <y>-24.6</y>
+        <z>-22.9</z>
       </postion>
       <Rotation>
         <x>270</x>
-        <y>348.75</y>
+        <y>238.111115</y>
         <z>0</z>
       </Rotation>
       <Scale>
-        <x>1.432774</x>
-        <y>1.432774</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="street_pond_a (12)">
-      <postion>
-        <x>-161.200012</x>
-        <y>0</y>
-        <z>23</z>
-      </postion>
-      <Rotation>
-        <x>270</x>
-        <y>44.9999733</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
+        <x>1.1395874</x>
         <y>1</y>
         <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="castle_wall_15m (4)">
-      <postion>
-        <x>-170.041168</x>
-        <y>0</y>
-        <z>2.50997162</z>
-      </postion>
-      <Rotation>
-        <x>270</x>
-        <y>210.000275</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="castle_wall_15m (5)">
-      <postion>
-        <x>-185.11</x>
-        <y>0</y>
-        <z>11.2099991</z>
-      </postion>
-      <Rotation>
-        <x>270</x>
-        <y>210.000275</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="castle_wall_2,5m (1)">
-      <postion>
-        <x>-172.119629</x>
-        <y>0</y>
-        <z>3.7099762</z>
-      </postion>
-      <Rotation>
-        <x>270</x>
-        <y>210.000275</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="civilian_house_40_f (4)">
-      <postion>
-        <x>-184.49</x>
-        <y>0</y>
-        <z>26.3099976</z>
-      </postion>
-      <Rotation>
-        <x>270</x>
-        <y>345</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>0.6611533</x>
-        <y>-0.6611533</y>
-        <z>1.53901184</z>
       </Scale>
     </Asset>
   </Assets>
