@@ -35,23 +35,23 @@ public class WorldGeneration : MonoBehaviour {
     int gridHeghit, gridwidth;
     public int rows,columes;
     int NumberOfObjects;
-    int GenerationLayer;
+    string GenerationLayer;
     Vector3 scale;
+    public GameObject FloorTile;
 
     List<createXML.Node> NodeContainerRefs;
 
-    // Use this for initialization
     void Start()
     {
         //temp
         NodeContainerRefs = new List<createXML.Node>();
         initialiseCells();  
     }
-
+    #region createNodeGrid
     void initialiseCells()
     {
         playersCurenntCell = 0;
-        GenerationLayer = 9;
+        GenerationLayer = "WorldStreming";
         // create cells array
         Cells = new List<cellObject>();//should be a list of cell script pointers 
         //define node postions
@@ -94,9 +94,10 @@ public class WorldGeneration : MonoBehaviour {
                 cell.PostionX = postionX;
                 cell.PostionZ = postionY;
 
+               // StartCoroutine(createFloorTile(new Vector3(postionX, 0.0f, postionY)));
                 ////temp
-                //createXML.Node node = new createXML.Node();
-                //NodeContainerRefs.Add(node);
+               // createXML.Node node = new createXML.Node();
+               // NodeContainerRefs.Add(node);
 
                 cell.cellCube.SetActive(cell.isLoaded);
                 cell.cellID = Cells.Count;
@@ -104,11 +105,10 @@ public class WorldGeneration : MonoBehaviour {
             }
         }
     }
-
     void findNeighbouringNodes()
     {
-        rows = (gridHeghit / (int)scale.z)+1;
-        columes =  (gridwidth / (int)scale.x)+1;
+        rows = (gridHeghit / (int)scale.z) + 1;
+        columes = (gridwidth / (int)scale.x) + 1;
         int currentRow = 0, currentColume = 0;
         for (int i = 0; i < Cells.Count; i++)
         {
@@ -118,8 +118,8 @@ public class WorldGeneration : MonoBehaviour {
             int neighbouId = 0;
 
             ////TOPLEFT
-            if (currentColume > 0 
-                && currentRow  < rows
+            if (currentColume > 0
+                && currentRow < rows
                 && i + (columes + 1) <= Cells.Count - 1)
             {
                 cell.neighbours.Add(neighbouId, Cells[i + (columes + 1)]);
@@ -127,15 +127,15 @@ public class WorldGeneration : MonoBehaviour {
             }
 
             //TOP
-            if (currentRow  < rows 
-                && i + columes <= Cells.Count-1)
+            if (currentRow < rows
+                && i + columes <= Cells.Count - 1)
             {
                 cell.neighbours.Add(neighbouId, Cells[i + columes]);
                 neighbouId++;
             }
             ////TOPRIGHT
-            if (currentColume  < columes 
-                && currentRow  < rows
+            if (currentColume < columes
+                && currentRow < rows
                 && i + (rows - 1) <= Cells.Count - 1)
             {
                 cell.neighbours.Add(neighbouId, Cells[i + (columes - 1)]);
@@ -143,15 +143,15 @@ public class WorldGeneration : MonoBehaviour {
             }
 
             //RIGHT
-            if (currentColume  < columes 
-                && i + 1 <= Cells.Count-1)
+            if (currentColume < columes
+                && i + 1 <= Cells.Count - 1)
             {
                 cell.neighbours.Add(neighbouId, Cells[i + 1]);
                 neighbouId++;
             }
 
             ////BOTTOMRIGHT
-            if (currentColume  < columes 
+            if (currentColume < columes
                 && currentRow > 0
                 && i - (columes + 1) >= 0)
             {
@@ -160,7 +160,7 @@ public class WorldGeneration : MonoBehaviour {
             }
 
             //BOTTOM
-            if (currentRow  > 0 
+            if (currentRow > 0
                 && i - columes >= 0)
             {
                 cell.neighbours.Add(neighbouId, Cells[i - columes]);
@@ -168,8 +168,8 @@ public class WorldGeneration : MonoBehaviour {
             }
 
             ////BOTTOMLEFT
-            if (currentColume  > 0 
-                && currentRow  > 0
+            if (currentColume > 0
+                && currentRow > 0
                 && i - (columes + 1) >= 0)
             {
                 cell.neighbours.Add(neighbouId, Cells[i - (columes + 1)]);
@@ -177,7 +177,7 @@ public class WorldGeneration : MonoBehaviour {
             }
 
             //LEFT
-            if (currentColume  > 0 
+            if (currentColume > 0
                 && i - 1 >= 0)
             {
                 cell.neighbours.Add(neighbouId, Cells[i - 1]);
@@ -191,8 +191,16 @@ public class WorldGeneration : MonoBehaviour {
             }
         }
     }
+    #endregion
+    #region Temp SaveToXML
 
-    void findCellsObjects()
+    IEnumerator createFloorTile(Vector3 Postion)
+    {
+        Instantiate(FloorTile, Postion, Quaternion.identity);
+        yield return null;
+    }
+  
+    void findCellsObjects()//debug for saving to xml
     {
         //this should be in cell 
 
@@ -203,7 +211,7 @@ public class WorldGeneration : MonoBehaviour {
         // run trough all objecs and attach them to a node if there are on the correct layer 
         foreach (GameObject obj in root)//Transform t in SceneParent.transform.GetComponentsInChildren(typeof(GameObject),false))
         {
-            if (obj.layer == GenerationLayer)
+            if (LayerMask.LayerToName(obj.layer) == GenerationLayer)
             {
                 Transform t = obj.transform;
 
@@ -248,14 +256,16 @@ public class WorldGeneration : MonoBehaviour {
         asset.Scale = t.localScale;
         NodeContainerRefs[i].assets.Add(asset);
     }
+    #endregion
 
     // Update is called once per frame
     void Update()
-    {//run in coruntine 
+    {
+        //run in coruntine 
         numCell = Cells.Count;
         StartCoroutine(checkPlayersCell()); //should check to see if its inside player view port instead
     }
-
+    #region updateWorld
     IEnumerator checkPlayersCell()
     {
         // get players postion
@@ -287,15 +297,15 @@ public class WorldGeneration : MonoBehaviour {
         } 
         return false;
     }
-
+    #region Load
     // should be run in corouten
     IEnumerator LoadNodes()
     {
         // find current player node 
-
         cellObject PlyCell = Cells[playersCurenntCell];
 
         PlyCell = LoadObjects(PlyCell.cellID);
+
        // StartCoroutine(addPlayerNodeColliders(PlyCell.cellID));
 
         // load neighbours cells if not done 
@@ -351,7 +361,8 @@ public class WorldGeneration : MonoBehaviour {
         }
         yield return null;
     }
-   
+    #endregion
+    #region unLoad
     IEnumerator unLoadNodes()
     {
         cellObject PlyCell = Cells[playersCurenntCell];
@@ -376,12 +387,13 @@ public class WorldGeneration : MonoBehaviour {
 
             foreach (GameObject obj in cell.objects)
             {
-                Destroy(obj);
+                Destroy(obj);//this hsould store to cache for a period
             }
             cell.objects.Clear();     
         }
         Cells[NodeID] = cell;
         return cell;
     }
-
+    #endregion
+    #endregion
 }

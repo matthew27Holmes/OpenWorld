@@ -61,7 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CollectableBehaviour.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\CameraController.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\GUIControls.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\RPGCharacterControllerFREE.cs" />
@@ -88,7 +87,8 @@
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Core\SuperStateMachine.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\DebugDraw.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Math3d.cs" />
-    <Compile Include="Assets\Scripts\Actors\PlayerBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Actors\PlayerBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\CollectableBehaviour.cs" />
     <Compile Include="Assets\Scripts\worldStreaming\Cell.cs" />
     <Compile Include="Assets\Scripts\worldStreaming\ObjectsXML\createXML.cs" />
     <Compile Include="Assets\Scripts\worldStreaming\WorldGeneration.cs" />
