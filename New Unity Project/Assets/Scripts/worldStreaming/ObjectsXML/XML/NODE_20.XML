@@ -1,55 +1,599 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <Streaming_GameObjects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Assets>
-    <Asset name="Plane(Clone)">
+    <Asset name="civilian_house_02 (2)">
       <postion>
-        <x>-205</x>
+        <x>-158.200012</x>
         <y>0</y>
-        <z>90</z>
-      </postion>
-      <Rotation>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>10</x>
-        <y>1</y>
-        <z>10</z>
-      </Scale>
-    </Asset>
-    <Asset name="cliff_06 (2)">
-      <postion>
-        <x>-210.5</x>
-        <y>-24.9</y>
-        <z>115</z>
+        <z>112.570007</z>
       </postion>
       <Rotation>
         <x>270</x>
-        <y>270.000031</y>
+        <y>270.0001</y>
         <z>0</z>
       </Rotation>
       <Scale>
-        <x>1.661806</x>
-        <y>2.330549</y>
-        <z>1.03952229</z>
+        <x>0.7258587</x>
+        <y>0.72585845</y>
+        <z>0.7258585</z>
       </Scale>
     </Asset>
-    <Asset name="cliff_04 (1)">
+    <Asset name="castle_wall_10m (2)">
       <postion>
-        <x>-207.9</x>
-        <y>-25.3</y>
-        <z>75.9</z>
+        <x>-174.64</x>
+        <y>0</y>
+        <z>91.7</z>
       </postion>
       <Rotation>
         <x>270</x>
-        <y>256.057556</y>
+        <y>0</y>
         <z>0</z>
       </Rotation>
       <Scale>
-        <x>1.151634</x>
+        <x>1</x>
         <y>1</y>
-        <z>1.0251292</z>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="castle_wall_15m (4)">
+      <postion>
+        <x>-211.290009</x>
+        <y>0</y>
+        <z>126.7</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>270.000153</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_11 (2)">
+      <postion>
+        <x>-198.866364</x>
+        <y>0</y>
+        <z>129.800018</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>89.99999</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.69651264</x>
+        <y>0.696512461</y>
+        <z>0.696512759</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_37_e (1)">
+      <postion>
+        <x>-173.970016</x>
+        <y>0</y>
+        <z>114.930008</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>89.99996</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="castle_tower_rectangular (3)">
+      <postion>
+        <x>-164.69</x>
+        <y>0</y>
+        <z>89.4</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1.4410888</x>
+        <y>1.26879251</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="castle_tower_round (1)">
+      <postion>
+        <x>-201.27</x>
+        <y>0</y>
+        <z>88.7</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>348.75</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1.432774</x>
+        <y>1.432774</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_25 (12)">
+      <postion>
+        <x>-199.5</x>
+        <y>0</y>
+        <z>82.87</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>345</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1.27644467</x>
+        <y>1.27644467</y>
+        <z>1.27644491</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_36_b (2)">
+      <postion>
+        <x>-200.190033</x>
+        <y>0</y>
+        <z>110.11</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>-2.41483622E-06</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1.20675588</x>
+        <y>1.24892545</y>
+        <z>1.20675766</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_29 (2)">
+      <postion>
+        <x>-181.02002</x>
+        <y>0</y>
+        <z>129.640015</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>-0.000103837956</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_10 (2)">
+      <postion>
+        <x>-164.2</x>
+        <y>0</y>
+        <z>63.15</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>180</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.6663536</x>
+        <y>0.6663526</y>
+        <z>0.6663526</z>
+      </Scale>
+    </Asset>
+    <Asset name="fountain_b">
+      <postion>
+        <x>-166.719986</x>
+        <y>-0.08999634</y>
+        <z>130.000015</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>337.5</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1.80536366</x>
+        <y>1.80536592</y>
+        <z>1.30684245</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_40_f (2)">
+      <postion>
+        <x>-195.93</x>
+        <y>0</y>
+        <z>106.080017</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>89.9999161</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.5990593</x>
+        <y>0.5990591</y>
+        <z>1.394471</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_38_b">
+      <postion>
+        <x>-165.460037</x>
+        <y>0</y>
+        <z>114.81</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>89.99996</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_06 (19)">
+      <postion>
+        <x>-194.16</x>
+        <y>0</y>
+        <z>67.71</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>75</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.6816548</x>
+        <y>0.681655049</y>
+        <z>0.6816548</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_13">
+      <postion>
+        <x>-199.65</x>
+        <y>0</y>
+        <z>118.220024</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>89.99999</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.845857739</x>
+        <y>0.8458575</y>
+        <z>0.845857859</z>
+      </Scale>
+    </Asset>
+    <Asset name="castle_wall_2,5m (1)">
+      <postion>
+        <x>-211.290009</x>
+        <y>0</y>
+        <z>129.1</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>270.000153</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="dead_tree_i">
+      <postion>
+        <x>-163.404388</x>
+        <y>0</y>
+        <z>139.302582</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="pine_b (19)">
+      <postion>
+        <x>-176.880341</x>
+        <y>0</y>
+        <z>44.27642</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.773088455</x>
+        <y>0.7730894</y>
+        <z>1.78400874</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_41_b">
+      <postion>
+        <x>-190.64</x>
+        <y>0</y>
+        <z>48.03</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>345</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="dead_tree_f">
+      <postion>
+        <x>-189.876343</x>
+        <y>0</y>
+        <z>99.33093</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1.26838732</x>
+        <y>1.26838779</y>
+        <z>1.26838779</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_12">
+      <postion>
+        <x>-157.91</x>
+        <y>0</y>
+        <z>48.5500031</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>135</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.6106397</x>
+        <y>0.610640168</y>
+        <z>0.610640168</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_01 (1)">
+      <postion>
+        <x>-180.6</x>
+        <y>0</y>
+        <z>114.720016</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>179.999878</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.717781365</x>
+        <y>0.7177804</y>
+        <z>0.71778053</z>
+      </Scale>
+    </Asset>
+    <Asset name="wall_H10m_L50m">
+      <postion>
+        <x>-199.1</x>
+        <y>0</y>
+        <z>52.9</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>345.000031</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1.76113915</x>
+        <y>1.24350822</y>
+        <z>1.585191</z>
+      </Scale>
+    </Asset>
+    <Asset name="castle_wall_15m (6)">
+      <postion>
+        <x>-211.290009</x>
+        <y>0</y>
+        <z>109.299995</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>270.000153</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="castle_wall_2,5m (2)">
+      <postion>
+        <x>-211.290009</x>
+        <y>0</y>
+        <z>111.799995</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>270.000153</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_38_h (4)">
+      <postion>
+        <x>-193.49</x>
+        <y>0</y>
+        <z>57.65</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>345</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_09 (2)">
+      <postion>
+        <x>-163.5</x>
+        <y>0</y>
+        <z>53.71</z>
+      </postion>
+      <Rotation>
+        <x>-2.31383615E-06</x>
+        <y>67.50004</y>
+        <z>180</z>
+      </Rotation>
+      <Scale>
+        <x>0.687254965</x>
+        <y>0.687255263</y>
+        <z>0.6872552</z>
+      </Scale>
+    </Asset>
+    <Asset name="castle_wall_2,5m (3)">
+      <postion>
+        <x>-184.56</x>
+        <y>0</y>
+        <z>91.7</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_29 (1)">
+      <postion>
+        <x>-202.15</x>
+        <y>0</y>
+        <z>107.110016</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>269.999878</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1.32923722</x>
+        <y>1.44819415</y>
+        <z>1.32923758</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_38_g (1)">
+      <postion>
+        <x>-180.786469</x>
+        <y>0</y>
+        <z>122.090004</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>-2.41483622E-06</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="castle_wall_15m (7)">
+      <postion>
+        <x>-187.02</x>
+        <y>0</y>
+        <z>91.7</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>-2.56132125E-06</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_37_a">
+      <postion>
+        <x>-181.090012</x>
+        <y>0</y>
+        <z>135.740021</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>-2.41483622E-06</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>-1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_house_32_b (3)">
+      <postion>
+        <x>-196.36</x>
+        <y>0</y>
+        <z>76.38</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>345</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.947639346</x>
+        <y>0.995956957</y>
+        <z>0.947639346</z>
+      </Scale>
+    </Asset>
+    <Asset name="dead_tree_h (3)">
+      <postion>
+        <x>-185.550964</x>
+        <y>0</y>
+        <z>78.44076</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1.13087428</z>
       </Scale>
     </Asset>
   </Assets>
