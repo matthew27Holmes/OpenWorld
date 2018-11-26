@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <Streaming_GameObjects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Assets>
-    <Asset name="Plane(Clone)">
+   <Asset name="Plane(Clone)">
       <postion>
         <x>-205</x>
         <y>0</y>
@@ -16,6 +16,40 @@
         <x>10</x>
         <y>1</y>
         <z>10</z>
+      </Scale>
+    </Asset>
+    <Asset name="castle_tower_round">
+      <postion>
+        <x>-155.569992</x>
+        <y>0</y>
+        <z>245.4</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>348.75</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1.432774</x>
+        <y>1.432774</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="castle_wall_15m (2)">
+      <postion>
+        <x>-169.4735</x>
+        <y>0</y>
+        <z>244.055</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>330.000061</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
       </Scale>
     </Asset>
   </Assets>
