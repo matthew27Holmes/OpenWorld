@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4010593430488586
 Transform:
   m_ObjectHideFlags: 1
@@ -51,5 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ddf3fe3d437984cb39ad7963f757aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batchSize: 0
+  batchSize: 3
   enemey: {fileID: 1208816072366394, guid: 51040b58783e1dd469c1aafda70145d6, type: 2}
