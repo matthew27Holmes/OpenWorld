@@ -95,9 +95,6 @@ public class WorldGeneration : MonoBehaviour {
                 cell.PostionZ = postionY;
 
                // StartCoroutine(createFloorTile(new Vector3(postionX, 0.0f, postionY)));
-                ////temp
-               // createXML.Node node = new createXML.Node();
-               // NodeContainerRefs.Add(node);
 
                 cell.cellCube.SetActive(cell.isLoaded);
                 cell.cellID = Cells.Count;
@@ -192,6 +189,7 @@ public class WorldGeneration : MonoBehaviour {
         }
     }
     #endregion
+
     #region Temp SaveToXML
 
     IEnumerator createFloorTile(Vector3 Postion)
@@ -199,10 +197,26 @@ public class WorldGeneration : MonoBehaviour {
         Instantiate(FloorTile, Postion, Quaternion.identity);
         yield return null;
     }
-  
+    
+    void getCurrentFile()
+    {
+        for (int i = 0; i < Cells.Count; i++)
+        {
+            NodeContainerRefs.Add(createXML.Node.Load(
+               createXML.path + i.ToString() + ".XML"));
+
+           // foreach (createXML.StreamingAsset asset in node.assets)
+           // {
+           //     NodeContainerRefs[i].assets.Add(asset);
+           // }
+        }
+        Debug.Log(NodeContainerRefs.Count);
+    }
+
     void findCellsObjects()//debug for saving to xml
     {
         //this should be in cell 
+        getCurrentFile();
 
         // get all objects in the scene that are on a spercfic layer 
         var root = Resources.FindObjectsOfTypeAll<GameObject>()
@@ -240,7 +254,7 @@ public class WorldGeneration : MonoBehaviour {
     {
         for (int i = 0; i < NodeContainerRefs.Count; i++)
         {
-            NodeContainerRefs[i].Save(createXML.path + i.ToString() + ".XML");
+            NodeContainerRefs[i].Save(createXML.path + i.ToString() + ".XML"); 
         }
     }
 
@@ -265,6 +279,7 @@ public class WorldGeneration : MonoBehaviour {
         numCell = Cells.Count;
         StartCoroutine(checkPlayersCell()); //should check to see if its inside player view port instead
     }
+
     #region updateWorld
     IEnumerator checkPlayersCell()
     {
@@ -297,6 +312,7 @@ public class WorldGeneration : MonoBehaviour {
         } 
         return false;
     }
+
     #region Load
     // should be run in corouten
     IEnumerator LoadNodes()
@@ -336,6 +352,11 @@ public class WorldGeneration : MonoBehaviour {
 
                 string assetName = asset.Name.Split(' ')[0];
                 string assetPath = "OpenWorldObjects/" + assetName;
+
+                if (asset == null)
+                {
+                    Debug.Log("error in Xml" + NodeID);
+                }
                 
                 GameObject instance = Instantiate(
                     Resources.Load<GameObject>(assetPath)) as GameObject;
@@ -362,6 +383,7 @@ public class WorldGeneration : MonoBehaviour {
         yield return null;
     }
     #endregion
+
     #region unLoad
     IEnumerator unLoadNodes()
     {
