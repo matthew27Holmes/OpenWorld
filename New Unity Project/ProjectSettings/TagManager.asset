@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collide
   - Collectable
+  - Enemy
   layers:
   - Default
   - TransparentFX

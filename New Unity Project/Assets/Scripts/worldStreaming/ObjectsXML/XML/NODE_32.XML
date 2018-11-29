@@ -310,7 +310,7 @@
     <Asset name="EnemySpawn">
       <postion>
         <x>-51.2924347</x>
-        <y>2.07741928</y>
+        <y>0.0</y>
         <z>247.6163</z>
       </postion>
       <Rotation>
@@ -322,57 +322,6 @@
         <x>1</x>
         <y>1</y>
         <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="EnemySpawn">
-      <postion>
-        <x>-51.2924347</x>
-        <y>2.07741928</y>
-        <z>247.6163</z>
-      </postion>
-      <Rotation>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="EnemySpawn">
-      <postion>
-        <x>-51.2924347</x>
-        <y>2.07741928</y>
-        <z>247.6163</z>
-      </postion>
-      <Rotation>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="Key">
-      <postion>
-        <x>-46.723</x>
-        <y>1.566</y>
-        <z>244.754532</z>
-      </postion>
-      <Rotation>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>0.5</x>
-        <y>0.5</y>
-        <z>0.5</z>
       </Scale>
     </Asset>
     <Asset name="Key">

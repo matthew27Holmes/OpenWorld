@@ -113,7 +113,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 48c61ce1c6a6a234086bb4dd30eb435c, type: 2}
 --- !u!1001 &3364036
 Prefab:
   m_ObjectHideFlags: 0
@@ -1495,17 +1495,26 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1902770365646634, guid: 36888e805d00a0b4b82757e3692ede9b, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 23804647764631420, guid: 36888e805d00a0b4b82757e3692ede9b,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 65661874736894306, guid: 36888e805d00a0b4b82757e3692ede9b,
         type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23804647764631420, guid: 36888e805d00a0b4b82757e3692ede9b,
+        type: 2}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902770365646634, guid: 36888e805d00a0b4b82757e3692ede9b, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36888e805d00a0b4b82757e3692ede9b, type: 2}
@@ -12031,6 +12040,10 @@ Prefab:
     - target: {fileID: 1232018749528192, guid: bbab6086f528c654088cf71cc037ce2c, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247474875356740, guid: bbab6086f528c654088cf71cc037ce2c, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbab6086f528c654088cf71cc037ce2c, type: 2}
