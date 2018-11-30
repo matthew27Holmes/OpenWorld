@@ -387,6 +387,7 @@ GameObject:
   - component: {fileID: 136552219218065984}
   - component: {fileID: 114356663334995846}
   - component: {fileID: 54271186583631020}
+  - component: {fileID: 135392884309256018}
   m_Layer: 0
   m_Name: Skeleton@Skin
   m_TagString: Enemy
@@ -410,7 +411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1704182217884128
 GameObject:
   m_ObjectHideFlags: 1
@@ -1093,7 +1094,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1656776608693172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51, y: 0, z: 243.96}
+  m_LocalPosition: {x: -57.23156, y: 329.8981, z: 99.822685}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children:
   - {fileID: 4564245227541678}
@@ -1298,6 +1299,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89504923c324df24ca832bdd7ce2b18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &135392884309256018
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1656776608693172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3288203
+  m_Center: {x: 0, y: 0, z: 0.17117971}
 --- !u!136 &136552219218065984
 CapsuleCollider:
   m_ObjectHideFlags: 1

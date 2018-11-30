@@ -9,7 +9,9 @@ public class SkeletonBehaviour : MonoBehaviour {
     public List<Transform> PatrolRoute = new List<Transform>();
     public int patrolPoint;
     public Transform LastPlayerPostion;
+    public Transform Spawner = null;
     NavMeshAgent navMeshAgent;
+
     int health;
     
 	void Start () {
@@ -24,7 +26,16 @@ public class SkeletonBehaviour : MonoBehaviour {
 
         if (LastPlayerPostion == null)
         {
-            Patrol();
+            GameObject parentSpwner = GameObject.Find(Spawner.gameObject.name);
+            if (parentSpwner != null)
+            {
+                Patrol();
+            }
+            else
+            {
+                //return home and wait 
+                navMeshAgent.SetDestination(Spawner.position);
+            }
         }
         else
         {
@@ -44,9 +55,8 @@ public class SkeletonBehaviour : MonoBehaviour {
                 patrolPoint = 0;
             }
         }
-
     }
-    
+   
    public void PlayerSighted(Transform PlayerPostion)
    {
         LastPlayerPostion = PlayerPostion;
@@ -59,5 +69,14 @@ public class SkeletonBehaviour : MonoBehaviour {
     void LosePlayer()
     {
         LastPlayerPostion = null;
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            PlayerSighted(other.transform);
+        }
     }
 }

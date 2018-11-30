@@ -44,6 +44,7 @@ public class createXML : MonoBehaviour
             return serializer.Deserialize(new StringReader(text)) as Node;
         }
     }
+
     public class StreamingAsset
     {
         [XmlAttribute("name")]
@@ -51,7 +52,7 @@ public class createXML : MonoBehaviour
         public Vector3 postion;
         public Vector3 Rotation;
         public Vector3 Scale;
-
+        public bool IsActive;
     };
 
     public const string path = "Assets/Scripts/worldStreaming/ObjectsXML/XML/NODE_";

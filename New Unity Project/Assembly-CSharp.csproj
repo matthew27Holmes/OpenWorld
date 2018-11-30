@@ -87,8 +87,13 @@
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Core\SuperStateMachine.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\DebugDraw.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Math3d.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Actors\Enemy\EnemySight.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Actors\Enemy\EnemySpawn.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Actors\Enemy\navMeshFloor.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Actors\Enemy\SkeletonBehaviour.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Actors\PlayerBehaviour.cs" />
     <Compile Include="Assets\Scripts\Gameplay\CollectableBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\testScripy.cs" />
     <Compile Include="Assets\Scripts\worldStreaming\Cell.cs" />
     <Compile Include="Assets\Scripts\worldStreaming\ObjectsXML\createXML.cs" />
     <Compile Include="Assets\Scripts\worldStreaming\WorldGeneration.cs" />

@@ -32,6 +32,7 @@ public class WorldGeneration : MonoBehaviour {
     public int numCell;
 
     int playersCurenntCell;
+    int playersLastCell;
     int gridHeghit, gridwidth;
     public int rows,columes;
     int NumberOfObjects;
@@ -51,6 +52,7 @@ public class WorldGeneration : MonoBehaviour {
     void initialiseCells()
     {
         playersCurenntCell = 0;
+        playersLastCell = 0;
         GenerationLayer = "WorldStreming";
         // create cells array
         Cells = new List<cellObject>();//should be a list of cell script pointers 
@@ -59,7 +61,7 @@ public class WorldGeneration : MonoBehaviour {
         //find nodes neighbours
         findNeighbouringNodes();
         // define node children for createing the xml
-        //findCellsObjects();
+       // findCellsObjects();
     }
 
     void CreateGrid()
@@ -202,13 +204,13 @@ public class WorldGeneration : MonoBehaviour {
     {
         for (int i = 0; i < Cells.Count; i++)
         {
-            NodeContainerRefs.Add(createXML.Node.Load(
-               createXML.path + i.ToString() + ".XML"));
-
-           // foreach (createXML.StreamingAsset asset in node.assets)
-           // {
-           //     NodeContainerRefs[i].assets.Add(asset);
-           // }
+            createXML.Node node = createXML.Node.Load(
+               createXML.path + i.ToString() + ".XML");
+            foreach(createXML.StreamingAsset asset in node.assets)
+            {
+                asset.IsActive = true;
+            }
+            NodeContainerRefs.Add(node);
         }
         Debug.Log(NodeContainerRefs.Count);
     }
@@ -268,6 +270,7 @@ public class WorldGeneration : MonoBehaviour {
         asset.postion = t.localPosition;
         asset.Rotation = t.eulerAngles;
         asset.Scale = t.localScale;
+        asset.IsActive = true;
         NodeContainerRefs[i].assets.Add(asset);
     }
     #endregion
@@ -291,10 +294,10 @@ public class WorldGeneration : MonoBehaviour {
             {
                 if (playersCurenntCell != i)
                 {
-                    int LastPlayerCell = playersCurenntCell;
-                    StartCoroutine(unLoadNodes());
+                    playersLastCell = playersCurenntCell;
                     playersCurenntCell = i;
                     StartCoroutine(LoadNodes());
+                    StartCoroutine(unLoadNodes());
                 }
             }
         }
@@ -322,7 +325,7 @@ public class WorldGeneration : MonoBehaviour {
 
         PlyCell = LoadObjects(PlyCell.cellID);
 
-       // StartCoroutine(addPlayerNodeColliders(PlyCell.cellID));
+        StartCoroutine(addPlayerNodeColliders(PlyCell.cellID));
 
         // load neighbours cells if not done 
         for (int i = 0; i < PlyCell.neighbours.Count; i++)
@@ -364,7 +367,8 @@ public class WorldGeneration : MonoBehaviour {
                 instance.transform.position = asset.postion;
                 instance.transform.localScale = asset.Scale;
                 instance.transform.eulerAngles = asset.Rotation;
-               
+                //instance.AddComponent<MeshCollider>();
+
                 instance.name = asset.Name;
                 cell.objects.Add(instance);
             }
@@ -387,31 +391,51 @@ public class WorldGeneration : MonoBehaviour {
     #region unLoad
     IEnumerator unLoadNodes()
     {
+        cellObject LastCell = Cells[playersLastCell];
         cellObject PlyCell = Cells[playersCurenntCell];
-        
+
+        for (int i = 0; i < LastCell.neighbours.Count; i++)
+        {
+            cellObject cell = LastCell.neighbours[i];
+            if ((!isNodeANeighbours(cell))&& (cell.cellID != PlyCell.cellID))
+            {
+                LastCell.neighbours[i] = UnLoadObjects(cell.cellID);
+            }
+        }
+
+        yield return null;
+    }
+
+    bool isNodeANeighbours(cellObject cell)
+    {
+        cellObject PlyCell = Cells[playersCurenntCell];
+
         for (int i = 0; i < PlyCell.neighbours.Count; i++)
         {
-            cellObject cell = PlyCell.neighbours[i];
-            PlyCell.neighbours[i] = UnLoadObjects(cell.cellID);
+            cellObject neighbour = PlyCell.neighbours[i];
+            if (cell.cellID == neighbour.cellID)
+            {
+                return true;
+            }
         }
-        yield return null;
+        return false;
     }
 
     cellObject UnLoadObjects(int NodeID)
     {
         cellObject cell = Cells[NodeID];
-
         //needs to check if neighbours is gonna be loaded wth the next object  
         if (cell.isLoaded)
         {
             cell.isLoaded = false;
             cell.cellCube.SetActive(cell.isLoaded);
 
+
             foreach (GameObject obj in cell.objects)
             {
                 Destroy(obj);//this hsould store to cache for a period
             }
-            cell.objects.Clear();     
+            cell.objects.Clear();
         }
         Cells[NodeID] = cell;
         return cell;
