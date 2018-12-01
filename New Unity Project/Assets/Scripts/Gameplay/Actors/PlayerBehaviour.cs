@@ -23,7 +23,7 @@ public class PlayerBehaviour : MonoBehaviour {
         animator = GetComponent<Animator>();
         turnSpeed = 150.0f;
         moveSpeed = 5.0f;
-        jumpPower = 8.0f;
+        jumpPower = 4.0f;
 
         alive = true;
         grounded = true;
@@ -47,13 +47,13 @@ public class PlayerBehaviour : MonoBehaviour {
             else if (grounded)
             {
                 Move();
-
                 if (Input.GetButton("Jump"))
                 {
                     grounded = false;
                     float jumpFroce = jumpPower * Time.deltaTime;
                     transform.Translate(0, jumpFroce, 0);
-                    animator.SetBool("Jumping", true);
+                    animator.SetInteger("Jumping", 1);
+                    animator.SetBool("JumpTrigger", true);
                 }
             }
         }
@@ -69,7 +69,7 @@ public class PlayerBehaviour : MonoBehaviour {
         var z = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
 
         animator.SetFloat("Velocity Z", z *100);
-
+        animator.SetFloat("Velocity X", x * 100);
         transform.Rotate(0, x, 0);
         transform.Translate(0, 0, z);
     }
@@ -92,6 +92,7 @@ public class PlayerBehaviour : MonoBehaviour {
         if (LayerMask.LayerToName(other.gameObject.layer) == "floor")
         {
             grounded = true;
+            animator.SetInteger("Jumping", 0);
         }
     }
     private void OnTriggerExit(Collider other)
