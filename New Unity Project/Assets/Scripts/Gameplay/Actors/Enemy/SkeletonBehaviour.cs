@@ -9,19 +9,34 @@ public class SkeletonBehaviour : MonoBehaviour {
     public List<Transform> PatrolRoute = new List<Transform>();
     public int patrolPoint;
     public Vector3 LastPlayerPostion;
+    public bool playerSpotted;
+    //two bools fo player in sightand spotteed 
+    //means you can set enemy up to move to players last know postion allows flanking 
+    public bool playerInSight;
+    public bool playerInRange;
+    public bool Attacking;
     public Transform Spawner = null;
     NavMeshAgent navMeshAgent;
     Animator anim;
+    public int damage;
     int health;
     bool alive;
     
 	void Start () {
+
+        playerSpotted = false;
+        playerInSight = false;
+        playerInRange = false;
+        Attacking = false;
         LastPlayerPostion = new Vector3(0,0,0);
         navMeshAgent = GetComponent<NavMeshAgent>();
+        patrolPoint = 0;
+
         anim = GetComponent<Animator>();
+
+        damage = 5;
         health = 100;
         alive = true;
-        patrolPoint = 0;
 	}
 	
 	// Update is called once per frame
@@ -29,11 +44,25 @@ public class SkeletonBehaviour : MonoBehaviour {
 
         if (alive)
         {
-            if (LastPlayerPostion == new Vector3(0, 0, 0))
+            if (playerSpotted)
+            {
+                if (playerInRange)
+                {
+                    AttackPlayer();
+                }
+                else
+                {
+                    moveToPlayer();
+                }
+            }
+            else
             {
                 GameObject parentSpwner = GameObject.Find(Spawner.gameObject.name);
-                anim.SetBool("ChasePlayer", false);
                 anim.SetBool("Patroling", true);
+                anim.SetBool("ChasePlayer", false);
+                anim.SetBool("AttackPlayer", false);
+                Attacking = false;
+
 
                 if (parentSpwner != null)
                 {
@@ -41,14 +70,10 @@ public class SkeletonBehaviour : MonoBehaviour {
                 }
                 else
                 {
-                    //return home and wait 
+                    //return home and wait
                     navMeshAgent.SetDestination(Spawner.position);
                 }
             }
-            //else
-            //{
-            //    moveToPlayer();// this migth be wrong
-           // }
         }
         else
         {
@@ -59,6 +84,7 @@ public class SkeletonBehaviour : MonoBehaviour {
 
     void Patrol()
     {
+        navMeshAgent.speed = 2;
         navMeshAgent.SetDestination(PatrolRoute[patrolPoint].position);
         if(Vector3.Distance(this.transform.position , PatrolRoute[patrolPoint].position) <= 3.0f)//this is hacking
         {
@@ -69,35 +95,28 @@ public class SkeletonBehaviour : MonoBehaviour {
             }
         }
     }
-   
-   public void PlayerSighted(Transform PlayerPostion)
-   {
-        anim.SetBool("PlayerSpotted", true);
-        Vector3 offset = new Vector3(1, 0, 1);
-        LastPlayerPostion = PlayerPostion.position;
-        //LastPlayerPostion =- offset;moveToPlayer()
-        moveToPlayer();
-   }
 
     void moveToPlayer()
     {
+
+        navMeshAgent.speed = 5;
         navMeshAgent.SetDestination(LastPlayerPostion);
+
         anim.SetBool("Patroling", false);
         anim.SetBool("AttackPlayer", false);
+        Attacking = false;
         anim.SetBool("ChasePlayer", true);
     }
     void AttackPlayer()
-    {
+    { 
         navMeshAgent.SetDestination(transform.position);
-        //if (Vector3.Distance(this.transform.position, LastPlayerPostion) <= 3.0f)//this is hacking
-        //{
         anim.SetBool("AttackPlayer", true);
-        //}
+        Attacking = true;
     }
-
-    public void TakeDamge(int Damge,bool kicked)
+    
+    public void TakeDamge(int Damage,bool kicked)
     {
-        health =- Damge;
+        health =- Damage;
         anim.SetBool("Hit", true);
         anim.SetBool("Kicked", kicked);
     }
@@ -106,33 +125,45 @@ public class SkeletonBehaviour : MonoBehaviour {
     {
         if(health <= 0 )
         {
-            alive = false;
             anim.SetInteger("Health", health);
+            alive = false;
         }
     }
 
-    void LosePlayer()
+
+    public void PlayerSighted(Transform PlayerPostion)
+    {
+        anim.SetBool("PlayerSpotted", true);
+        playerInSight = true;
+        playerSpotted = true;
+        LastPlayerPostion = PlayerPostion.position;
+    }
+
+
+    public void LostPlayer()
     {
         LastPlayerPostion = new Vector3(0,0,0);
-        anim.SetBool("PlayerSptted", false);
+        playerInSight = false;
+        playerSpotted = false;
+        anim.SetBool("PlayerSpotted", false);
+        anim.SetBool("AttackPlayer", false);
         anim.SetBool("ChasePlayer", false);
         anim.SetBool("Patroling", true);
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {
-            //PlayerSighted(other.transform);
-            AttackPlayer();
+            playerInRange = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
-            moveToPlayer();
+            playerInRange = false;
         }
     }
 }

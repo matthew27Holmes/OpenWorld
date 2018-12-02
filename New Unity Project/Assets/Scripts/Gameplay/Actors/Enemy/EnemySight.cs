@@ -11,4 +11,12 @@ public class EnemySight : MonoBehaviour {
             transform.parent.gameObject.GetComponent<SkeletonBehaviour>().PlayerSighted(other.transform);
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            transform.parent.gameObject.GetComponent<SkeletonBehaviour>().LostPlayer();
+        }
+    }
 }

@@ -279,7 +279,7 @@ public class WorldGeneration : MonoBehaviour {
     void Update()
     {
         //run in coruntine 
-        numCell = Cells.Count;
+        //numCell = Cells.Count;
         StartCoroutine(checkPlayersCell()); //should check to see if its inside player view port instead
     }
 

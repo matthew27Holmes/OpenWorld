@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65661874736894306}
   m_Layer: 0
   m_Name: terrain_city_inner
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

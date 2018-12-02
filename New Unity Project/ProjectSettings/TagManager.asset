@@ -7,6 +7,8 @@ TagManager:
   - Collide
   - Collectable
   - Enemy
+  - floor
+  - sword
   layers:
   - Default
   - TransparentFX

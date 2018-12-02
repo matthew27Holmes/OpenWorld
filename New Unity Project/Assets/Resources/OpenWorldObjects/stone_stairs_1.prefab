@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23371893628177398}
   m_Layer: 0
   m_Name: stone_stairs_1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

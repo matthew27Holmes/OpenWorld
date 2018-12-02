@@ -7,10 +7,12 @@ public class EnemySpawn : MonoBehaviour {
     public float batchSize;
     public GameObject enemey;
     Vector3 spawnPostion;
+    Transform PatrolRouteParent;
 
-	// Use this for initialization
-	void Start () {
-        spawnPostion = this.transform.position;
+    // Use this for initialization
+    void Start () {
+        PatrolRouteParent = transform.GetChild(0);
+        spawnPostion = PatrolRouteParent.GetChild(0).GetChild(3).position;
         batchSize = 0;
         Spawn();
     }
@@ -22,7 +24,7 @@ public class EnemySpawn : MonoBehaviour {
            GameObject newEnemey  = Instantiate(enemey, spawnPostion, Quaternion.identity);
 
             SkeletonBehaviour newEnemeyBehviour = newEnemey.GetComponent<SkeletonBehaviour>();
-            Transform PatrolRouteParent = transform.GetChild(0);
+            
             newEnemeyBehviour.Spawner = transform;
             for(int j =0; j < PatrolRouteParent.childCount;j++)
             {

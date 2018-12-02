@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 7617ea74d7812ab4ab1ce5cdbd8efe57
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: B_Head
     100002: B_L_Calf
@@ -120,10 +120,12 @@ ModelImporter:
     9500000: //RootNode
     13700000: RPG-Character-Mesh
     2186277476908879412: ImportLogs
+  externalObjects: {}
   materials:
     importMaterials: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -134,31 +136,23 @@ ModelImporter:
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'B_Spine' has translation animation that will
-      be discarded.\n\t'B_Spine1' has translation animation that will be discarded.\n\t'B_Spine2'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
-    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Take 001':\n\tRightLowerLeg
-      average position error 2.0 mm and maximum position error 11.7 mm at time 0:17
-      (56.7%) Frame 17\n\tLeftUpperArm average position error 26.3 mm and maximum
-      position error 52.8 mm at time 0:18 (60.0%) Frame 18\n\tLeftLowerArm average
-      position error 19.6 mm and maximum position error 48.0 mm at time 0:18 (60.0%)
-      Frame 18\n\tLeftHand average position error 18.9 mm and maximum position error
-      50.2 mm at time 0:18 (60.0%) Frame 18\n\tRightUpperArm average position error
-      20.9 mm and maximum position error 28.3 mm at time 0:15 (50.0%) Frame 15\n\tRightLowerArm
-      average position error 14.2 mm and maximum position error 20.4 mm at time 0:16
-      (53.3%) Frame 16\n\tRightHand average position error 13.2 mm and maximum position
-      error 19.2 mm at time 0: 6 (20.0%) Frame 6\n\tHead average position error 67.7
-      mm and maximum position error 115.2 mm at time 0:16 (53.3%) Frame 16\n\tRightFoot
-      average orientation error 0.3 deg and maximum orientation error 2.3 deg at time
-      0:12 (40.0%) Frame 12\n"
+      might lower retargeting quality:\n\t'B_Spine2' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n"
+    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Take 001':\n\tRightFoot
+      average position error 0.4 mm and maximum position error 4.3 mm at time 0:14
+      (46.7%) Frame 14\n\tLeftHand average position error 0.7 mm and maximum position
+      error 4.9 mm at time 0: 8 (26.7%) Frame 8\n\tRightFoot average orientation error
+      0.3 deg and maximum orientation error 2.3 deg at time 0:12 (40.0%) Frame 12\n"
     animationDoRetargetingWarnings: 1
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Unarmed-Attack-Kick-R1
@@ -183,14 +177,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.48556697
-        functionName: Hit
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1
@@ -311,22 +298,30 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    importVisibility: 0
     importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 0
     keepQuads: 0
     weldVertices: 0
+    preserveHierarchy: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 2
     tangentImportMode: 2
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 1
   humanDescription:

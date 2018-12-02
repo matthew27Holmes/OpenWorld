@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114978356113169038}
   m_Layer: 10
   m_Name: Plane(Clone)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23020038053309546}
   m_Layer: 0
   m_Name: civilian_house_34_c
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
