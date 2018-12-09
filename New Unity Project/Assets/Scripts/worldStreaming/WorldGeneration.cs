@@ -386,6 +386,8 @@ public class WorldGeneration : MonoBehaviour {
         }
         yield return null;
     }
+
+   
     #endregion
 
     #region unLoad
@@ -394,6 +396,7 @@ public class WorldGeneration : MonoBehaviour {
         cellObject LastCell = Cells[playersLastCell];
         cellObject PlyCell = Cells[playersCurenntCell];
 
+        StartCoroutine(RemovePlayerNodeColliders(playersLastCell));
         for (int i = 0; i < LastCell.neighbours.Count; i++)
         {
             cellObject cell = LastCell.neighbours[i];
@@ -439,6 +442,15 @@ public class WorldGeneration : MonoBehaviour {
         }
         Cells[NodeID] = cell;
         return cell;
+    }
+    IEnumerator RemovePlayerNodeColliders(int NodeID)
+    {
+        cellObject cell = Cells[NodeID];
+        foreach (GameObject obj in cell.objects)
+        {
+            Destroy(obj.GetComponent<MeshCollider>());
+        }
+        yield return null;
     }
     #endregion
     #endregion

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4797258541757498}
   - component: {fileID: 33604169381284726}
   - component: {fileID: 23667079587319324}
+  - component: {fileID: 208595553036774146}
   m_Layer: 0
   m_Name: port_house_base
   m_TagString: floor
@@ -84,3 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1766415073580242}
   m_Mesh: {fileID: 4300000, guid: a1653b28994f24c4e8b05de7a14bd606, type: 3}
+--- !u!208 &208595553036774146
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1766415073580242}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5.0400004, y: 7.3100004, z: 2.637}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.27, y: -0.001, z: 2.561}
+  m_TimeToStationary: 0.5

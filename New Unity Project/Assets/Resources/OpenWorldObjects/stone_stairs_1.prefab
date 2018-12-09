@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4030265937643786}
   - component: {fileID: 33982056266006100}
   - component: {fileID: 23371893628177398}
+  - component: {fileID: 208040668642607192}
   m_Layer: 0
   m_Name: stone_stairs_1
   m_TagString: floor
@@ -83,3 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1778367457619244}
   m_Mesh: {fileID: 4300000, guid: bd72cb0da4523894aa69559d8ccd3a45, type: 3}
+--- !u!208 &208040668642607192
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778367457619244}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.72, y: 1.103, z: 0.61200005}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.61200005}
+  m_TimeToStationary: 0.5

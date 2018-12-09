@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4000576896827364}
   - component: {fileID: 33719031514941012}
   - component: {fileID: 23782034327031634}
+  - component: {fileID: 208397739032057080}
   m_Layer: 0
   m_Name: sentinel_tower_a
   m_TagString: floor
@@ -87,3 +88,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1912811048901870}
   m_Mesh: {fileID: 4300000, guid: 4fd178c18e99a2042b5594f81f135abf, type: 3}
+--- !u!208 &208397739032057080
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1912811048901870}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5.887, y: 4.787, z: 9.515}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -1.1, y: 0, z: 9.515}
+  m_TimeToStationary: 0.5

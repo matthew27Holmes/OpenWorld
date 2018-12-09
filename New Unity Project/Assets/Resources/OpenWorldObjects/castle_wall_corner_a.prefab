@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4237610972782568}
   - component: {fileID: 33837324331751990}
   - component: {fileID: 23176128296286790}
+  - component: {fileID: 208693915581906704}
   m_Layer: 0
   m_Name: castle_wall_corner_a
   m_TagString: floor
@@ -84,3 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598071947681218}
   m_Mesh: {fileID: 4300000, guid: db20f96f575428e41b67d94a2a1c0fd8, type: 3}
+--- !u!208 &208693915581906704
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598071947681218}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.315, y: 2.8490002, z: 9.805}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -2.263, y: 2.6560001, z: 9.805}
+  m_TimeToStationary: 0.5

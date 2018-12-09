@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4488660275346138}
   - component: {fileID: 33744475295287392}
   - component: {fileID: 23746305628213122}
+  - component: {fileID: 208483268679966140}
   m_Layer: 0
   m_Name: cliff_big_a
   m_TagString: floor
@@ -83,3 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1545783907101060}
   m_Mesh: {fileID: 4300000, guid: ed2e698cd87bb1d47944a570fa7962d3, type: 3}
+--- !u!208 &208483268679966140
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1545783907101060}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 125.52801, y: 56.101, z: 18.212002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.59800005, y: 4.464, z: 14.304001}
+  m_TimeToStationary: 0.5

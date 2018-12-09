@@ -12,27 +12,25 @@ public class EnemySpawn : MonoBehaviour {
     // Use this for initialization
     void Start () {
         PatrolRouteParent = transform.GetChild(0);
-        spawnPostion = PatrolRouteParent.GetChild(0).GetChild(3).position;
-        batchSize = 0;
+        
         Spawn();
     }
 	
     void Spawn()
     {
-        for(int i = 0;  i <= batchSize; i++)
+        for(int i = 0; i <= batchSize; i++)
         {
-           GameObject newEnemey  = Instantiate(enemey, spawnPostion, Quaternion.identity);
+            Transform EnemyRoute = PatrolRouteParent.GetChild(i);
+            spawnPostion = EnemyRoute.GetChild(0).position;
+
+            GameObject newEnemey  = Instantiate(enemey, spawnPostion, Quaternion.identity);
 
             SkeletonBehaviour newEnemeyBehviour = newEnemey.GetComponent<SkeletonBehaviour>();
-            
-            newEnemeyBehviour.Spawner = transform;
-            for(int j =0; j < PatrolRouteParent.childCount;j++)
-            {
-                Transform route = PatrolRouteParent.GetChild(j);
-                for (int k = 0; k < route.childCount; k++)
-                {
-                    newEnemeyBehviour.PatrolRoute.Add(route.GetChild(k));
-                }
+            newEnemeyBehviour.Spawner = EnemyRoute.GetChild(0);
+
+            for(int j = 0; j < EnemyRoute.childCount;j++)
+            {                
+               newEnemeyBehviour.PatrolRoute.Add(EnemyRoute.GetChild(j));           
             }
             newEnemey.transform.parent = transform.GetChild(1);
         }

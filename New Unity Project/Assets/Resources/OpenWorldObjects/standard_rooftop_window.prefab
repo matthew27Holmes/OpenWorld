@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4530091340109068}
   - component: {fileID: 33904589037249716}
   - component: {fileID: 23325105677036846}
+  - component: {fileID: 208231592691238360}
   m_Layer: 0
   m_Name: standard_rooftop_window
   m_TagString: floor
@@ -86,3 +87,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1096982194996078}
   m_Mesh: {fileID: 4300000, guid: 611a3c198f7d2c94dabfb5b66f16dabb, type: 3}
+--- !u!208 &208231592691238360
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1096982194996078}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.638, y: 0.791, z: 1.144}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.007, y: 0.791, z: 0.002}
+  m_TimeToStationary: 0.5

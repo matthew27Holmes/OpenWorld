@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4513398359587078}
   - component: {fileID: 33618629707712380}
   - component: {fileID: 23948458169897614}
+  - component: {fileID: 208481023099860434}
   m_Layer: 0
   m_Name: church_b
   m_TagString: floor
@@ -91,3 +92,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1460170244267624}
   m_Mesh: {fileID: 4300000, guid: 017664d81dfbde34aadace96c203da91, type: 3}
+--- !u!208 &208481023099860434
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1460170244267624}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5.413, y: 16.573, z: 9.222}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.19900002, y: 2.9050002, z: 9.222}
+  m_TimeToStationary: 0.5

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4501903411537258}
   - component: {fileID: 33789225918333010}
   - component: {fileID: 23574638431817962}
+  - component: {fileID: 208951594130857404}
   m_Layer: 0
   m_Name: castle_wall_15m
   m_TagString: floor
@@ -84,3 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1017104576938822}
   m_Mesh: {fileID: 4300000, guid: d80e2cb9a00dc204c9d38efaca9285c6, type: 3}
+--- !u!208 &208951594130857404
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1017104576938822}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 7.5000005, y: 2.95, z: 9.8}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -7.5000005, y: 2.7500002, z: 9.8}
+  m_TimeToStationary: 0.5

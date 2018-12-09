@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4859808185326758}
   - component: {fileID: 33665801206698862}
   - component: {fileID: 23280308373520916}
+  - component: {fileID: 208012484486057196}
   m_Layer: 0
   m_Name: well
   m_TagString: floor
@@ -87,3 +88,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820896359239100}
   m_Mesh: {fileID: 4300000, guid: cd246b39aa3137347b2e8233b8a7adf0, type: 3}
+--- !u!208 &208012484486057196
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820896359239100}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.5970001, y: 2.056, z: 2.4880002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 2.398}
+  m_TimeToStationary: 0.5

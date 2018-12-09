@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4304736103729484}
   - component: {fileID: 33733573682319998}
   - component: {fileID: 23427550277431270}
+  - component: {fileID: 208397925959915360}
   m_Layer: 0
   m_Name: tent_c
   m_TagString: floor
@@ -84,3 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831384989620862}
   m_Mesh: {fileID: 4300000, guid: da3ee31277576ae49a6692778aa8e876, type: 3}
+--- !u!208 &208397925959915360
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831384989620862}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.285, y: 1.725, z: 1.2440001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 1.176}
+  m_TimeToStationary: 0.5

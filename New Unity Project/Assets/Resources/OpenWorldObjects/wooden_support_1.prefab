@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4006669014721056}
   - component: {fileID: 33132234048426598}
   - component: {fileID: 23575727523814874}
+  - component: {fileID: 208328387703135566}
   m_Layer: 0
   m_Name: wooden_support_1
   m_TagString: floor
@@ -83,3 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1047687733037664}
   m_Mesh: {fileID: 4300000, guid: e4b95d65c8997c64fa6cc68377eac46d, type: 3}
+--- !u!208 &208328387703135566
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1047687733037664}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.0020001, y: 0.841, z: 0.41300002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

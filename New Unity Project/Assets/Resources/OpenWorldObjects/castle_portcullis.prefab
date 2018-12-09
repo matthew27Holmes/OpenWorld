@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4630087819311522}
   - component: {fileID: 33880559551084874}
   - component: {fileID: 23321865952876468}
+  - component: {fileID: 208123064425865602}
   m_Layer: 0
   m_Name: castle_portcullis
   m_TagString: floor
@@ -84,3 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1615670740016420}
   m_Mesh: {fileID: 4300000, guid: 5b1a3fcb4c46b8146b202121f665d06a, type: 3}
+--- !u!208 &208123064425865602
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1615670740016420}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.446, y: 0.163, z: 6.6520004}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 7.241}
+  m_TimeToStationary: 0.5

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4493523499585350}
   - component: {fileID: 33983711785317934}
   - component: {fileID: 23090859365714582}
+  - component: {fileID: 208646159567922910}
   m_Layer: 0
   m_Name: street_green_belt_a
   m_TagString: floor
@@ -84,3 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1789806267298236}
   m_Mesh: {fileID: 4300000, guid: 6d884cae9cbeae345939b4f744556a55, type: 3}
+--- !u!208 &208646159567922910
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1789806267298236}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 15.004001, y: 2.94, z: 0.619}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.004, y: 0, z: 0.61600006}
+  m_TimeToStationary: 0.5

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4102996723996170}
   - component: {fileID: 33998211198538656}
   - component: {fileID: 23242103118752322}
+  - component: {fileID: 208687160120472482}
   m_Layer: 0
   m_Name: fortress_a
   m_TagString: floor
@@ -88,3 +89,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716669688774322}
   m_Mesh: {fileID: 4300000, guid: 3add72fcb625bc841b8309c9b9f7d61c, type: 3}
+--- !u!208 &208687160120472482
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716669688774322}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 12.264001, y: 10.811001, z: 13.195001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -1.429, y: 0, z: 13.173}
+  m_TimeToStationary: 0.5

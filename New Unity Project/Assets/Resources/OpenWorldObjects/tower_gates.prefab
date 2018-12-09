@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4643300792038928}
   - component: {fileID: 33357450511184456}
   - component: {fileID: 23828091762357602}
+  - component: {fileID: 208698176957866860}
   m_Layer: 0
   m_Name: tower_gates
   m_TagString: floor
@@ -88,3 +89,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1159706625576000}
   m_Mesh: {fileID: 4300000, guid: d85cf45eac873a14aa61499660d1d75f, type: 3}
+--- !u!208 &208698176957866860
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159706625576000}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 12.542001, y: 3.4970002, z: 15.484001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 15.484001}
+  m_TimeToStationary: 0.5

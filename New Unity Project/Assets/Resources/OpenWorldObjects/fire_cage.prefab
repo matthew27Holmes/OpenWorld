@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4608479110816418}
   - component: {fileID: 33797121125745522}
   - component: {fileID: 23945452325930938}
+  - component: {fileID: 208806290225121266}
   m_Layer: 0
   m_Name: fire_cage
   m_TagString: floor
@@ -83,3 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1235266061306044}
   m_Mesh: {fileID: 4300000, guid: d35b39c89d21c8445b096b8317580776, type: 3}
+--- !u!208 &208806290225121266
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235266061306044}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.305, y: 0.305, z: 0.564}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.564}
+  m_TimeToStationary: 0.5

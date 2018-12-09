@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4138339409202108}
   - component: {fileID: 33557059174513730}
   - component: {fileID: 23987625335060766}
+  - component: {fileID: 208756117821741378}
   m_Layer: 0
   m_Name: fortification_tower_small
   m_TagString: floor
@@ -85,3 +86,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1783861030466382}
   m_Mesh: {fileID: 4300000, guid: a4738c5b09b34634294b54500750ce66, type: 3}
+--- !u!208 &208756117821741378
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1783861030466382}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5.635, y: 5.447, z: 9.27}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 9.27}
+  m_TimeToStationary: 0.5

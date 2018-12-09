@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4148390154443938}
   - component: {fileID: 33637813369756212}
   - component: {fileID: 23632862302238548}
+  - component: {fileID: 208336493328463712}
   m_Layer: 0
   m_Name: port_wall_b
   m_TagString: floor
@@ -85,3 +86,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1005178250782678}
   m_Mesh: {fileID: 4300000, guid: 50e50ab59f5b2a44093a9fa0e651faf6, type: 3}
+--- !u!208 &208336493328463712
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1005178250782678}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 25.161001, y: 2.5, z: 9.044001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -25.161001, y: 2.25, z: 9.044001}
+  m_TimeToStationary: 0.5

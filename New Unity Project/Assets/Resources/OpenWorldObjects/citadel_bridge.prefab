@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4647394858403452}
   - component: {fileID: 33869771550040376}
   - component: {fileID: 23799965706448326}
+  - component: {fileID: 208264426169196184}
   m_Layer: 0
   m_Name: citadel_bridge
   m_TagString: floor
@@ -84,3 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1155155821425916}
   m_Mesh: {fileID: 4300000, guid: 3bb9d063a89b65548ad1df3aa1919330, type: 3}
+--- !u!208 &208264426169196184
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155155821425916}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 4.4610004, y: 30.358002, z: 5.228}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.017, z: 5.1980004}
+  m_TimeToStationary: 0.5

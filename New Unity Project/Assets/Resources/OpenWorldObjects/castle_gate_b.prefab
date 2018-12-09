@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4821116912132112}
   - component: {fileID: 33852149887919188}
   - component: {fileID: 23828375132433054}
+  - component: {fileID: 208074607043102884}
   m_Layer: 0
   m_Name: castle_gate_b
   m_TagString: floor
@@ -87,3 +88,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1135460308256296}
   m_Mesh: {fileID: 4300000, guid: 261ac25f752551549bff78e81d317cb7, type: 3}
+--- !u!208 &208074607043102884
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1135460308256296}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 17.43, y: 9.612, z: 10.913}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.34800002, y: 0.13700001, z: 10.913}
+  m_TimeToStationary: 0.5

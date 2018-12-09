@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4489991088389626}
   - component: {fileID: 33859711841223604}
   - component: {fileID: 23331283249850160}
+  - component: {fileID: 208429103918697762}
   m_Layer: 0
   m_Name: pine_b
   m_TagString: floor
@@ -84,3 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1238566819580450}
   m_Mesh: {fileID: 4300000, guid: 31c69e98b28c0a446a7982d4f1872d2e, type: 3}
+--- !u!208 &208429103918697762
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238566819580450}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.72, y: 1.651, z: 5.4800005}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.127, y: 0.05, z: 5.4670005}
+  m_TimeToStationary: 0.5

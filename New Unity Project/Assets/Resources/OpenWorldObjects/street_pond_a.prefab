@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4314161194106378}
   - component: {fileID: 33141870199809740}
   - component: {fileID: 23075915665588336}
+  - component: {fileID: 208695083030247974}
   m_Layer: 0
   m_Name: street_pond_a
   m_TagString: floor
@@ -86,3 +87,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1063509788074128}
   m_Mesh: {fileID: 4300000, guid: aca438496f8c96549aa10e232cbf3817, type: 3}
+--- !u!208 &208695083030247974
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1063509788074128}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 15.265, y: 2.798, z: 0.66800004}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.012, y: -0.007, z: 0.66800004}
+  m_TimeToStationary: 0.5

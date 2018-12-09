@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4428578940029022}
   - component: {fileID: 33603951922757740}
   - component: {fileID: 23130511136624560}
+  - component: {fileID: 208381130299766318}
   m_Layer: 0
   m_Name: standard_wooden_roof_4
   m_TagString: floor
@@ -84,3 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1623306722017336}
   m_Mesh: {fileID: 4300000, guid: b654c8141a750ed41938c58fe8c7853c, type: 3}
+--- !u!208 &208381130299766318
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1623306722017336}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.2470002, y: 3.8520002, z: 1.4480001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 1.439}
+  m_TimeToStationary: 0.5

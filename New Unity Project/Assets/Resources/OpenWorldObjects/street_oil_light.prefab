@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4145467918966126}
   - component: {fileID: 33074715788490718}
   - component: {fileID: 23455203216187250}
+  - component: {fileID: 208117917792765202}
   m_Layer: 0
   m_Name: street_oil_light
   m_TagString: floor
@@ -88,3 +89,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1426769608828836}
   m_Mesh: {fileID: 4300000, guid: 47cdb03718b7455499aa6692ceba2a82, type: 3}
+--- !u!208 &208117917792765202
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426769608828836}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.30900002, y: 0.851, z: 1.835}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.59300005, z: 1.835}
+  m_TimeToStationary: 0.5

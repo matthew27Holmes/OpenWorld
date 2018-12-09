@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4274309702161388}
   - component: {fileID: 33417919913879334}
   - component: {fileID: 23153124778296814}
+  - component: {fileID: 208892946902931390}
   m_Layer: 0
   m_Name: port_wooden_bridge_a_corner
   m_TagString: floor
@@ -83,3 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697430801981060}
   m_Mesh: {fileID: 4300000, guid: a8793ae45efd71545b54e3c7612887bf, type: 3}
+--- !u!208 &208892946902931390
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697430801981060}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.9440002, y: 1.9030001, z: 1.3010001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -1.6530001, y: -0.60400003, z: 1.279}
+  m_TimeToStationary: 0.5

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23296629548352606}
   - component: {fileID: 65330776500436622}
   - component: {fileID: 114978356113169038}
+  - component: {fileID: 208500631300559842}
   m_Layer: 10
   m_Name: Plane(Clone)
   m_TagString: floor
@@ -109,3 +110,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToRotate: []
+--- !u!208 &208500631300559842
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1131819211120922}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5, y: 0.00001, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

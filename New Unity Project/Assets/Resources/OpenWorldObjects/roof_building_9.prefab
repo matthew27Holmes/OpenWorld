@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4693508630278508}
   - component: {fileID: 33216335329631154}
   - component: {fileID: 23422808880418228}
+  - component: {fileID: 208755672698224584}
   m_Layer: 0
   m_Name: roof_building_9
   m_TagString: floor
@@ -84,3 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075251176664404}
   m_Mesh: {fileID: 4300000, guid: ae96f7beaa698e04d8ccbadf3c90329e, type: 3}
+--- !u!208 &208755672698224584
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1075251176664404}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.7010001, y: 1.6710001, z: 5.9230003}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 5.913}
+  m_TimeToStationary: 0.5

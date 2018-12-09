@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4884781972206908}
   - component: {fileID: 33775472638756668}
   - component: {fileID: 23857534362595606}
+  - component: {fileID: 208553935941338182}
   m_Layer: 0
   m_Name: castle_tower_octagon
   m_TagString: floor
@@ -85,3 +86,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1933501008555322}
   m_Mesh: {fileID: 4300000, guid: d7668ad5f64a7ed4683c61ca91f3a439, type: 3}
+--- !u!208 &208553935941338182
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933501008555322}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.7350001, y: 6.446, z: 12.400001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -3.5000002, y: 0, z: 12.400001}
+  m_TimeToStationary: 0.5
