@@ -17,6 +17,7 @@
         <y>1</y>
         <z>10</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_35_d">
       <postion>
@@ -34,6 +35,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_32_d">
       <postion>
@@ -51,6 +53,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="street_green_belt_a (1)">
       <postion>
@@ -68,6 +71,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_32_e">
       <postion>
@@ -85,6 +89,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_18_b">
       <postion>
@@ -102,6 +107,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_31_b">
       <postion>
@@ -119,6 +125,7 @@
         <y>0.950000942</y>
         <z>0.950000942</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="roof_building_6_b">
       <postion>
@@ -136,6 +143,7 @@
         <y>1</y>
         <z>0.8956289</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_02">
       <postion>
@@ -153,6 +161,7 @@
         <y>-1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="balcony_1">
       <postion>
@@ -170,6 +179,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="street_pond_a (1)">
       <postion>
@@ -187,6 +197,7 @@
         <y>0.7256204</y>
         <z>0.7256204</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_18_a">
       <postion>
@@ -204,6 +215,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_27">
       <postion>
@@ -221,6 +233,7 @@
         <y>-1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="balcony_3">
       <postion>
@@ -238,6 +251,7 @@
         <y>0.485445</y>
         <z>1.06556523</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="roof_building_10">
       <postion>
@@ -255,6 +269,7 @@
         <y>1.37981033</y>
         <z>1.37981033</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_06">
       <postion>
@@ -272,6 +287,7 @@
         <y>0.841583669</y>
         <z>0.841583669</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_17">
       <postion>
@@ -289,6 +305,7 @@
         <y>1.218617</y>
         <z>1.218617</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_39_b">
       <postion>
@@ -306,6 +323,7 @@
         <y>0.877941668</y>
         <z>0.877941668</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_c (1)">
       <postion>
@@ -323,6 +341,7 @@
         <y>1.340206</y>
         <z>1.519279</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_37_e">
       <postion>
@@ -340,6 +359,7 @@
         <y>1.14981508</y>
         <z>1.14981508</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_31_h">
       <postion>
@@ -357,6 +377,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_a">
       <postion>
@@ -374,6 +395,7 @@
         <y>188.225632</y>
         <z>188.2256</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_16">
       <postion>
@@ -391,6 +413,7 @@
         <y>-1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="balcony_2">
       <postion>
@@ -408,6 +431,7 @@
         <y>0.445179731</y>
         <z>0.5034591</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_15">
       <postion>
@@ -425,6 +449,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_08">
       <postion>
@@ -442,6 +467,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="street_pond_a">
       <postion>
@@ -459,6 +485,7 @@
         <y>0.7256204</y>
         <z>0.7256204</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_b (3)">
       <postion>
@@ -476,6 +503,7 @@
         <y>0.7730894</y>
         <z>1.78400874</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_03">
       <postion>
@@ -493,6 +521,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_b">
       <postion>
@@ -510,6 +539,7 @@
         <y>0.77309</y>
         <z>1.78400946</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_30_e">
       <postion>
@@ -527,6 +557,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_36_c">
       <postion>
@@ -544,6 +575,7 @@
         <y>1.10434067</y>
         <z>1.10434067</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_23">
       <postion>
@@ -561,6 +593,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_a (1)">
       <postion>
@@ -578,6 +611,7 @@
         <y>188.22551</y>
         <z>188.22551</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_04">
       <postion>
@@ -595,6 +629,7 @@
         <y>0.73328197</y>
         <z>0.73328197</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_37_c">
       <postion>
@@ -612,6 +647,7 @@
         <y>1</y>
         <z>0.05220545</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_36_a">
       <postion>
@@ -629,6 +665,7 @@
         <y>1.03494394</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="dead_tree_j">
       <postion>
@@ -646,6 +683,7 @@
         <y>1.09211147</y>
         <z>1.09211147</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_33_f">
       <postion>
@@ -663,6 +701,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="balcony_1">
       <postion>
@@ -680,6 +719,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_12">
       <postion>
@@ -697,6 +737,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_28">
       <postion>
@@ -714,6 +755,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_38_h">
       <postion>
@@ -731,6 +773,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="street_green_belt_a">
       <postion>
@@ -748,6 +791,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_01">
       <postion>
@@ -765,6 +809,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_26">
       <postion>
@@ -782,6 +827,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_bridge_2_a">
       <postion>
@@ -799,6 +845,7 @@
         <y>0.9346998</y>
         <z>1.26220155</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_bridge_2_a">
       <postion>
@@ -816,6 +863,7 @@
         <y>0.729606569</y>
         <z>0.729606569</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_bridge_4_c">
       <postion>
@@ -833,6 +881,7 @@
         <y>0.533920467</y>
         <z>1.1370225</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_bridge_1_c">
       <postion>
@@ -850,6 +899,7 @@
         <y>1.21722925</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="ladder_2">
       <postion>
@@ -867,6 +917,7 @@
         <y>0.9493569</y>
         <z>0.9493567</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="balcony_3">
       <postion>
@@ -884,6 +935,7 @@
         <y>0.5458509</y>
         <z>1.11019373</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_35_b">
       <postion>
@@ -901,6 +953,7 @@
         <y>1.3073405</y>
         <z>1.3073405</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_d">
       <postion>
@@ -918,6 +971,7 @@
         <y>0.9882093</y>
         <z>1.519279</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_b (1)">
       <postion>
@@ -935,6 +989,7 @@
         <y>0.77309</y>
         <z>1.78400946</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_24_b">
       <postion>
@@ -952,6 +1007,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_37_g">
       <postion>
@@ -969,6 +1025,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_c (2)">
       <postion>
@@ -986,6 +1043,7 @@
         <y>1.34020507</y>
         <z>1.51927829</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_b (4)">
       <postion>
@@ -1003,6 +1061,7 @@
         <y>0.7730894</y>
         <z>1.78400874</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_17 (1)">
       <postion>
@@ -1020,6 +1079,7 @@
         <y>1.03756738</y>
         <z>1.03756738</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_c (1)">
       <postion>
@@ -1037,6 +1097,7 @@
         <y>1.34020507</y>
         <z>1.51927829</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="balcony_1">
       <postion>
@@ -1054,6 +1115,7 @@
         <y>0.7335233</y>
         <z>0.7335233</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_23 (1)">
       <postion>
@@ -1071,6 +1133,7 @@
         <y>1.08828545</y>
         <z>1.08828545</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="balcony_3">
       <postion>
@@ -1088,6 +1151,7 @@
         <y>0.629169047</y>
         <z>1.44630575</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_30_a">
       <postion>
@@ -1105,6 +1169,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_40_f (1)">
       <postion>
@@ -1122,6 +1187,7 @@
         <y>0.691490233</y>
         <z>1.60963</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_34_c">
       <postion>
@@ -1139,6 +1205,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_14">
       <postion>
@@ -1156,6 +1223,7 @@
         <y>0.770566165</y>
         <z>0.770566165</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_c">
       <postion>
@@ -1173,6 +1241,7 @@
         <y>1.340206</y>
         <z>1.519279</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_19">
       <postion>
@@ -1190,6 +1259,7 @@
         <y>1.12551725</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
   </Assets>
 </Streaming_GameObjects>

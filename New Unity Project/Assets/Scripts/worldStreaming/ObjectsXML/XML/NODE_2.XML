@@ -17,6 +17,7 @@
         <y>1</y>
         <z>10</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="castle_wall_15m (2)">
       <postion>
@@ -34,6 +35,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_b (7)">
       <postion>
@@ -51,6 +53,7 @@
         <y>0.7730894</y>
         <z>1.78400874</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="castle_wall_2,5m (2)">
       <postion>
@@ -68,6 +71,7 @@
         <y>-1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_b (2)">
       <postion>
@@ -85,6 +89,7 @@
         <y>0.7730894</y>
         <z>1.78400874</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_a (1)">
       <postion>
@@ -102,6 +107,7 @@
         <y>188.22551</y>
         <z>188.22551</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="castle_wall_15m (3)">
       <postion>
@@ -119,6 +125,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="citadel_bridge">
       <postion>
@@ -136,6 +143,7 @@
         <y>0.7168629</y>
         <z>0.7168629</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="tent_a (3)">
       <postion>
@@ -153,6 +161,7 @@
         <y>1.71177268</y>
         <z>1.71177363</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="citadel_tower_f">
       <postion>
@@ -170,6 +179,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="citadel_main">
       <postion>
@@ -187,6 +197,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_a (3)">
       <postion>
@@ -204,6 +215,7 @@
         <y>188.22551</y>
         <z>188.22551</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="castle_tower_rectangular">
       <postion>
@@ -221,6 +233,7 @@
         <y>1.51088512</y>
         <z>1.0116564</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="citadel_base_a">
       <postion>
@@ -238,6 +251,7 @@
         <y>1</y>
         <z>0.830606461</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="dead_tree_j">
       <postion>
@@ -255,6 +269,7 @@
         <y>1.39110732</y>
         <z>1.39110732</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="banner">
       <postion>
@@ -272,6 +287,7 @@
         <y>1.23125577</y>
         <z>1.65262055</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="pine_c (1)">
       <postion>
@@ -289,6 +305,7 @@
         <y>1.34020507</y>
         <z>1.51927829</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
   </Assets>
 </Streaming_GameObjects>

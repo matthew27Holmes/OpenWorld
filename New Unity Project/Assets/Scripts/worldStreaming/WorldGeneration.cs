@@ -61,7 +61,7 @@ public class WorldGeneration : MonoBehaviour {
         //find nodes neighbours
         findNeighbouringNodes();
         // define node children for createing the xml
-       // findCellsObjects();
+        //findCellsObjects();
     }
 
     void CreateGrid()

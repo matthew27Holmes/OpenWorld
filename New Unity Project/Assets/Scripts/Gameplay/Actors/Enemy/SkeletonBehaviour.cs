@@ -88,10 +88,18 @@ public class SkeletonBehaviour : MonoBehaviour {
         navMeshAgent.SetDestination(PatrolRoute[patrolPoint].position);
         if(Vector3.Distance(this.transform.position , PatrolRoute[patrolPoint].position) <= 3.0f)//this is hacking
         {
-            patrolPoint++;
-            if(patrolPoint >= PatrolRoute.Count)
+            if (PatrolRoute.Count > 1)
             {
-                patrolPoint = 0;
+                patrolPoint++;
+                if (patrolPoint >= PatrolRoute.Count)
+                {
+                    patrolPoint = 0;
+                }
+            }
+            else
+            {
+                anim.SetBool("Ide", true);
+                anim.SetBool("Patroling", false);
             }
         }
     }
@@ -102,6 +110,7 @@ public class SkeletonBehaviour : MonoBehaviour {
         navMeshAgent.speed = 5;
         navMeshAgent.SetDestination(LastPlayerPostion);
 
+        anim.SetBool("Ide", false);
         anim.SetBool("Patroling", false);
         anim.SetBool("AttackPlayer", false);
         Attacking = false;
@@ -148,6 +157,7 @@ public class SkeletonBehaviour : MonoBehaviour {
         anim.SetBool("PlayerSpotted", false);
         anim.SetBool("AttackPlayer", false);
         anim.SetBool("ChasePlayer", false);
+        anim.SetBool("Ide", false);
         anim.SetBool("Patroling", true);
     }
 

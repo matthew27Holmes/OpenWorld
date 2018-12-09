@@ -17,6 +17,7 @@
         <y>1</y>
         <z>10</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="cliff_06 (6)">
       <postion>
@@ -34,6 +35,7 @@
         <y>1.64773726</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="castle_wall_15m">
       <postion>
@@ -51,6 +53,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="castle_tower_round">
       <postion>
@@ -68,6 +71,7 @@
         <y>1.432774</y>
         <z>0.946164846</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_06 (16)">
       <postion>
@@ -85,6 +89,7 @@
         <y>0.81</y>
         <z>0.854592144</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
   </Assets>
 </Streaming_GameObjects>

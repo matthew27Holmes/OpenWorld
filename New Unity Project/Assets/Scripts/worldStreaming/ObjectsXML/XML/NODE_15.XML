@@ -17,6 +17,7 @@
         <y>1</y>
         <z>10</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="cliff_06 (3)">
       <postion>
@@ -34,6 +35,7 @@
         <y>1.27683377</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="cliff_02 (1)">
       <postion>
@@ -51,6 +53,7 @@
         <y>1.50729287</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="cliff_03 (1)">
       <postion>
@@ -68,6 +71,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="dead_tree_j (2)">
       <postion>
@@ -85,6 +89,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_20 (3)">
       <postion>
@@ -102,6 +107,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_28 (7)">
       <postion>
@@ -119,6 +125,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="castle_tower_round (2)">
       <postion>
@@ -136,6 +143,7 @@
         <y>1.432774</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="street_pond_a (12)">
       <postion>
@@ -153,6 +161,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="castle_wall_15m (4)">
       <postion>
@@ -170,6 +179,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="castle_wall_15m (5)">
       <postion>
@@ -187,6 +197,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="castle_wall_2,5m (1)">
       <postion>
@@ -204,6 +215,7 @@
         <y>1</y>
         <z>1</z>
       </Scale>
+      <IsActive>true</IsActive>
     </Asset>
     <Asset name="civilian_house_40_f (4)">
       <postion>
@@ -221,6 +233,25 @@
         <y>-0.6611533</y>
         <z>1.53901184</z>
       </Scale>
+      <IsActive>true</IsActive>
+    </Asset>
+    <Asset name="PatrolPoint (1)">
+      <postion>
+        <x>-206.9</x>
+        <y>0</y>
+        <z>12.2</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+      <IsActive>true</IsActive>
     </Asset>
   </Assets>
 </Streaming_GameObjects>
