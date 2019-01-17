@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Streaming_GameObjects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Assets>
+    <Asset name="PatrolPoint (5)">
+      <postion>
+        <x>73.7</x>
+        <y>0</y>
+        <z>-22.25</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="PatrolOne">
+      <postion>
+        <x>47.8</x>
+        <y>0</y>
+        <z>23.2</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+  </Assets>
+</Streaming_GameObjects>
