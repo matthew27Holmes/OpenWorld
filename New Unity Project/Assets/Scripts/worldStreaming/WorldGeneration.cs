@@ -206,14 +206,15 @@ public class WorldGeneration : MonoBehaviour {
         {
             createXML.Node node = createXML.Node.Load(
                createXML.path + i.ToString() + ".XML");
-            foreach(createXML.StreamingAsset asset in node.assets)
-            {
-                asset.IsActive = true;
-            }
+            //foreach(createXML.StreamingAsset asset in node.assets)
+            //{
+            //    asset.IsActive = true;
+            //}
             NodeContainerRefs.Add(node);
         }
         Debug.Log(NodeContainerRefs.Count);
     }
+
 
     void findCellsObjects()//debug for saving to xml
     {
@@ -270,7 +271,6 @@ public class WorldGeneration : MonoBehaviour {
         asset.postion = t.localPosition;
         asset.Rotation = t.eulerAngles;
         asset.Scale = t.localScale;
-        asset.IsActive = true;
         NodeContainerRefs[i].assets.Add(asset);
     }
     #endregion
@@ -279,7 +279,6 @@ public class WorldGeneration : MonoBehaviour {
     void Update()
     {
         //run in coruntine 
-        //numCell = Cells.Count;
         StartCoroutine(checkPlayersCell()); //should check to see if its inside player view port instead
     }
 
@@ -426,6 +425,7 @@ public class WorldGeneration : MonoBehaviour {
 
     cellObject UnLoadObjects(int NodeID)
     {
+        
         cellObject cell = Cells[NodeID];
         //needs to check if neighbours is gonna be loaded wth the next object  
         if (cell.isLoaded)
@@ -433,6 +433,7 @@ public class WorldGeneration : MonoBehaviour {
             cell.isLoaded = false;
             cell.cellCube.SetActive(cell.isLoaded);
 
+            //save to temp here
 
             foreach (GameObject obj in cell.objects)
             {
@@ -452,6 +453,56 @@ public class WorldGeneration : MonoBehaviour {
         }
         yield return null;
     }
+    #endregion
+
+    #region Save
+    void SaveTempNode(cellObject cell)
+    {
+        createXML.Node TempNode = findNodesObjects(cell);
+        TempNode.Save(createXML.TempPath + cell.cellID.ToString() + ".XML");
+
+    }
+
+    createXML.StreamingAsset CreateStreamingAsset(GameObject asset)
+    {
+        Transform t = asset.transform;
+
+        createXML.StreamingAsset streamingAsset = new createXML.StreamingAsset();
+        streamingAsset.Name = asset.name;
+        streamingAsset.postion = t.localPosition;
+        streamingAsset.Rotation = t.eulerAngles;
+        streamingAsset.Scale = t.localScale;
+        return streamingAsset;
+    }
+    createXML.Node findNodesObjects(cellObject cell)//debug for saving to xml
+    {
+
+        createXML.Node Node = new createXML.Node();
+        //this should be in cell 
+
+        // get all objects in the scene that are on a spercfic layer 
+        var root = Resources.FindObjectsOfTypeAll<GameObject>()
+                .Where(go => go.hideFlags == HideFlags.None).ToArray();
+
+        // run trough all objecs and attach them to a node if there are on the correct layer 
+        foreach (GameObject obj in root)//Transform t in SceneParent.transform.GetComponentsInChildren(typeof(GameObject),false))
+        {
+            if (LayerMask.LayerToName(obj.layer) == GenerationLayer)
+            {
+                Transform t = obj.transform;
+
+
+                //if objects postion inside of cell then add it cells list 
+                if (cellCollison(cell, t.localPosition.x, t.localPosition.z))
+                {
+                    Node.assets.Add(CreateStreamingAsset(obj));
+                }
+
+            }
+        }
+        return Node;
+    }
+
     #endregion
     #endregion
 }
