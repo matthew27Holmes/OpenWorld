@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4329340721868792}
   - component: {fileID: 33704484857104190}
   - component: {fileID: 23686849561448870}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: civilian_bridge_2_a
   m_TagString: floor
   m_Icon: {fileID: 0}

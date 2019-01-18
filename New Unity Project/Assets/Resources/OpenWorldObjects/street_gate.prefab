@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4075036993892222}
   - component: {fileID: 33365337434858902}
   - component: {fileID: 23301561831494386}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: street_gate
   m_TagString: floor
   m_Icon: {fileID: 0}

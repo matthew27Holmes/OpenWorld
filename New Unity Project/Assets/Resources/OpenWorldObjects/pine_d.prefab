@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33654147953790926}
   - component: {fileID: 23730249671714580}
   - component: {fileID: 208215001203009448}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pine_d
   m_TagString: floor
   m_Icon: {fileID: 0}

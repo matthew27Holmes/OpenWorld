@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33797121125745522}
   - component: {fileID: 23945452325930938}
   - component: {fileID: 208806290225121266}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: fire_cage
   m_TagString: floor
   m_Icon: {fileID: 0}

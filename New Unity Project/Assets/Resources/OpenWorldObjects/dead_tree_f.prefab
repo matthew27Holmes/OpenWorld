@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4048299260256856}
   - component: {fileID: 33116202760086104}
   - component: {fileID: 23814186701353248}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dead_tree_f
   m_TagString: floor
   m_Icon: {fileID: 0}

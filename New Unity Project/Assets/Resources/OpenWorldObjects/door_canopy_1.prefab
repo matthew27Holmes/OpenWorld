@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4183563518553320}
   - component: {fileID: 33800356444059134}
   - component: {fileID: 23721910706696794}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: door_canopy_1
   m_TagString: floor
   m_Icon: {fileID: 0}

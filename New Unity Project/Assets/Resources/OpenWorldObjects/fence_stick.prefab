@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33082620794138800}
   - component: {fileID: 23700399864408478}
   - component: {fileID: 208550968708738066}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: fence_stick
   m_TagString: floor
   m_Icon: {fileID: 0}

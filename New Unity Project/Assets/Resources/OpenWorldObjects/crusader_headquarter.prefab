@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4428124171281192}
   - component: {fileID: 33995995699034526}
   - component: {fileID: 23966480043831714}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: crusader_headquarter
   m_TagString: floor
   m_Icon: {fileID: 0}

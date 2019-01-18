@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33789225918333010}
   - component: {fileID: 23574638431817962}
   - component: {fileID: 208951594130857404}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: castle_wall_15m
   m_TagString: floor
   m_Icon: {fileID: 0}

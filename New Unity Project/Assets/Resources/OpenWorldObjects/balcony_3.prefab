@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4051314020533426}
   - component: {fileID: 33915347988648650}
   - component: {fileID: 23671546217981294}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: balcony_3
   m_TagString: floor
   m_Icon: {fileID: 0}

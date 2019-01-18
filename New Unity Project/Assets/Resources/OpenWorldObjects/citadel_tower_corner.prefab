@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33552088729192338}
   - component: {fileID: 23163032059102576}
   - component: {fileID: 208982551038207646}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: citadel_tower_corner
   m_TagString: floor
   m_Icon: {fileID: 0}

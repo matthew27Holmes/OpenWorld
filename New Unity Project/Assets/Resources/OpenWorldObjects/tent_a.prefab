@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33768807850260244}
   - component: {fileID: 23201739239277910}
   - component: {fileID: 208828908174165416}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tent_a
   m_TagString: floor
   m_Icon: {fileID: 0}

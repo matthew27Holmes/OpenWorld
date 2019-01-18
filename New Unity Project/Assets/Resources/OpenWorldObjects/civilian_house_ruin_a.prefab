@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33916321195777692}
   - component: {fileID: 23826888920307968}
   - component: {fileID: 208445335216880658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: civilian_house_ruin_a
   m_TagString: floor
   m_Icon: {fileID: 0}

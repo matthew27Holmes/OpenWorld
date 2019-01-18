@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33399223745085276}
   - component: {fileID: 23747263323672336}
   - component: {fileID: 208846486699883948}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cliff_01
   m_TagString: floor
   m_Icon: {fileID: 0}

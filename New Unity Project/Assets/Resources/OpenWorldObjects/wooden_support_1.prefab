@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33132234048426598}
   - component: {fileID: 23575727523814874}
   - component: {fileID: 208328387703135566}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wooden_support_1
   m_TagString: floor
   m_Icon: {fileID: 0}

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33869771550040376}
   - component: {fileID: 23799965706448326}
   - component: {fileID: 208264426169196184}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: citadel_bridge
   m_TagString: floor
   m_Icon: {fileID: 0}

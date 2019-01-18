@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33272519626784582}
   - component: {fileID: 23215949828005744}
   - component: {fileID: 208826673366266640}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: fountain_a
   m_TagString: floor
   m_Icon: {fileID: 0}

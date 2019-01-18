@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33104533991468552}
   - component: {fileID: 23085997806536964}
   - component: {fileID: 208392761679815646}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wagon
   m_TagString: floor
   m_Icon: {fileID: 0}

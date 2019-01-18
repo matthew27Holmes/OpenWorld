@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33880559551084874}
   - component: {fileID: 23321865952876468}
   - component: {fileID: 208123064425865602}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: castle_portcullis
   m_TagString: floor
   m_Icon: {fileID: 0}

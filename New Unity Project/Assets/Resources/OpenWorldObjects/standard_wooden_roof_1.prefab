@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33754195552197166}
   - component: {fileID: 23504846182813310}
   - component: {fileID: 208873590388401164}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: standard_wooden_roof_1
   m_TagString: floor
   m_Icon: {fileID: 0}

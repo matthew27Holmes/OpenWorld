@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33078518460987786}
   - component: {fileID: 23553905666291592}
   - component: {fileID: 208942414967901404}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: port_wall_corner_b
   m_TagString: floor
   m_Icon: {fileID: 0}

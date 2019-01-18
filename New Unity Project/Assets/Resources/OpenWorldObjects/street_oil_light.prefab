@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33074715788490718}
   - component: {fileID: 23455203216187250}
   - component: {fileID: 208117917792765202}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: street_oil_light
   m_TagString: floor
   m_Icon: {fileID: 0}

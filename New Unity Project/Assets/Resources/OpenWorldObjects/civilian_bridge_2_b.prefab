@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4595937243714694}
   - component: {fileID: 33766012309663880}
   - component: {fileID: 23583385830273924}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: civilian_bridge_2_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}

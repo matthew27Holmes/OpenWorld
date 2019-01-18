@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33295970218768960}
   - component: {fileID: 23603899349726252}
   - component: {fileID: 208113797887768424}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: roof_building_3
   m_TagString: floor
   m_Icon: {fileID: 0}

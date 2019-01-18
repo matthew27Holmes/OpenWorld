@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33406854608089518}
   - component: {fileID: 23063281721799652}
   - component: {fileID: 208060948502125210}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: port_wooden_bridge_b_stairs
   m_TagString: floor
   m_Icon: {fileID: 0}

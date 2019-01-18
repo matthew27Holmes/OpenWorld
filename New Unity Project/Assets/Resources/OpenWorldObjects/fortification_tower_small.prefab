@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33557059174513730}
   - component: {fileID: 23987625335060766}
   - component: {fileID: 208756117821741378}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: fortification_tower_small
   m_TagString: floor
   m_Icon: {fileID: 0}

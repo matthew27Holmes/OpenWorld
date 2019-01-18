@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33874595028422138}
   - component: {fileID: 23110317094434396}
   - component: {fileID: 208475681685886108}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: church_c
   m_TagString: floor
   m_Icon: {fileID: 0}

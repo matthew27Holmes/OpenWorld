@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33357450511184456}
   - component: {fileID: 23828091762357602}
   - component: {fileID: 208698176957866860}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tower_gates
   m_TagString: floor
   m_Icon: {fileID: 0}

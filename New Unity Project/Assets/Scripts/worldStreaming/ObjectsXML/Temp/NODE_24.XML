@@ -1,15 +1,66 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <Streaming_GameObjects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Assets>
-    <Asset name="PatrolPoint (5)">
+    <Asset name="wall_H10m_corner">
       <postion>
-        <x>-59.6</x>
+        <x>157.54</x>
         <y>0</y>
-        <z>11.7</z>
+        <z>40.7700043</z>
       </postion>
       <Rotation>
-        <x>0</x>
+        <x>270</x>
+        <y>345.000031</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1.365543</z>
+      </Scale>
+    </Asset>
+    <Asset name="castle_tower_round (3)">
+      <postion>
+        <x>151.17</x>
+        <y>-10.33</y>
+        <z>61.8000031</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>348.75</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1.432774</x>
+        <y>1.432774</y>
+        <z>1.22564507</z>
+      </Scale>
+    </Asset>
+    <Asset name="wall_H10m_L15m">
+      <postion>
+        <x>154.47</x>
         <y>0</y>
+        <z>42.9</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>330.000061</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1.36554348</z>
+      </Scale>
+    </Asset>
+    <Asset name="cliff_01 (3)">
+      <postion>
+        <x>160.1</x>
+        <y>-24.8</y>
+        <z>46</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>59.9999542</y>
         <z>0</z>
       </Rotation>
       <Scale>
@@ -18,106 +69,38 @@
         <z>1</z>
       </Scale>
     </Asset>
-    <Asset name="PatrolFour">
+    <Asset name="Plane(Clone)">
       <postion>
-        <x>-61.8</x>
+        <x>195</x>
         <y>0</y>
-        <z>9.1</z>
+        <z>90</z>
       </postion>
       <Rotation>
         <x>0</x>
         <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>10</x>
+        <y>1</y>
+        <z>10</z>
+      </Scale>
+    </Asset>
+    <Asset name="port_wall_b (3)">
+      <postion>
+        <x>179.28</x>
+        <y>-3</y>
+        <z>78.28</z>
+      </postion>
+      <Rotation>
+        <x>90</x>
+        <y>-0.000135230846</y>
         <z>0</z>
       </Rotation>
       <Scale>
         <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="Key2">
-      <postion>
-        <x>-101.654976</x>
-        <y>1.57</y>
-        <z>-42.57</z>
-      </postion>
-      <Rotation>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>0.5</x>
-        <y>0.5</y>
-        <z>0.5</z>
-      </Scale>
-    </Asset>
-    <Asset name="PatrolFour">
-      <postion>
-        <x>-68.3</x>
-        <y>0</y>
-        <z>-12.6</z>
-      </postion>
-      <Rotation>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="EnemySpawn2">
-      <postion>
-        <x>-101.389206</x>
-        <y>0</y>
-        <z>-42.644146</z>
-      </postion>
-      <Rotation>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="EnemySpawn2">
-      <postion>
-        <x>-101.389206</x>
-        <y>0</y>
-        <z>-42.644146</z>
-      </postion>
-      <Rotation>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="Key2">
-      <postion>
-        <x>-101.654976</x>
-        <y>1.57</y>
-        <z>-42.57</z>
-      </postion>
-      <Rotation>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>0.5</x>
-        <y>0.5</y>
-        <z>0.5</z>
+        <y>1.00000036</y>
+        <z>1.00000036</z>
       </Scale>
     </Asset>
   </Assets>

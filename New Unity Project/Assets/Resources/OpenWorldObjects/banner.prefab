@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4731890663447788}
   - component: {fileID: 33196615914325052}
   - component: {fileID: 23531902680722158}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: banner
   m_TagString: floor
   m_Icon: {fileID: 0}

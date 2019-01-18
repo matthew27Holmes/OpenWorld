@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33982056266006100}
   - component: {fileID: 23371893628177398}
   - component: {fileID: 208040668642607192}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: stone_stairs_1
   m_TagString: floor
   m_Icon: {fileID: 0}
