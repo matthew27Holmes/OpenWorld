@@ -354,6 +354,10 @@ public class WorldGeneration : MonoBehaviour {
 
                 string assetName = asset.Name.Split(' ')[0];
                 string assetPath = "OpenWorldObjects/" + assetName;
+                if(assetName == "Terrain")
+                {
+                    Debug.Log("Node " + NodeID);
+                }
 
                 if (asset == null)
                 {
