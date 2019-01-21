@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Windows;
 using System.Linq;
 
 
@@ -100,6 +101,7 @@ public class WorldGeneration : MonoBehaviour {
 
                 cell.cellCube.SetActive(cell.isLoaded);
                 cell.cellID = Cells.Count;
+                cell.cellCube.name = cell.cellID.ToString();
                 Cells.Add(cell);
             }
         }
@@ -460,7 +462,7 @@ public class WorldGeneration : MonoBehaviour {
     }
     #endregion
 
-    #region Save
+    #region TempFiles
     void SaveTempNode(cellObject cell)
     {
         createXML.Node TempNode = findNodesObjects(cell);
@@ -502,6 +504,14 @@ public class WorldGeneration : MonoBehaviour {
             }
         }
         return Node;
+    }
+
+    void DeleteTemp()
+    {
+        foreach(cellObject cell in Cells)
+        {
+            File.Delete(createXML.TempPath + cell.cellID.ToString() + ".XML");
+        }
     }
 
     #endregion

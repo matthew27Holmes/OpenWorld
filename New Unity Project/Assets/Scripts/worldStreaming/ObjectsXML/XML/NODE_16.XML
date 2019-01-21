@@ -681,5 +681,39 @@
         <z>1</z>
       </Scale>
     </Asset>
+    <Asset name="EnemySpawn2">
+      <postion>
+        <x>-101.389206</x>
+        <y>0</y>
+        <z>-42.644146</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="Key2">
+      <postion>
+        <x>-101.654976</x>
+        <y>1.57</y>
+        <z>-42.57</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.5</x>
+        <y>0.5</y>
+        <z>0.5</z>
+      </Scale>
+    </Asset>
   </Assets>
 </Streaming_GameObjects>
