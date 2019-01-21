@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - floor
   - sword
+  - Spawner
   layers:
   - Default
   - TransparentFX

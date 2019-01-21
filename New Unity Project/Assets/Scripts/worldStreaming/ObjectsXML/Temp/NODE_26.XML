@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <Streaming_GameObjects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Assets>
+    <Asset name="Key3">
+      <postion>
+        <x>-118.029465</x>
+        <y>6.57</y>
+        <z>189.275879</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>104.338364</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.5</x>
+        <y>0.5</y>
+        <z>0.5</z>
+      </Scale>
+    </Asset>
+    <Asset name="EnemySpawn3">
+      <postion>
+        <x>-101.3075</x>
+        <y>4.673004E-05</y>
+        <z>188.5773</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
     <Asset name="dead_tree_a">
       <postion>
         <x>-128.28</x>
@@ -1165,7 +1199,7 @@
       </postion>
       <Rotation>
         <x>0</x>
-        <y>356.886139</y>
+        <y>0</y>
         <z>0</z>
       </Rotation>
       <Scale>
@@ -1183,23 +1217,6 @@
       <Rotation>
         <x>0</x>
         <y>0</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
-    <Asset name="civilian_bridge_2_b">
-      <postion>
-        <x>-67.83114</x>
-        <y>0.00101487758</y>
-        <z>176.405991</z>
-      </postion>
-      <Rotation>
-        <x>270</x>
-        <y>270</y>
         <z>0</z>
       </Rotation>
       <Scale>
@@ -1240,6 +1257,23 @@
         <x>0.5</x>
         <y>0.5</y>
         <z>0.5</z>
+      </Scale>
+    </Asset>
+    <Asset name="civilian_bridge_2_b">
+      <postion>
+        <x>-67.83114</x>
+        <y>0.00101487758</y>
+        <z>176.405991</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>270</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
       </Scale>
     </Asset>
   </Assets>

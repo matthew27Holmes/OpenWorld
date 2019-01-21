@@ -698,40 +698,6 @@
         <z>10</z>
       </Scale>
     </Asset>
-    <Asset name="port_wooden_bridge_b (7)">
-      <postion>
-        <x>78.74434</x>
-        <y>-0.180001259</y>
-        <z>66.93643</z>
-      </postion>
-      <Rotation>
-        <x>270</x>
-        <y>178.292953</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>2.33009648</x>
-        <y>2.246409</y>
-        <z>2.246408</z>
-      </Scale>
-    </Asset>
-    <Asset name="port_chains (2)">
-      <postion>
-        <x>95.4799957</x>
-        <y>1.84</y>
-        <z>43.33</z>
-      </postion>
-      <Rotation>
-        <x>309.714447</x>
-        <y>349.138519</y>
-        <z>177.349014</z>
-      </Rotation>
-      <Scale>
-        <x>4.48210239</x>
-        <y>3.946218</y>
-        <z>3.94621682</z>
-      </Scale>
-    </Asset>
     <Asset name="PatrolPoint (2)">
       <postion>
         <x>97.7</x>
@@ -764,6 +730,40 @@
         <x>1</x>
         <y>1</y>
         <z>1</z>
+      </Scale>
+    </Asset>
+    <Asset name="port_wooden_bridge_b (7)">
+      <postion>
+        <x>78.74434</x>
+        <y>-0.180001259</y>
+        <z>66.93643</z>
+      </postion>
+      <Rotation>
+        <x>270</x>
+        <y>178.292953</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>2.33009648</x>
+        <y>2.246409</y>
+        <z>2.246408</z>
+      </Scale>
+    </Asset>
+    <Asset name="port_chains (2)">
+      <postion>
+        <x>95.4799957</x>
+        <y>1.84</y>
+        <z>43.33</z>
+      </postion>
+      <Rotation>
+        <x>309.714447</x>
+        <y>349.138519</y>
+        <z>177.349014</z>
+      </Rotation>
+      <Scale>
+        <x>4.48210239</x>
+        <y>3.946218</y>
+        <z>3.94621682</z>
       </Scale>
     </Asset>
     <Asset name="banner (4)">

@@ -970,23 +970,7 @@
         <z>1</z>
       </Scale>
     </Asset>
-    <Asset name="EnemySpawn">
-      <postion>
-        <x>-10.78</x>
-        <y>0</y>
-        <z>119.27</z>
-      </postion>
-      <Rotation>
-        <x>0</x>
-        <y>0</y>
-        <z>0</z>
-      </Rotation>
-      <Scale>
-        <x>1</x>
-        <y>1</y>
-        <z>1</z>
-      </Scale>
-    </Asset>
+    
     <Asset name="Key">
       <postion>
         <x>-10.78</x>

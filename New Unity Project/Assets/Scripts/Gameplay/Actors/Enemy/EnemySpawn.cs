@@ -26,11 +26,11 @@ public class EnemySpawn : MonoBehaviour {
             GameObject newEnemey  = Instantiate(enemey, spawnPostion, Quaternion.identity);
 
             SkeletonBehaviour newEnemeyBehviour = newEnemey.GetComponent<SkeletonBehaviour>();
-            newEnemeyBehviour.Spawner = EnemyRoute.GetChild(0);
+            //newEnemeyBehviour.Spawner = EnemyRoute.GetChild(0);
 
-            for(int j = 0; j < EnemyRoute.childCount;j++)
-            {                
-               newEnemeyBehviour.PatrolRoute.Add(EnemyRoute.GetChild(j));           
+            for (int j = 0; j < EnemyRoute.childCount; j++)
+            {
+                newEnemeyBehviour.PatrolRoute.Add(EnemyRoute.GetChild(j).position);
             }
             newEnemey.transform.parent = transform.GetChild(1);
         }

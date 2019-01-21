@@ -851,5 +851,23 @@
         <z>0.788749158</z>
       </Scale>
     </Asset>
+    
+    <Asset name="Key4">
+      <postion>
+        <x>75.03</x>
+        <y>3.71</y>
+        <z>-84</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.5</x>
+        <y>0.5</y>
+        <z>0.5</z>
+      </Scale>
+    </Asset>
   </Assets>
 </Streaming_GameObjects>

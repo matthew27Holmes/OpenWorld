@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Streaming_Enemies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Assets>
+    <Asset name="Skeleton@Skin(Clone)">
+      <postion>
+        <x>-103.107506</x>
+        <y>4.673004E-05</y>
+        <z>205.5773</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>15</x>
+        <y>15</y>
+        <z>15</z>
+      </Scale>
+      <patrol>
+        <PatrolPoint PatrolPoint="(-103.1, 0.0, 205.6)" />
+        <PatrolPoint PatrolPoint="(-103.4, 0.0, 170.1)" />
+        <PatrolPoint PatrolPoint="(-88.9, 0.0, 176.1)" />
+        <PatrolPoint PatrolPoint="(-86.5, 0.0, 212.5)" />
+      </patrol>
+    </Asset>
+    <Asset name="Skeleton@Skin(Clone)">
+      <postion>
+        <x>-140.8075</x>
+        <y>4.673004E-05</y>
+        <z>203.8773</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>15</x>
+        <y>15</y>
+        <z>15</z>
+      </Scale>
+      <patrol>
+        <PatrolPoint PatrolPoint="(-140.8, 0.0, 203.9)" />
+        <PatrolPoint PatrolPoint="(-155.9, 0.0, 203.9)" />
+        <PatrolPoint PatrolPoint="(-155.9, 0.0, 172.6)" />
+        <PatrolPoint PatrolPoint="(-140.8, 0.0, 172.6)" />
+      </patrol>
+    </Asset>
+    <Asset name="Skeleton@Skin(Clone)">
+      <postion>
+        <x>-150.107513</x>
+        <y>4.673004E-05</y>
+        <z>205.1773</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>15</x>
+        <y>15</y>
+        <z>15</z>
+      </Scale>
+      <patrol>
+        <PatrolPoint PatrolPoint="(-150.1, 0.0, 205.2)" />
+        <PatrolPoint PatrolPoint="(-113.6, 0.0, 204.4)" />
+        <PatrolPoint PatrolPoint="(-96.3, 0.0, 215.7)" />
+      </patrol>
+    </Asset>
+  </Assets>
+</Streaming_Enemies>

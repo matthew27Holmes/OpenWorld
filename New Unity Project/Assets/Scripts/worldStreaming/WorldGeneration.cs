@@ -11,7 +11,6 @@ using System.Linq;
 
 public class WorldGeneration : MonoBehaviour {
 
-
     struct cellObject
     {
         //neighbours ints in clockwise postions
@@ -28,18 +27,18 @@ public class WorldGeneration : MonoBehaviour {
 
     List<cellObject> Cells;
     public BoxCollider floor;
+    int gridHeghit, gridwidth;
+    Vector3 scale;
     private Vector3 startPos;
-    public GameObject player;
+    public int rows, columes;
     public int numCell;
 
+    public GameObject player;
     int playersCurenntCell;
     int playersLastCell;
-    int gridHeghit, gridwidth;
-    public int rows,columes;
-    int NumberOfObjects;
+    //int NumberOfObjects;
     string GenerationLayer;
-    Vector3 scale;
-    public GameObject FloorTile;
+    //public GameObject FloorTile;
 
     List<createXML.Node> NodeContainerRefs;
 
@@ -47,7 +46,7 @@ public class WorldGeneration : MonoBehaviour {
     {
         //temp
         NodeContainerRefs = new List<createXML.Node>();
-        initialiseCells();  
+        initialiseCells();
     }
     #region createNodeGrid
     void initialiseCells()
@@ -194,88 +193,78 @@ public class WorldGeneration : MonoBehaviour {
     }
     #endregion
 
-    #region Temp SaveToXML
+    /*
+     get enemy spawners 
+        get patrol points and number of enemies form spawner
+        create enemy assets
+        save to xml 
+     */
 
-    //IEnumerator createFloorTile(Vector3 Postion)
-    //{
-    //    Instantiate(FloorTile, Postion, Quaternion.identity);
-    //    yield return null;
-    //}
-    
-    //void getCurrentFile()
-    //{
-    //    for (int i = 0; i < Cells.Count; i++)
-    //    {
-    //        createXML.Node node = createXML.Node.Load(
-    //           createXML.path + i.ToString() + ".XML");
-    //        //foreach(createXML.StreamingAsset asset in node.assets)
-    //        //{
-    //        //    asset.IsActive = true;
-    //        //}
-    //        NodeContainerRefs.Add(node);
-    //    }
-    //    Debug.Log(NodeContainerRefs.Count);
-    //}
+    void saveEnemiesToXML()
+    {
+       GameObject[] EnemeySpawners = GameObject.FindGameObjectsWithTag("Spawner");
 
+      foreach(GameObject Spawner in EnemeySpawners)
+        {
+            EnemySpawn spawn = Spawner.GetComponent<EnemySpawn>();
+            Transform PatrolRouteParent = Spawner.transform.GetChild(0);
+            EnemyXMLHandler.Node node = new EnemyXMLHandler.Node();
 
-    //void findCellsObjects()//debug for saving to xml
-    //{
-    //    //this should be in cell 
-    //    getCurrentFile();
+            for (int j = 0; j < spawn.batchSize; j++)
+            {
 
-    //    // get all objects in the scene that are on a spercfic layer 
-    //    var root = Resources.FindObjectsOfTypeAll<GameObject>()
-    //            .Where(go => go.hideFlags == HideFlags.None).ToArray();
+                Transform EnemyRoute = PatrolRouteParent.GetChild(j);
+                List<Vector3> patrolPoints = new List<Vector3>();
+                for(int k =0; k < EnemyRoute.childCount;k++)
+                {
+                    Transform point = EnemyRoute.GetChild(k);
+                    patrolPoints.Add(point.position);
+                }
 
-    //    // run trough all objecs and attach them to a node if there are on the correct layer 
-    //    foreach (GameObject obj in root)//Transform t in SceneParent.transform.GetComponentsInChildren(typeof(GameObject),false))
-    //    {
-    //        if (LayerMask.LayerToName(obj.layer) == GenerationLayer)
-    //        {
-    //            Transform t = obj.transform;
+                GameObject Enemy = Spawner.transform.GetChild(1).GetChild(j).gameObject;
 
-    //            for (int i = 0; i < Cells.Count; i++)
-    //            {
-    //                cellObject cell = Cells[i];
-    //                //if objects postion inside of cell then add it cells list 
-    //                if (cellCollison(cell, t.localPosition.x, t.localPosition.z))
-    //                {
-    //                    addToXML(obj, i);
-    //                    cell.objects.Add(obj);
-    //                  //  obj.transform.parent = cell.cellCube.transform;
-    //                    //obj.SetActive(false);
-    //                    Cells[i] = cell;
+                node.Enemies.Add(createEnemy(Enemy,patrolPoints));
 
-    //                    i = Cells.Count;
-    //                }
-    //                //cell.cellCube.SetActive(false);
-    //            }
-    //        }
-    //    }
-    //    SaveNodes();
-    //}
+                for (int i = 0; i < Cells.Count; i++)
+                {
+                    cellObject cell = Cells[i];
+                    //if objects postion inside of cell then add it cells list 
+                    if (cellCollison(cell, Spawner.transform.localPosition.x, Spawner.transform.localPosition.z))
+                    {
+                        SaveEnemyNodes(node, i);
+                    }
+                }
+            }
+        }
+        
+    }
 
-    //void SaveNodes()
-    //{
-    //    for (int i = 0; i < NodeContainerRefs.Count; i++)
-    //    {
-    //        NodeContainerRefs[i].Save(createXML.path + i.ToString() + ".XML"); 
-    //    }
-    //}
+    void SaveEnemyNodes(EnemyXMLHandler.Node node,int i)
+    {
+        node.Save(EnemyXMLHandler.path + i.ToString() + ".XML");
+    }
 
-    ////Temp
-    //void addToXML(GameObject obj, int i)
-    //{
-    //    Transform t = obj.transform;
+    EnemyXMLHandler.EnemyAsset createEnemy(GameObject Skeleton,List<Vector3> Patrol)
+    {
+        EnemyXMLHandler.EnemyAsset enemy = new EnemyXMLHandler.EnemyAsset();
+        enemy.Name = Skeleton.name;
+        enemy.postion = Patrol[0];
+        enemy.Rotation = Skeleton.transform.eulerAngles;
+        enemy.Scale = Skeleton.transform.localScale;
+        for (int j = 0; j < Patrol.Count; j++)
+        {
+            //enemy.patrol.Add(createPatrolPoints(Patrol[j]));
+        }
 
-    //    createXML.StreamingAsset asset = new createXML.StreamingAsset();
-    //    asset.Name = obj.name;
-    //    asset.postion = t.localPosition;
-    //    asset.Rotation = t.eulerAngles;
-    //    asset.Scale = t.localScale;
-    //    NodeContainerRefs[i].assets.Add(asset);
-    //}
-    #endregion
+        return enemy;
+    }
+
+    EnemyXMLHandler.PatrolPoint createPatrolPoints(Vector3 pos)
+    {
+        EnemyXMLHandler.PatrolPoint nwpoint = new EnemyXMLHandler.PatrolPoint();
+        nwpoint.postion = pos;
+        return nwpoint;
+    }
 
     // Update is called once per frame
     void Update()
@@ -285,6 +274,7 @@ public class WorldGeneration : MonoBehaviour {
     }
 
     #region updateWorld
+
     IEnumerator checkPlayersCell()
     {
         // get players postion
@@ -325,7 +315,6 @@ public class WorldGeneration : MonoBehaviour {
         cellObject PlyCell = Cells[playersCurenntCell];
 
         PlyCell = LoadObjects(PlyCell.cellID);
-
         StartCoroutine(addPlayerNodeColliders(PlyCell.cellID));
 
         // load neighbours cells if not done 
@@ -334,6 +323,7 @@ public class WorldGeneration : MonoBehaviour {
             cellObject cell = PlyCell.neighbours[i];
 
             PlyCell.neighbours[i] = LoadObjects(cell.cellID);
+            LoadEnemy(cell.cellID);
         }
         yield return null;
     }
@@ -353,7 +343,6 @@ public class WorldGeneration : MonoBehaviour {
             foreach (createXML.StreamingAsset asset in NodeContainerRef.assets)
             {
                 // format asset path
-
                 string assetName = asset.Name.Split(' ')[0];
                 string assetPath = "OpenWorldObjects/" + assetName;
                 if(assetName == "Terrain")
@@ -392,6 +381,35 @@ public class WorldGeneration : MonoBehaviour {
         yield return null;
     }
 
+    void LoadEnemy(int cellId)
+    {
+        string path = EnemyXMLHandler.path + cellId.ToString() + ".XML";
+        EnemyXMLHandler.Node ContainerRef = EnemyXMLHandler.Node.Load(path);
+
+        foreach (EnemyXMLHandler.EnemyAsset Enemies in ContainerRef.Enemies)
+        {
+            // format asset path
+            string assetName = Enemies.Name.Split(' ')[0];
+            string assetPath = "OpenWorldObjects/" + assetName;
+
+
+            GameObject Enemey = Instantiate(
+                Resources.Load<GameObject>(assetPath)) as GameObject;
+
+            Enemey.transform.position = Enemies.postion;
+            Enemey.transform.localScale = Enemies.Scale;
+            Enemey.transform.eulerAngles = Enemies.Rotation;
+            SkeletonBehaviour AI = Enemey.GetComponent<SkeletonBehaviour>();
+
+            foreach (EnemyXMLHandler.PatrolPoint patrolPoint in Enemies.patrol)
+            {
+                AI.PatrolRoute.Add(patrolPoint.postion);
+            }
+
+            Enemey.name = Enemies.Name;
+            //how do i remove these enemies
+        }
+    }
    
     #endregion
 

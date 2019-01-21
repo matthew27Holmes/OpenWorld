@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <Streaming_GameObjects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Assets>
+    <Asset name="Key2">
+      <postion>
+        <x>-101.654976</x>
+        <y>1.57</y>
+        <z>-42.57</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>27.606802</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>0.5</x>
+        <y>0.5</y>
+        <z>0.5</z>
+      </Scale>
+    </Asset>
+    <Asset name="EnemySpawn2">
+      <postion>
+        <x>-101.389206</x>
+        <y>0</y>
+        <z>-42.644146</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
     <Asset name="castle_wall_10m">
       <postion>
         <x>-141.78</x>
@@ -681,6 +715,23 @@
         <z>10</z>
       </Scale>
     </Asset>
+    <Asset name="PatrolFour">
+      <postion>
+        <x>-68.3</x>
+        <y>0</y>
+        <z>-12.6</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>1</x>
+        <y>1</y>
+        <z>1</z>
+      </Scale>
+    </Asset>
     <Asset name="wagon (1)">
       <postion>
         <x>-58.8000031</x>
@@ -961,7 +1012,7 @@
       </postion>
       <Rotation>
         <x>0</x>
-        <y>344.139954</y>
+        <y>129.718872</y>
         <z>0</z>
       </Rotation>
       <Scale>

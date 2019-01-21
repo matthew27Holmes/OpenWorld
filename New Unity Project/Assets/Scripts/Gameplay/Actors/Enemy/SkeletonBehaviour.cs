@@ -6,16 +6,17 @@ using UnityEngine.AI;
 public class SkeletonBehaviour : MonoBehaviour {
 
     // Use this for initialization
-    public List<Transform> PatrolRoute = new List<Transform>();
+    public List<Vector3> PatrolRoute = new List<Vector3>();
     public int patrolPoint;
     public Vector3 LastPlayerPostion;
     public bool playerSpotted;
+
     //two bools fo player in sightand spotteed 
     //means you can set enemy up to move to players last know postion allows flanking 
-    public bool playerInSight;
-    public bool playerInRange;
+    bool playerInSight;
+    bool playerInRange;
     public bool Attacking;
-    public Transform Spawner = null;
+   // public Transform Spawner = null;
     NavMeshAgent navMeshAgent;
     Animator anim;
     public int damage;
@@ -57,22 +58,22 @@ public class SkeletonBehaviour : MonoBehaviour {
             }
             else
             {
-                GameObject parentSpwner = GameObject.Find(Spawner.gameObject.name);
+               // GameObject parentSpwner = GameObject.Find(Spawner.gameObject.name);
                 anim.SetBool("Patroling", true);
                 anim.SetBool("ChasePlayer", false);
                 anim.SetBool("AttackPlayer", false);
                 Attacking = false;
 
 
-                if (parentSpwner != null)
-                {
+              //  if (parentSpwner != null)
+               // {
                     Patrol();
-                }
-                else
-                {
+              //  }
+              //  else
+              //  {
                     //return home and wait
-                    navMeshAgent.SetDestination(Spawner.position);
-                }
+                 //   navMeshAgent.SetDestination(Spawner.position);
+               // }
             }
         }
         else
@@ -85,8 +86,8 @@ public class SkeletonBehaviour : MonoBehaviour {
     void Patrol()
     {
         navMeshAgent.speed = 2;
-        navMeshAgent.SetDestination(PatrolRoute[patrolPoint].position);
-        if(Vector3.Distance(this.transform.position , PatrolRoute[patrolPoint].position) <= 3.0f)//this is hacking
+        navMeshAgent.SetDestination(PatrolRoute[patrolPoint]);
+        if(Vector3.Distance(this.transform.position , PatrolRoute[patrolPoint]) <= 3.0f)//this is hacking
         {
             if (PatrolRoute.Count > 1)
             {

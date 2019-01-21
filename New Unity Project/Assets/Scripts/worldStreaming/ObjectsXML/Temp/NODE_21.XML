@@ -1055,11 +1055,11 @@
         <z>1</z>
       </Scale>
     </Asset>
-    <Asset name="PatrolPoint (4)">
+    <Asset name="PatrolPoint (3)">
       <postion>
-        <x>-111.2</x>
+        <x>-127.4</x>
         <y>0</y>
-        <z>83.1</z>
+        <z>133.4</z>
       </postion>
       <Rotation>
         <x>0</x>
@@ -1072,11 +1072,11 @@
         <z>1</z>
       </Scale>
     </Asset>
-    <Asset name="PatrolPoint (3)">
+    <Asset name="PatrolPoint (4)">
       <postion>
-        <x>-127.4</x>
+        <x>-111.2</x>
         <y>0</y>
-        <z>133.4</z>
+        <z>83.1</z>
       </postion>
       <Rotation>
         <x>0</x>
