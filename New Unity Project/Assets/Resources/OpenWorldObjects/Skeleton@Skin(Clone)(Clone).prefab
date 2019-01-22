@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 65777696554992192}
   - component: {fileID: 65205959640809480}
   m_Layer: 0
-  m_Name: Skeleton@Skin(Clone)
+  m_Name: Skeleton@Skin(Clone)(Clone)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

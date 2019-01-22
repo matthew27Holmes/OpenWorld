@@ -10,7 +10,7 @@ using System.Linq;
 public class EnemyXMLHandler : MonoBehaviour {
 
     [XmlRoot("Streaming_Enemies")]
-    public class Node
+    public class EnemiesNode
     {
         [XmlArray("Assets")]
         [XmlArrayItem("Asset")]
@@ -19,19 +19,19 @@ public class EnemyXMLHandler : MonoBehaviour {
 
         public void Save(string path)
         {
-            var serializer = new XmlSerializer(typeof(Node));
+            var serializer = new XmlSerializer(typeof(EnemiesNode));
             using (var stream = new FileStream(path, FileMode.Create))
             {
                 serializer.Serialize(stream, this);
             }
         }
 
-        public static Node Load(string path)
+        public static EnemiesNode Load(string path)
         {
-            var serializer = new XmlSerializer(typeof(Node));
+            var serializer = new XmlSerializer(typeof(EnemiesNode));
             using (var stream = new FileStream(path, FileMode.Open))
             {
-                return serializer.Deserialize(stream) as Node;
+                return serializer.Deserialize(stream) as EnemiesNode;
             }
         }
     }
@@ -43,12 +43,15 @@ public class EnemyXMLHandler : MonoBehaviour {
         public Vector3 postion;
         public Vector3 Rotation;
         public Vector3 Scale;
+
+        [XmlArray("PatrolPoints")]
+        [XmlArrayItem("Point")]
+
         public List<PatrolPoint> patrol = new List<PatrolPoint>();
     };
 
     public class PatrolPoint
     {
-        [XmlAttribute("PatrolPoint")]
         public Vector3 postion;
     }
 

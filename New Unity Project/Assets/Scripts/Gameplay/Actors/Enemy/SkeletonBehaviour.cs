@@ -22,6 +22,8 @@ public class SkeletonBehaviour : MonoBehaviour {
     public int damage;
     int health;
     bool alive;
+
+    public int NodeID = 0;
     
 	void Start () {
 

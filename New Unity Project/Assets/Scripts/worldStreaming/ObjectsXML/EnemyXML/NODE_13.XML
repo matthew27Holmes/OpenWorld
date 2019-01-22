@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <Streaming_Enemies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Assets>
-    <Asset name="Skeleton@Skin(Clone)">
+    <Asset name="Skeleton@Skin(Clone)(Clone)">
       <postion>
         <x>81.25</x>
         <y>1</y>
@@ -17,11 +17,17 @@
         <y>30</y>
         <z>30</z>
       </Scale>
-      <patrol>
-        <PatrolPoint PatrolPoint="(81.3, 1.0, -83.9)" />
-      </patrol>
+      <PatrolPoints>
+        <Point>
+          <postion>
+            <x>81.25</x>
+            <y>1</y>
+            <z>-83.9</z>
+          </postion>
+        </Point>
+      </PatrolPoints>
     </Asset>
-    <Asset name="Skeleton@Skin(Clone)">
+    <Asset name="Skeleton@Skin(Clone)(Clone)">
       <postion>
         <x>58.2</x>
         <y>1</y>
@@ -37,16 +43,52 @@
         <y>30</y>
         <z>30</z>
       </Scale>
-      <patrol>
-        <PatrolPoint PatrolPoint="(58.2, 1.0, -90.1)" />
-        <PatrolPoint PatrolPoint="(58.2, 1.0, -119.4)" />
-        <PatrolPoint PatrolPoint="(74.7, 1.0, -135.8)" />
-        <PatrolPoint PatrolPoint="(89.2, 1.0, -135.8)" />
-        <PatrolPoint PatrolPoint="(86.1, 1.0, -115.9)" />
-        <PatrolPoint PatrolPoint="(86.1, 1.0, -95.1)" />
-      </patrol>
+      <PatrolPoints>
+        <Point>
+          <postion>
+            <x>58.2</x>
+            <y>1</y>
+            <z>-90.05</z>
+          </postion>
+        </Point>
+        <Point>
+          <postion>
+            <x>58.2</x>
+            <y>1</y>
+            <z>-119.4</z>
+          </postion>
+        </Point>
+        <Point>
+          <postion>
+            <x>74.7</x>
+            <y>1</y>
+            <z>-135.8</z>
+          </postion>
+        </Point>
+        <Point>
+          <postion>
+            <x>89.175</x>
+            <y>1</y>
+            <z>-135.8</z>
+          </postion>
+        </Point>
+        <Point>
+          <postion>
+            <x>86.1</x>
+            <y>1</y>
+            <z>-115.85</z>
+          </postion>
+        </Point>
+        <Point>
+          <postion>
+            <x>86.1</x>
+            <y>1</y>
+            <z>-95.125</z>
+          </postion>
+        </Point>
+      </PatrolPoints>
     </Asset>
-    <Asset name="Skeleton@Skin(Clone)">
+    <Asset name="Skeleton@Skin(Clone)(Clone)">
       <postion>
         <x>45.25</x>
         <y>1</y>
@@ -62,10 +104,22 @@
         <y>30</y>
         <z>30</z>
       </Scale>
-      <patrol>
-        <PatrolPoint PatrolPoint="(45.3, 1.0, -37.2)" />
-        <PatrolPoint PatrolPoint="(45.3, 1.0, -75.4)" />
-      </patrol>
+      <PatrolPoints>
+        <Point>
+          <postion>
+            <x>45.25</x>
+            <y>1</y>
+            <z>-37.1499977</z>
+          </postion>
+        </Point>
+        <Point>
+          <postion>
+            <x>45.25</x>
+            <y>1</y>
+            <z>-75.35</z>
+          </postion>
+        </Point>
+      </PatrolPoints>
     </Asset>
   </Assets>
 </Streaming_Enemies>

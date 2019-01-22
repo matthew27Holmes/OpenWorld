@@ -47,6 +47,7 @@ public class WorldGeneration : MonoBehaviour {
         //temp
         NodeContainerRefs = new List<createXML.Node>();
         initialiseCells();
+        //saveEnemiesToXML();
     }
     #region createNodeGrid
     void initialiseCells()
@@ -192,15 +193,10 @@ public class WorldGeneration : MonoBehaviour {
         }
     }
     #endregion
+    
+    #region saveEnemyTemp
 
-    /*
-     get enemy spawners 
-        get patrol points and number of enemies form spawner
-        create enemy assets
-        save to xml 
-     */
-
-    void saveEnemiesToXML()
+        void saveEnemiesToXML()
     {
        GameObject[] EnemeySpawners = GameObject.FindGameObjectsWithTag("Spawner");
 
@@ -208,7 +204,7 @@ public class WorldGeneration : MonoBehaviour {
         {
             EnemySpawn spawn = Spawner.GetComponent<EnemySpawn>();
             Transform PatrolRouteParent = Spawner.transform.GetChild(0);
-            EnemyXMLHandler.Node node = new EnemyXMLHandler.Node();
+            EnemyXMLHandler.EnemiesNode node = new EnemyXMLHandler.EnemiesNode();
 
             for (int j = 0; j < spawn.batchSize; j++)
             {
@@ -239,12 +235,12 @@ public class WorldGeneration : MonoBehaviour {
         
     }
 
-    void SaveEnemyNodes(EnemyXMLHandler.Node node,int i)
+        void SaveEnemyNodes(EnemyXMLHandler.EnemiesNode node,int i)
     {
         node.Save(EnemyXMLHandler.path + i.ToString() + ".XML");
     }
 
-    EnemyXMLHandler.EnemyAsset createEnemy(GameObject Skeleton,List<Vector3> Patrol)
+        EnemyXMLHandler.EnemyAsset createEnemy(GameObject Skeleton,List<Vector3> Patrol)
     {
         EnemyXMLHandler.EnemyAsset enemy = new EnemyXMLHandler.EnemyAsset();
         enemy.Name = Skeleton.name;
@@ -253,24 +249,36 @@ public class WorldGeneration : MonoBehaviour {
         enemy.Scale = Skeleton.transform.localScale;
         for (int j = 0; j < Patrol.Count; j++)
         {
-            //enemy.patrol.Add(createPatrolPoints(Patrol[j]));
+            enemy.patrol.Add(createPatrolPoints(Patrol[j]));
         }
 
         return enemy;
     }
 
-    EnemyXMLHandler.PatrolPoint createPatrolPoints(Vector3 pos)
+        EnemyXMLHandler.PatrolPoint createPatrolPoints(Vector3 pos)
     {
         EnemyXMLHandler.PatrolPoint nwpoint = new EnemyXMLHandler.PatrolPoint();
         nwpoint.postion = pos;
         return nwpoint;
     }
+    #endregion
 
     // Update is called once per frame
     void Update()
     {
-        //run in coruntine 
         StartCoroutine(checkPlayersCell()); //should check to see if its inside player view port instead
+    }
+
+    bool cellCollison(cellObject cell, float px, float pz)
+    {
+        if (px >= cell.PostionX - (cell.Width / 2)
+            && px <= cell.PostionX + (cell.Width / 2)
+            && pz >= cell.PostionZ - (cell.Height / 2)
+            && pz <= cell.PostionZ + (cell.Height) / 2)
+        {
+            return true;
+        }
+        return false;
     }
 
     #region updateWorld
@@ -293,18 +301,6 @@ public class WorldGeneration : MonoBehaviour {
             }
         }
         yield return null;
-    }
-
-    bool cellCollison(cellObject cell,float px,float pz)
-   {
-        if (px >= cell.PostionX - (cell.Width / 2)
-            && px <= cell.PostionX + (cell.Width / 2)
-            && pz >= cell.PostionZ - (cell.Height / 2)
-            && pz <= cell.PostionZ + (cell.Height) / 2)
-        {
-            return true;
-        } 
-        return false;
     }
 
     #region Load
@@ -384,7 +380,7 @@ public class WorldGeneration : MonoBehaviour {
     void LoadEnemy(int cellId)
     {
         string path = EnemyXMLHandler.path + cellId.ToString() + ".XML";
-        EnemyXMLHandler.Node ContainerRef = EnemyXMLHandler.Node.Load(path);
+        EnemyXMLHandler.EnemiesNode ContainerRef = EnemyXMLHandler.EnemiesNode.Load(path);
 
         foreach (EnemyXMLHandler.EnemyAsset Enemies in ContainerRef.Enemies)
         {
@@ -405,9 +401,9 @@ public class WorldGeneration : MonoBehaviour {
             {
                 AI.PatrolRoute.Add(patrolPoint.postion);
             }
-
+            AI.NodeID = cellId;
             Enemey.name = Enemies.Name;
-            //how do i remove these enemies
+
         }
     }
    
@@ -458,7 +454,7 @@ public class WorldGeneration : MonoBehaviour {
             cell.cellCube.SetActive(cell.isLoaded);
 
             //save to temp here
-            SaveTempNode(cell);
+            //SaveTempNode(cell);
 
             foreach (GameObject obj in cell.objects)
             {
@@ -478,6 +474,8 @@ public class WorldGeneration : MonoBehaviour {
         }
         yield return null;
     }
+
+    //void unLoadEnemey
     #endregion
 
     #region TempFiles
