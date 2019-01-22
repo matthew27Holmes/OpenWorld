@@ -56,6 +56,4 @@ public class createXML : MonoBehaviour
 
   
     public const string path = "Assets/Scripts/worldStreaming/ObjectsXML/XML/NODE_";
-    public const string TempPath = "Assets/Scripts/worldStreaming/ObjectsXML/Temp/NODE_";
-
 }

@@ -56,6 +56,8 @@ public class EnemyXMLHandler : MonoBehaviour {
     }
 
     public const string path = "Assets/Scripts/worldStreaming/ObjectsXML/EnemyXML/NODE_";
+    public const string TempPath = "Assets/Scripts/worldStreaming/ObjectsXML/EnemyXML/Temp/NODE_";
+
 }
 
 
