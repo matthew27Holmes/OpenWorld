@@ -14573,7 +14573,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2025046302}
   - component: {fileID: 2025046301}
-  - component: {fileID: 2025046303}
   m_Layer: 0
   m_Name: Nodes
   m_TagString: Untagged
@@ -14592,6 +14591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a08a1633ae780184bb6345c7c7fc40b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cellCube: {fileID: 1449553779906420, guid: 4c37d0fdd55470848af5a5d9c1e38607, type: 2}
   floor: {fileID: 2139356613}
   rows: 0
   columes: 0
@@ -14611,17 +14611,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2025046303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2025046300}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 821a88492b95efc4c9d0250438340e61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2035572527
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,6 +26,7 @@ public class WorldGeneration : MonoBehaviour {
     }
 
     List<cellObject> Cells;
+    public GameObject cellCube;
     public BoxCollider floor;
     int gridHeghit, gridwidth;
     Vector3 scale;
@@ -36,11 +37,11 @@ public class WorldGeneration : MonoBehaviour {
     public GameObject player;
     int playersCurenntCell;
     int playersLastCell;
-    //int NumberOfObjects;
     string GenerationLayer;
-    //public GameObject FloorTile;
 
     List<createXML.Node> NodeContainerRefs;
+
+    GameObject[] enemies;
 
     void Start()
     {
@@ -83,9 +84,9 @@ public class WorldGeneration : MonoBehaviour {
                 cell.objects = new List<GameObject>();
                 cell.neighbours = new Dictionary<int, cellObject>();
 
-                cell.cellCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                cell.cellCube.transform.localScale = new Vector3(scale.x, 1, scale.z);
-
+                //cell.cellCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                //cell.cellCube.transform.localScale = new Vector3(scale.x, 1, scale.z);
+                cell.cellCube = Instantiate(cellCube);
                 cell.Width = scale.x;
                 cell.Height = scale.z;
 
@@ -250,7 +251,6 @@ public class WorldGeneration : MonoBehaviour {
             cellObject cell = PlyCell.neighbours[i];
 
             PlyCell.neighbours[i] = LoadObjects(cell.cellID);
-            LoadEnemy(cell.cellID);
         }
         yield return null;
     }
@@ -288,11 +288,12 @@ public class WorldGeneration : MonoBehaviour {
                 instance.transform.position = asset.postion;
                 instance.transform.localScale = asset.Scale;
                 instance.transform.eulerAngles = asset.Rotation;
-                //instance.AddComponent<MeshCollider>();
 
                 instance.name = asset.Name;
                 cell.objects.Add(instance);
             }
+
+            LoadEnemy(NodeID);
         }
         Cells[NodeID] = cell;
         return cell;
@@ -332,9 +333,8 @@ public class WorldGeneration : MonoBehaviour {
             {
                 AI.PatrolRoute.Add(patrolPoint.postion);
             }
-            AI.NodeID = cellId;
+            AI.BirthNodeID = cellId;
             Enemey.name = Enemies.Name;
-
         }
     }
    

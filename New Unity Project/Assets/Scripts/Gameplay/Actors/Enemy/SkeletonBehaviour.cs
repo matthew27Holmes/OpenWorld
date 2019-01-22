@@ -23,6 +23,7 @@ public class SkeletonBehaviour : MonoBehaviour {
     int health;
     bool alive;
 
+    public int BirthNodeID = 0;
     public int NodeID = 0;
     
 	void Start () {
@@ -164,7 +165,13 @@ public class SkeletonBehaviour : MonoBehaviour {
         anim.SetBool("Patroling", true);
     }
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Cell")
+        {
+             int.TryParse(other.name, out NodeID);
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")

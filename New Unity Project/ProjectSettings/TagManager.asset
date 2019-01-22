@@ -10,6 +10,7 @@ TagManager:
   - floor
   - sword
   - Spawner
+  - Cell
   layers:
   - Default
   - TransparentFX
