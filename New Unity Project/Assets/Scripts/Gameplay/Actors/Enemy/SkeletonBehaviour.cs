@@ -13,7 +13,7 @@ public class SkeletonBehaviour : MonoBehaviour {
 
     //two bools fo player in sightand spotteed 
     //means you can set enemy up to move to players last know postion allows flanking 
-    bool playerInSight;
+   // bool playerInSight;
     bool playerInRange;
     public bool Attacking;
    // public Transform Spawner = null;
@@ -21,15 +21,16 @@ public class SkeletonBehaviour : MonoBehaviour {
     Animator anim;
     public int damage;
     int health;
-    bool alive;
+    public bool alive;
 
     public int BirthNodeID = 0;
     public int NodeID = 0;
+    public string HashID;
     
 	void Start () {
 
         playerSpotted = false;
-        playerInSight = false;
+        //playerInSight = false;
         playerInRange = false;
         Attacking = false;
         LastPlayerPostion = new Vector3(0,0,0);
@@ -81,10 +82,13 @@ public class SkeletonBehaviour : MonoBehaviour {
         }
         else
         {
+            WorldGeneration GM = GameObject.FindGameObjectWithTag("GameManger").GetComponent<WorldGeneration>();
+            GM.ActiveEnemies.Remove(this.gameObject);
             Destroy(gameObject);
         }
 
     }
+
 
     void Patrol()
     {
@@ -114,7 +118,7 @@ public class SkeletonBehaviour : MonoBehaviour {
         navMeshAgent.speed = 5;
         navMeshAgent.SetDestination(LastPlayerPostion);
 
-        anim.SetBool("Ide", false);
+       // anim.SetBool("Ide", false);
         anim.SetBool("Patroling", false);
         anim.SetBool("AttackPlayer", false);
         Attacking = false;
@@ -136,10 +140,13 @@ public class SkeletonBehaviour : MonoBehaviour {
 
     void Die()
     {
-        if(health <= 0 )
+        if (health <= 0)
         {
             anim.SetInteger("Health", health);
             alive = false;
+            // remove self from world generations active Enemies List 
+            WorldGeneration GM = GameObject.FindGameObjectWithTag("GameManger").GetComponent<WorldGeneration>();
+            GM.ActiveEnemies.Remove(this.gameObject);
         }
     }
 
@@ -147,7 +154,7 @@ public class SkeletonBehaviour : MonoBehaviour {
     public void PlayerSighted(Transform PlayerPostion)
     {
         anim.SetBool("PlayerSpotted", true);
-        playerInSight = true;
+        //playerInSight = true;
         playerSpotted = true;
         LastPlayerPostion = PlayerPostion.position;
     }
@@ -156,7 +163,7 @@ public class SkeletonBehaviour : MonoBehaviour {
     public void LostPlayer()
     {
         LastPlayerPostion = new Vector3(0,0,0);
-        playerInSight = false;
+        //playerInSight = false;
         playerSpotted = false;
         anim.SetBool("PlayerSpotted", false);
         anim.SetBool("AttackPlayer", false);
