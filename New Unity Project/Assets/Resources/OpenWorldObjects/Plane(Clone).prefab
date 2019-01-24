@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65330776500436622}
   - component: {fileID: 114978356113169038}
   - component: {fileID: 208500631300559842}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Plane(Clone)
   m_TagString: floor
   m_Icon: {fileID: 0}

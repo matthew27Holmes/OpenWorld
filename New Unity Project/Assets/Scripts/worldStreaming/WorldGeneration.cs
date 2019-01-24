@@ -29,7 +29,7 @@ public class WorldGeneration : MonoBehaviour {
     public GameObject cellCube;
     public BoxCollider floor;
     int gridHeghit, gridwidth;
-    Vector3 scale;
+    public Vector3 scale;
     private Vector3 startPos;
     public int rows, columes;
     public int numCell;
@@ -219,6 +219,11 @@ public class WorldGeneration : MonoBehaviour {
         return false;
     }
 
+    public GameObject getCellCube(int cellId)
+    {
+        return Cells[cellId].cellCube;
+    }
+
     #region updateWorld
 
     IEnumerator checkPlayersCell()
@@ -259,6 +264,11 @@ public class WorldGeneration : MonoBehaviour {
             PlyCell.neighbours[i] = LoadObjects(cell.cellID);
         }
         yield return null;
+    }
+
+    public bool isCellLoaded(int cellId)
+    {
+        return Cells[cellId].isLoaded;
     }
 
     cellObject LoadObjects(int NodeID)
@@ -364,6 +374,7 @@ public class WorldGeneration : MonoBehaviour {
             return true;
     }
 
+
     int FindEnemyBirthNode(Vector3 firstPatrolPoint)
     {
         for (int i = 0; i < Cells.Count; i++)
@@ -377,7 +388,6 @@ public class WorldGeneration : MonoBehaviour {
         }
         return 100;// debug should ever be hit 
     }
-
 
     #endregion
 

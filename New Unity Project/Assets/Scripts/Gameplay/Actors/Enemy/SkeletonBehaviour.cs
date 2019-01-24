@@ -8,6 +8,7 @@ public class SkeletonBehaviour : MonoBehaviour {
     // Use this for initialization
     public List<Vector3> PatrolRoute = new List<Vector3>();
     public int patrolPoint;
+    List<Vector3> TempPatrolPoints;
     public Vector3 LastPlayerPostion;
     public bool playerSpotted;
 
@@ -23,16 +24,22 @@ public class SkeletonBehaviour : MonoBehaviour {
     int health;
     public bool alive;
 
+    bool GenerateTempPatrol;
+
     public int BirthNodeID = 0;
     public int NodeID = 0;
     public string HashID;
-    
-	void Start () {
+    WorldGeneration GM;
+
+
+    void Start () {
 
         playerSpotted = false;
         //playerInSight = false;
         playerInRange = false;
         Attacking = false;
+        GenerateTempPatrol = false;
+
         LastPlayerPostion = new Vector3(0,0,0);
         navMeshAgent = GetComponent<NavMeshAgent>();
         patrolPoint = 0;
@@ -42,10 +49,12 @@ public class SkeletonBehaviour : MonoBehaviour {
         damage = 5;
         health = 100;
         alive = true;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        GM = GameObject.FindGameObjectWithTag("GameManger").GetComponent<WorldGeneration>();
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         if (alive)
         {
@@ -69,15 +78,26 @@ public class SkeletonBehaviour : MonoBehaviour {
                 Attacking = false;
 
 
-              //  if (parentSpwner != null)
-               // {
-                    Patrol();
-              //  }
-              //  else
-              //  {
-                    //return home and wait
-                 //   navMeshAgent.SetDestination(Spawner.position);
-               // }
+                if (GM.isCellLoaded(BirthNodeID))
+                {
+                    if (GenerateTempPatrol)
+                    {
+                        GenerateTempPatrol = false;
+                        patrolPoint = 0;
+                    }
+
+                    Patrol(PatrolRoute);
+                }
+                else
+                {
+                    if (!GenerateTempPatrol)
+                    {
+                        TempPatrol();
+                        GenerateTempPatrol = true;
+                        patrolPoint = 0;
+                    }
+                    Patrol(TempPatrolPoints);
+                }
             }
         }
         else
@@ -86,20 +106,19 @@ public class SkeletonBehaviour : MonoBehaviour {
             GM.ActiveEnemies.Remove(this.gameObject);
             Destroy(gameObject);
         }
-
     }
 
 
-    void Patrol()
+    void Patrol(List<Vector3> Patrol)
     {
         navMeshAgent.speed = 2;
-        navMeshAgent.SetDestination(PatrolRoute[patrolPoint]);
-        if(Vector3.Distance(this.transform.position , PatrolRoute[patrolPoint]) <= 3.0f)//this is hacking
+        navMeshAgent.SetDestination(Patrol[patrolPoint]);
+        if(Vector3.Distance(this.transform.position , Patrol[patrolPoint]) <= 3.0f)//this is hacking
         {
-            if (PatrolRoute.Count > 1)
+            if (Patrol.Count > 1)
             {
                 patrolPoint++;
-                if (patrolPoint >= PatrolRoute.Count)
+                if (patrolPoint >= Patrol.Count)
                 {
                     patrolPoint = 0;
                 }
@@ -111,6 +130,31 @@ public class SkeletonBehaviour : MonoBehaviour {
             }
         }
     }
+
+    void TempPatrol()
+    {
+        TempPatrolPoints = new List<Vector3>();
+        int PatrolPointNum = Random.Range(1, 5);
+        float x, z;
+        Transform cell = GM.getCellCube(NodeID).transform;
+
+        for (int i = 0; i < PatrolPointNum;)
+        {
+            float randW = Random.Range(cell.localScale.x / 2, cell.localScale.x / 2 * -1);
+            float randD = Random.Range(cell.localScale.z / 2, cell.localScale.z / 2 * -1);
+
+            x = cell.position.x - randW;
+            z = cell.position.z - randD;
+
+            Vector3 TempPatrol = new Vector3(x, transform.position.y, z);
+            if (!Physics.CheckSphere(TempPatrol, 2,LayerMask.NameToLayer("floor")))
+            {
+                i++;
+                TempPatrolPoints.Add(TempPatrol);
+            }
+        }
+    }
+
 
     void moveToPlayer()
     {
@@ -145,11 +189,9 @@ public class SkeletonBehaviour : MonoBehaviour {
             anim.SetInteger("Health", health);
             alive = false;
             // remove self from world generations active Enemies List 
-            WorldGeneration GM = GameObject.FindGameObjectWithTag("GameManger").GetComponent<WorldGeneration>();
             GM.ActiveEnemies.Remove(this.gameObject);
         }
     }
-
 
     public void PlayerSighted(Transform PlayerPostion)
     {

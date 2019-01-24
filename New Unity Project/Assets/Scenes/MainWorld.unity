@@ -14593,6 +14593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellCube: {fileID: 1449553779906420, guid: 4c37d0fdd55470848af5a5d9c1e38607, type: 2}
   floor: {fileID: 2139356613}
+  scale: {x: 0, y: 0, z: 0}
   rows: 0
   columes: 0
   numCell: 0
