@@ -15,13 +15,12 @@ public class SkeletonBehaviour : MonoBehaviour {
     //two bools fo player in sightand spotteed 
     //means you can set enemy up to move to players last know postion allows flanking 
    // bool playerInSight;
-    bool playerInRange;
     public bool Attacking;
    // public Transform Spawner = null;
     NavMeshAgent navMeshAgent;
     Animator anim;
     public int damage;
-    int health;
+    public int health;
     public bool alive;
 
     bool GenerateTempPatrol;
@@ -31,12 +30,10 @@ public class SkeletonBehaviour : MonoBehaviour {
     public string HashID;
     WorldGeneration GM;
 
-
     void Start () {
-
+        gameObject.GetComponent<NavMeshAgent>().Warp(transform.position);
         playerSpotted = false;
         //playerInSight = false;
-        playerInRange = false;
         Attacking = false;
         GenerateTempPatrol = false;
 
@@ -60,7 +57,8 @@ public class SkeletonBehaviour : MonoBehaviour {
         {
             if (playerSpotted)
             {
-                if (playerInRange)
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (Vector3.Distance(player.transform.position,transform.position) <= 3)
                 {
                     AttackPlayer();
                 }
@@ -92,7 +90,7 @@ public class SkeletonBehaviour : MonoBehaviour {
                 {
                     if (!GenerateTempPatrol)
                     {
-                        TempPatrol();
+                        TempPatrol();// need to test this 
                         GenerateTempPatrol = true;
                         patrolPoint = 0;
                     }
@@ -125,36 +123,32 @@ public class SkeletonBehaviour : MonoBehaviour {
             }
             else
             {
-                anim.SetBool("Ide", true);
+                anim.SetBool("Idel", true);
                 anim.SetBool("Patroling", false);
             }
         }
     }
 
+    // handle patrol points being deleted 
     void TempPatrol()
     {
         TempPatrolPoints = new List<Vector3>();
-        int PatrolPointNum = Random.Range(1, 5);
-        float x, z;
+        int PatrolPointNum = Random.Range(2, 5);
         Transform cell = GM.getCellCube(NodeID).transform;
 
-        for (int i = 0; i < PatrolPointNum;)
+        for (int i = 0; i < PatrolPointNum; i++)
         {
             float randW = Random.Range(cell.localScale.x / 2, cell.localScale.x / 2 * -1);
             float randD = Random.Range(cell.localScale.z / 2, cell.localScale.z / 2 * -1);
 
-            x = cell.position.x - randW;
-            z = cell.position.z - randD;
+            Vector3 randomDirection = new Vector3(randW, transform.position.y, randD);
 
-            Vector3 TempPatrol = new Vector3(x, transform.position.y, z);
-            if (!Physics.CheckSphere(TempPatrol, 2,LayerMask.NameToLayer("floor")))
-            {
-                i++;
-                TempPatrolPoints.Add(TempPatrol);
-            }
-        }
+            randomDirection += transform.position;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomDirection, out hit, 1, 9);
+            TempPatrolPoints.Add(hit.position);
+        } 
     }
-
 
     void moveToPlayer()
     {
@@ -162,12 +156,13 @@ public class SkeletonBehaviour : MonoBehaviour {
         navMeshAgent.speed = 5;
         navMeshAgent.SetDestination(LastPlayerPostion);
 
-       // anim.SetBool("Ide", false);
+        anim.SetBool("Idel", false);
         anim.SetBool("Patroling", false);
         anim.SetBool("AttackPlayer", false);
         Attacking = false;
         anim.SetBool("ChasePlayer", true);
     }
+
     void AttackPlayer()
     { 
         navMeshAgent.SetDestination(transform.position);
@@ -201,7 +196,6 @@ public class SkeletonBehaviour : MonoBehaviour {
         LastPlayerPostion = PlayerPostion.position;
     }
 
-
     public void LostPlayer()
     {
         LastPlayerPostion = new Vector3(0,0,0);
@@ -210,7 +204,7 @@ public class SkeletonBehaviour : MonoBehaviour {
         anim.SetBool("PlayerSpotted", false);
         anim.SetBool("AttackPlayer", false);
         anim.SetBool("ChasePlayer", false);
-        anim.SetBool("Ide", false);
+        anim.SetBool("Idel", false);
         anim.SetBool("Patroling", true);
     }
 
@@ -219,20 +213,6 @@ public class SkeletonBehaviour : MonoBehaviour {
         if(other.tag == "Cell")
         {
              int.TryParse(other.name, out NodeID);
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            playerInRange = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            playerInRange = false;
         }
     }
 }

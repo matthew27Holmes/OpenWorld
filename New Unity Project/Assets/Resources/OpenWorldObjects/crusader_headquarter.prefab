@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4428124171281192}
   - component: {fileID: 33995995699034526}
   - component: {fileID: 23966480043831714}
+  - component: {fileID: 208725872930964228}
   m_Layer: 9
   m_Name: crusader_headquarter
   m_TagString: floor
@@ -92,3 +93,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1746639130438152}
   m_Mesh: {fileID: 4300000, guid: a742f54a31396744f823b786554411b4, type: 3}
+--- !u!208 &208725872930964228
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746639130438152}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 21.609001, y: 29.014002, z: 14.607}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -3.6380002, z: 14.493001}
+  m_TimeToStationary: 0.5

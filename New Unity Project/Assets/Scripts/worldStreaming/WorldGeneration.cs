@@ -50,6 +50,7 @@ public class WorldGeneration : MonoBehaviour {
         initialiseCells();
         createEnemyTempFiles();
     }
+
     #region createNodeGrid
     void initialiseCells()
     {
@@ -99,9 +100,10 @@ public class WorldGeneration : MonoBehaviour {
                 cell.PostionX = postionX;
                 cell.PostionZ = postionY;
 
-               // StartCoroutine(createFloorTile(new Vector3(postionX, 0.0f, postionY)));
+                // StartCoroutine(createFloorTile(new Vector3(postionX, 0.0f, postionY)));
 
-                cell.cellCube.SetActive(cell.isLoaded);
+                cell.cellCube.SetActive(cell.isLoaded);//used to debug which chuncks the system is loading in
+                cell.cellCube.GetComponent<MeshRenderer>().enabled = false;
                 cell.cellID = Cells.Count;
                 cell.cellCube.name = cell.cellID.ToString();
                 Cells.Add(cell);
@@ -318,7 +320,7 @@ public class WorldGeneration : MonoBehaviour {
     IEnumerator addPlayerNodeColliders(int NodeID)
     {
         cellObject cell = Cells[NodeID];
-        foreach(GameObject obj in cell.objects)
+        foreach (GameObject obj in cell.objects)
         {
             obj.AddComponent<MeshCollider>();
         }
@@ -330,30 +332,35 @@ public class WorldGeneration : MonoBehaviour {
         string path = EnemyXMLHandler.TempPath + cellId.ToString() + ".XML";
         EnemyXMLHandler.EnemiesNode ContainerRef = EnemyXMLHandler.EnemiesNode.Load(path);
 
-        foreach (EnemyXMLHandler.EnemyAsset Enemies in ContainerRef.Enemies)
+        foreach (EnemyXMLHandler.EnemyAsset EnemeyData in ContainerRef.Enemies)
         {
             // format asset path
-            string assetName = Enemies.Name.Split(' ')[0];
+            string assetName = EnemeyData.Name.Split(' ')[0];
             string assetPath = "OpenWorldObjects/" + assetName;
-            string enemyHash = cellId.ToString() + assetName + Enemies.postion.ToString();
+            string enemyHash = cellId.ToString() + assetName + EnemeyData.postion.ToString();
 
             if (checkIfEnemyLoaded(enemyHash))
             {
                 GameObject Enemey = Instantiate(
                   Resources.Load<GameObject>(assetPath)) as GameObject;
 
-                Enemey.transform.position = Enemies.postion;
-                Enemey.transform.localScale = Enemies.Scale;
-                Enemey.transform.eulerAngles = Enemies.Rotation;
+                Enemey.transform.position = EnemeyData.postion;
+                Enemey.transform.localScale = EnemeyData.Scale;
+                Enemey.transform.eulerAngles = EnemeyData.Rotation;
                 SkeletonBehaviour AI = Enemey.GetComponent<SkeletonBehaviour>();
                 AI.HashID = enemyHash;
 
-                foreach (EnemyXMLHandler.PatrolPoint patrolPoint in Enemies.patrol)
+                if (EnemeyData.health > 0)//account for health being 0 at the being
+                {
+                    AI.health = EnemeyData.health;
+                }
+
+                foreach (EnemyXMLHandler.PatrolPoint patrolPoint in EnemeyData.patrol)
                 {
                     AI.PatrolRoute.Add(patrolPoint.postion);
                 }
                 AI.BirthNodeID = FindEnemyBirthNode(AI.PatrolRoute[0]);
-                Enemey.name = Enemies.Name;
+                Enemey.name = EnemeyData.Name;
 
                 ActiveEnemies.Add(Enemey);
             }
@@ -373,7 +380,6 @@ public class WorldGeneration : MonoBehaviour {
         }
             return true;
     }
-
 
     int FindEnemyBirthNode(Vector3 firstPatrolPoint)
     {
@@ -398,6 +404,7 @@ public class WorldGeneration : MonoBehaviour {
         cellObject PlyCell = Cells[playersCurenntCell];
 
         StartCoroutine(RemovePlayerNodeColliders(playersLastCell));
+        yield return new WaitForSeconds(0.1f);
         for (int i = 0; i < LastCell.neighbours.Count; i++)
         {
             cellObject cell = LastCell.neighbours[i];
@@ -406,8 +413,6 @@ public class WorldGeneration : MonoBehaviour {
                 LastCell.neighbours[i] = UnLoadObjects(cell.cellID);
             }
         }
-
-        yield return null;
     }
 
     bool isNodeANeighbours(cellObject cell)
@@ -459,13 +464,14 @@ public class WorldGeneration : MonoBehaviour {
     void unLoadEnemey(int cellID)
     {
         //   GameObject[] Enemeies = GameObject.FindGameObjectsWithTag("Enemy");
+
         List<GameObject> Temp = new List<GameObject>(ActiveEnemies);
         foreach (GameObject Enemy in Temp)
         {
             SkeletonBehaviour EnemyBehaviour = Enemy.GetComponent<SkeletonBehaviour>();
             if(EnemyBehaviour.NodeID == cellID)
             {
-                saveEnemiesToXML();//update temp files
+                saveEnemiesToXML(Temp);//update temp files//not the most comuputinional efficent way to do it 
                 ActiveEnemies.Remove(Enemy);// changing list in corroutine  it dosnt like it 
                 Destroy(Enemy);
             }
@@ -487,7 +493,7 @@ public class WorldGeneration : MonoBehaviour {
     }
 
     //// get all eneimes in the scene 
-    void saveEnemiesToXML()
+    void saveEnemiesToXML(List<GameObject>Enemies)
     {
         List<EnemyXMLHandler.EnemiesNode> NodeList = new List<EnemyXMLHandler.EnemiesNode>();
         for (int i = 0; i < Cells.Count; i++)
@@ -497,21 +503,23 @@ public class WorldGeneration : MonoBehaviour {
 
         //GameObject[] Enemeies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        foreach (GameObject Enemy in ActiveEnemies)
+        foreach (GameObject Enemy in Enemies)
         {
             SkeletonBehaviour skeletonBehaviour = Enemy.GetComponent<SkeletonBehaviour>();
 
             List<Vector3> patrolPoints = skeletonBehaviour.PatrolRoute;
 
-            NodeList[skeletonBehaviour.NodeID].Enemies.Add(createEnemy(Enemy, patrolPoints));
+            NodeList[skeletonBehaviour.NodeID].Enemies.Add(createEnemy(skeletonBehaviour, patrolPoints));
         }
         SaveEnemyNodes(NodeList);
     }
 
-    EnemyXMLHandler.EnemyAsset createEnemy(GameObject Skeleton, List<Vector3> Patrol)
+    EnemyXMLHandler.EnemyAsset createEnemy(SkeletonBehaviour Skeleton, List<Vector3> Patrol)
     {
         EnemyXMLHandler.EnemyAsset enemy = new EnemyXMLHandler.EnemyAsset();
         enemy.Name = Skeleton.name;
+        //enemy.hashCode = Skeleton.HashID;
+        enemy.health = Skeleton.health;
         enemy.postion = Skeleton.transform.position;//Patrol[0];
         enemy.Rotation = Skeleton.transform.eulerAngles;
         enemy.Scale = Skeleton.transform.localScale;
@@ -545,9 +553,11 @@ public class WorldGeneration : MonoBehaviour {
         for (int i = 0; i < Cells.Count; i++)
         {
             File.Delete(EnemyXMLHandler.TempPath + i.ToString() + ".XML");
+            File.Delete(EnemyXMLHandler.TempPath + i.ToString() + ".XML.meta");
         }
     }
 
     #endregion
+
     #endregion
 }

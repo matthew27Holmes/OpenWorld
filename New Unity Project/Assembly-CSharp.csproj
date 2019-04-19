@@ -61,14 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Resources\Sardine\Scripts\IwasiMove.cs" />
-    <Compile Include="Assets\Resources\Sardine\Scripts\IwasiOcean.cs" />
-    <Compile Include="Assets\Resources\Sardine\Scripts\IwasiRigid.cs" />
-    <Compile Include="Assets\Resources\Sardine\Scripts\SardineBoidsController.cs" />
-    <Compile Include="Assets\Resources\Sardine\Scripts\SardineBoidScript.cs" />
-    <Compile Include="Assets\Resources\Sardine\Scripts\SardineCameraScript.cs" />
-    <Compile Include="Assets\Resources\Sardine\Scripts\SardineCharacter.cs" />
-    <Compile Include="Assets\Resources\Sardine\Scripts\SardineUserController.cs" />
+    <Compile Include="Assets\FrameRateCounter.cs" />
+    <Compile Include="Assets\KeyText.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\CameraController.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\GUIControls.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\RPGCharacterControllerFREE.cs" />
@@ -103,8 +97,6 @@
     <Compile Include="Assets\Scripts\Gameplay\Actors\PlayerBehaviour.cs" />
     <Compile Include="Assets\Scripts\Gameplay\CollectableBehaviour.cs" />
     <Compile Include="Assets\Scripts\Gameplay\testScripy.cs" />
-    <Compile Include="Assets\Scripts\GolbalFlock.cs" />
-    <Compile Include="Assets\Scripts\PreyManger.cs" />
     <Compile Include="Assets\Scripts\swordAttack.cs" />
     <Compile Include="Assets\Scripts\worldStreaming\Cell.cs" />
     <Compile Include="Assets\Scripts\worldStreaming\ObjectsXML\createXML.cs" />
@@ -131,7 +123,6 @@
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\FisheyeShader.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\frag_ao.cginc" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
-    <None Include="Assets\Resources\Sardine\ReadMe.txt" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\SSAOShader.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\ConvertDepth.shader" />

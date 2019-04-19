@@ -29,6 +29,7 @@ public class EnemyXMLHandler : MonoBehaviour {
         public static EnemiesNode Load(string path)
         {
             var serializer = new XmlSerializer(typeof(EnemiesNode));
+
             using (var stream = new FileStream(path, FileMode.Open))
             {
                 return serializer.Deserialize(stream) as EnemiesNode;
@@ -40,6 +41,8 @@ public class EnemyXMLHandler : MonoBehaviour {
     {
         [XmlAttribute("name")]
         public string Name;
+        //public string hashCode;
+        public int health;
         public Vector3 postion;
         public Vector3 Rotation;
         public Vector3 Scale;

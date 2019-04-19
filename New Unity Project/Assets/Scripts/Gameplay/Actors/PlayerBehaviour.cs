@@ -12,7 +12,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     bool alive;
     int health;
-    int CollectableNum;
+    public int CollectableNum;
     public bool grounded;
     enum ChcaterStates {Idel,Dead,Punching,Kicking,Hit,Move};
     Animator animator;
@@ -34,14 +34,14 @@ public class PlayerBehaviour : MonoBehaviour {
 
         if (alive)
         {
-            if (Input.GetButton("Kick"))
+            if (Input.GetButtonDown("Kick"))
             {
                 animator.SetBool("AttackKickTrigger", true);
                 animator.SetInteger("Action", 2);
                 animator.SetBool("Moving", false);
                 animator.SetInteger("Jumping", 0);
             }
-            else if (Input.GetButton("Punch"))
+            else if (Input.GetButtonDown("Punch"))
             {
                 animator.SetBool("AttackTrigger", true);
                 animator.SetInteger("Action", 1);
@@ -51,14 +51,17 @@ public class PlayerBehaviour : MonoBehaviour {
             else if (grounded)
             {
                 Move();
-                if (Input.GetButton("Jump"))
+                if (Input.GetButtonDown("Jump"))
                 {
-                    grounded = false;
-                    float jumpFroce = jumpPower * Time.deltaTime;
-                    transform.Translate(0, jumpFroce, 0);
-                    animator.SetInteger("Jumping", 1);
-                    animator.SetBool("JumpTrigger", true);
-                    animator.SetBool("Moving", false);
+                    if (animator.GetInteger("Jumping") != 1)
+                    {
+                        grounded = false;
+                        float jumpFroce = jumpPower * Time.deltaTime;
+                        transform.Translate(0, jumpFroce, 0);
+                        animator.SetInteger("Jumping", 1);
+                        animator.SetBool("JumpTrigger", true);
+                        animator.SetBool("Moving", false);
+                    }
                 }
             }
         }

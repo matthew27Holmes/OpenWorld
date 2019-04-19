@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4234575741816972}
   - component: {fileID: 33909946988835482}
   - component: {fileID: 23064202776715622}
+  - component: {fileID: 208358032478006152}
   m_Layer: 9
   m_Name: civilian_bridge_1_c
   m_TagString: floor
@@ -85,3 +86,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1471219153304214}
   m_Mesh: {fileID: 4300000, guid: 703a8c4873a039444bc8573debd67675, type: 3}
+--- !u!208 &208358032478006152
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1471219153304214}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5.2860003, y: 0.87900007, z: 2.214}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 1.3820001}
+  m_TimeToStationary: 0.5
