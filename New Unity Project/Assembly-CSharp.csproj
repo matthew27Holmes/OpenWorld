@@ -61,9 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FrameRateCounter.cs" />
-    <Compile Include="Assets\graphingScript.cs" />
-    <Compile Include="Assets\KeyText.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\CameraController.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\GUIControls.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\Code\RPGCharacterControllerFREE.cs" />
@@ -91,6 +88,7 @@
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\DebugDraw.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Math3d.cs" />
     <Compile Include="Assets\Scripts\CitadelGateEnd.cs" />
+    <Compile Include="Assets\Scripts\FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Actors\Enemy\EnemySight.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Actors\Enemy\EnemySpawn.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Actors\Enemy\navMeshFloor.cs" />
@@ -98,8 +96,9 @@
     <Compile Include="Assets\Scripts\Gameplay\Actors\PlayerBehaviour.cs" />
     <Compile Include="Assets\Scripts\Gameplay\CollectableBehaviour.cs" />
     <Compile Include="Assets\Scripts\Gameplay\testScripy.cs" />
+    <Compile Include="Assets\Scripts\graphingScript.cs" />
+    <Compile Include="Assets\Scripts\KeyText.cs" />
     <Compile Include="Assets\Scripts\swordAttack.cs" />
-    <Compile Include="Assets\Scripts\worldStreaming\Cell.cs" />
     <Compile Include="Assets\Scripts\worldStreaming\ObjectsXML\createXML.cs" />
     <Compile Include="Assets\Scripts\worldStreaming\ObjectsXML\EnemyXMLHandler.cs" />
     <Compile Include="Assets\Scripts\worldStreaming\WorldGeneration.cs" />

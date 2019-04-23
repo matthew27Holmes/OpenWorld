@@ -43,6 +43,7 @@ public class EnemyXMLHandler : MonoBehaviour {
         public string Name;
         //public string hashCode;
         public int health;
+        public Vector2 BirthNode;
         public Vector3 postion;
         public Vector3 Rotation;
         public Vector3 Scale;

@@ -25,7 +25,7 @@ public class SkeletonBehaviour : MonoBehaviour {
 
     bool GenerateTempPatrol;
 
-    public int BirthNodeID = 0;
+    public Vector2 BirthNodeID = new Vector2();
     public int NodeID = 0;
     public string HashID;
     WorldGeneration GM;
@@ -33,7 +33,6 @@ public class SkeletonBehaviour : MonoBehaviour {
     void Start () {
         gameObject.GetComponent<NavMeshAgent>().Warp(transform.position);
         playerSpotted = false;
-        //playerInSight = false;
         Attacking = false;
         GenerateTempPatrol = false;
 
@@ -76,7 +75,7 @@ public class SkeletonBehaviour : MonoBehaviour {
                 Attacking = false;
 
 
-                if (GM.isCellLoaded(BirthNodeID))
+                if (GM.isCellLoaded((int)BirthNodeID.x,(int)BirthNodeID.y))
                 {
                     if (GenerateTempPatrol)
                     {
@@ -133,7 +132,7 @@ public class SkeletonBehaviour : MonoBehaviour {
     {
         TempPatrolPoints = new List<Vector3>();
         int PatrolPointNum = Random.Range(2, 5);
-        Transform cell = GM.getCellCube(NodeID).transform;
+        Transform cell = GM.getActiveCell(NodeID).transform;
 
         for (int i = 0; i < PatrolPointNum; i++)
         {

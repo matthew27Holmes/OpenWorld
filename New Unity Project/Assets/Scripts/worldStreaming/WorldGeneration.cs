@@ -9,13 +9,14 @@ using System.Linq;
 
 //this script should just create cell script objects 
 
-public class WorldGeneration : MonoBehaviour {
+public class WorldGeneration : MonoBehaviour
+{
 
     struct cellObject
     {
         //neighbours ints in clockwise postions
         public int cellID;
-        public Dictionary<int, cellObject> neighbours;
+        // public Dictionary<int, cellObject> neighbours;
         public List<GameObject> objects;
         public GameObject cellCube; //for debug purpose
         public float PostionX;
@@ -25,28 +26,20 @@ public class WorldGeneration : MonoBehaviour {
         public bool isLoaded;
     }
 
-    List<cellObject> Cells;
+    cellObject[,] map;
     public GameObject cellCube;
     public BoxCollider floor;
+
     int gridHeghit, gridwidth;
-    public Vector3 scale;
-    private Vector3 startPos;
-    public int rows, columes;
-    public int numCell;
 
     public GameObject player;
-    int playersCurenntCell;
-    int playersLastCell;
-   // string GenerationLayer;
-
-    //List<createXML.Node> NodeContainerRefs;
+    Vector2 playerCord = new Vector2(0, 0);
+    Vector2 playerLastCord = new Vector2(0, 0);
 
     public List<GameObject> ActiveEnemies;
 
     void Start()
     {
-        //temp
-        //NodeContainerRefs = new List<createXML.Node>();
         initialiseCells();
         createEnemyTempFiles();
     }
@@ -54,150 +47,53 @@ public class WorldGeneration : MonoBehaviour {
     #region createNodeGrid
     void initialiseCells()
     {
-        playersCurenntCell = 0;
-        playersLastCell = 0;
-       // GenerationLayer = "WorldStreming";
         // create cells array
-        Cells = new List<cellObject>();//should be a list of cell script pointers 
         ActiveEnemies = new List<GameObject>();
         //define node postions
         CreateGrid();
-        //find nodes neighbours
-        findNeighbouringNodes();
-        // define node children for createing the xml
-        //findCellsObjects();
     }
 
     void CreateGrid()
     {
         //initialise grid variables
-        gridHeghit = (int)Mathf.Ceil(floor.size.y * 1.169096f);
-        gridwidth = (int)Mathf.Ceil(floor.size.x * 1.169097f);
-        scale = new Vector3(100, 0, 100);
-        startPos = new Vector3(-(gridwidth / 2), 0, -(gridHeghit / 2));
-
+        Vector3 scale = new Vector3(100, 0, 100);
+        gridHeghit = (int)Mathf.Ceil((floor.size.y * 1.16f) / scale.z);//1.16 is a fudge number to get it to create a grid just larger then the map 
+        gridwidth = (int)Mathf.Ceil((floor.size.x * 1.16f) / scale.x);
+        // get offset for map size 
+        Vector3 startPos = new Vector3(-205, 0, -310);//floor.gameObject.transform.position.x - ((floor.size.x / 2)), 0, floor.gameObject.transform.position.z - ((floor.size.y / 2)));
+        map = new cellObject[gridwidth, gridHeghit];
+        int Id = 0;
         //draw grid
-        for (int z = 0; z < gridHeghit; z = z + 1 * (int)scale.z)
+        for (int z = 0; z < gridHeghit; z++)
         {
-            for (int x = 0; x < gridwidth; x = x + 1 * (int)scale.x)
+            for (int x = 0; x < gridwidth; x++)
             {
                 cellObject cell = new cellObject();
                 cell.isLoaded = false;
                 cell.objects = new List<GameObject>();
-                cell.neighbours = new Dictionary<int, cellObject>();
 
-                //cell.cellCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                //cell.cellCube.transform.localScale = new Vector3(scale.x, 1, scale.z);
                 cell.cellCube = Instantiate(cellCube);
                 cell.Width = scale.x;
                 cell.Height = scale.z;
 
-                float postionX = startPos.x + x;//* cell.Width;
-                float postionY = startPos.z + z;//* cell.Height;
+                float postionX = startPos.x + x * cell.Width;
+                float postionY = startPos.z + z * cell.Height;
 
                 cell.cellCube.transform.position = new Vector3(postionX, 30, postionY);
 
                 cell.PostionX = postionX;
                 cell.PostionZ = postionY;
 
-                // StartCoroutine(createFloorTile(new Vector3(postionX, 0.0f, postionY)));
-
-                cell.cellCube.SetActive(cell.isLoaded);//used to debug which chuncks the system is loading in
+                cell.cellCube.SetActive(cell.isLoaded);  //used to debug which chuncks the system is loading in//also used for AI random point finding
                 cell.cellCube.GetComponent<MeshRenderer>().enabled = false;
-                cell.cellID = Cells.Count;
+                cell.cellID = Id;
                 cell.cellCube.name = cell.cellID.ToString();
-                Cells.Add(cell);
+                map[x, z] = cell;
+                Id++;
             }
         }
     }
-    void findNeighbouringNodes()
-    {
-        rows = (gridHeghit / (int)scale.z) + 1;
-        columes = (gridwidth / (int)scale.x) + 1;
-        int currentRow = 0, currentColume = 0;
-        for (int i = 0; i < Cells.Count; i++)
-        {
-            currentColume++;
 
-            cellObject cell = Cells[i];
-            int neighbouId = 0;
-
-            ////TOPLEFT
-            if (currentColume > 0
-                && currentRow < rows
-                && i + (columes + 1) <= Cells.Count - 1)
-            {
-                cell.neighbours.Add(neighbouId, Cells[i + (columes + 1)]);
-                neighbouId++;
-            }
-
-            //TOP
-            if (currentRow < rows
-                && i + columes <= Cells.Count - 1)
-            {
-                cell.neighbours.Add(neighbouId, Cells[i + columes]);
-                neighbouId++;
-            }
-            ////TOPRIGHT
-            if (currentColume < columes
-                && currentRow < rows
-                && i + (rows - 1) <= Cells.Count - 1)
-            {
-                cell.neighbours.Add(neighbouId, Cells[i + (columes - 1)]);
-                neighbouId++;
-            }
-
-            //RIGHT
-            if (currentColume < columes
-                && i + 1 <= Cells.Count - 1)
-            {
-                cell.neighbours.Add(neighbouId, Cells[i + 1]);
-                neighbouId++;
-            }
-
-            ////BOTTOMRIGHT
-            if (currentColume < columes
-                && currentRow > 0
-                && i - (columes + 1) >= 0)
-            {
-                cell.neighbours.Add(neighbouId, Cells[i - (columes - 1)]);
-                neighbouId++;
-            }
-
-            //BOTTOM
-            if (currentRow > 0
-                && i - columes >= 0)
-            {
-                cell.neighbours.Add(neighbouId, Cells[i - columes]);
-                neighbouId++;
-            }
-
-            ////BOTTOMLEFT
-            if (currentColume > 0
-                && currentRow > 0
-                && i - (columes + 1) >= 0)
-            {
-                cell.neighbours.Add(neighbouId, Cells[i - (columes + 1)]);
-                neighbouId++;
-            }
-
-            //LEFT
-            if (currentColume > 0
-                && i - 1 >= 0)
-            {
-                cell.neighbours.Add(neighbouId, Cells[i - 1]);
-                neighbouId++;
-            }
-
-            if (currentColume == columes)
-            {
-                currentColume = 0;
-                currentRow++;
-            }
-        }
-    }
-    #endregion
-    
     // Update is called once per frame
     void Update()
     {
@@ -221,85 +117,108 @@ public class WorldGeneration : MonoBehaviour {
         return false;
     }
 
-    public GameObject getCellCube(int cellId)
+    public GameObject getActiveCell(int cellId)
     {
-        return Cells[cellId].cellCube;
+        for (int i = -1; i < 2; i++)
+        {
+            for (int j = -1; j < 2; j++)
+            {
+                if ((int)playerCord.y + i <= gridHeghit - 1
+                    && (int)playerCord.x + j <= gridwidth - 1)
+                {
+                    if ((int)playerCord.y + i >= 0 && (int)playerCord.x + j >= 0)
+                    {
+                        if (map[(int)playerCord.x + j, (int)playerCord.y + i].cellID == cellId)
+                        {
+                            return map[(int)playerCord.x + j, (int)playerCord.y + i].cellCube;
+                        }
+                    }
+                }
+            }
+        }
+        return new GameObject();// this should never be hit
     }
 
-    #region updateWorld
+    //#region updateWorld
 
     IEnumerator checkPlayersCell()
     {
         // get players postion
         //check all cells to find which one the player is currently in 
-        for (int i = 0; i < Cells.Count; i++)
+        for (int z = 0; z < gridHeghit; z++)
         {
-            if(cellCollison(Cells[i], player.transform.position.x,player.transform.position.z))
+            for (int x = 0; x < gridwidth; x++)
             {
-                if (playersCurenntCell != i)
+                if (cellCollison(map[x, z], player.transform.position.x, player.transform.position.z))
                 {
-                    playersLastCell = playersCurenntCell;
-                    playersCurenntCell = i;
-                    StartCoroutine(LoadNodes());
-                    StartCoroutine(unLoadNodes());
+                    if (playerCord != new Vector2(x, z))
+                    {
+                        playerLastCord = playerCord;
+                        playerCord = new Vector2(x, z);
+                        StartCoroutine(LoadNodes());
+                        StartCoroutine(unLoadNodes());
+                    }
                 }
             }
+            yield return null;
         }
-        yield return null;
     }
 
     #region Load
     // should be run in corouten
     IEnumerator LoadNodes()
     {
-        // find current player node 
-        cellObject PlyCell = Cells[playersCurenntCell];
-
-        PlyCell = LoadObjects(PlyCell.cellID);
-        StartCoroutine(addPlayerNodeColliders(PlyCell.cellID));
-
         // load neighbours cells if not done 
-        for (int i = 0; i < PlyCell.neighbours.Count; i++)
+        for (int i = -1; i < 2; i++)
         {
-            cellObject cell = PlyCell.neighbours[i];
-
-            PlyCell.neighbours[i] = LoadObjects(cell.cellID);
+            for (int j = -1; j < 2; j++)
+            {
+                if ((int)playerCord.y + i <= gridHeghit - 1
+                    && (int)playerCord.x + j <= gridwidth - 1)
+                {
+                    if ((int)playerCord.y + i >= 0 && (int)playerCord.x + j >= 0)
+                    {
+                       LoadObjects((int)playerCord.x + j, (int)playerCord.y + i);
+                    }
+                }
+            }
         }
+
+        StartCoroutine(addPlayerNodeColliders());
         yield return null;
     }
 
-    public bool isCellLoaded(int cellId)
+    public bool isCellLoaded(int x, int y)
     {
-        return Cells[cellId].isLoaded;
+        return map[x, y].isLoaded;
     }
 
-    cellObject LoadObjects(int NodeID)
+    void LoadObjects(int x, int z)
     {
-        cellObject cell = Cells[NodeID];
-        if (!cell.isLoaded)
+        if (!map[x, z].isLoaded)
         {
             //load in cell 
-            cell.isLoaded = true;
-            cell.cellCube.SetActive(cell.isLoaded);
+            map[x, z].isLoaded = true;
+            map[x, z].cellCube.SetActive(map[x, z].isLoaded);
 
             createXML.Node NodeContainerRef = createXML.Node.Load(
-                createXML.path + NodeID.ToString() + ".XML");
+                createXML.path + map[x, z].cellID.ToString() + ".XML");
 
             foreach (createXML.StreamingAsset asset in NodeContainerRef.assets)
             {
                 // format asset path
                 string assetName = asset.Name.Split(' ')[0];
                 string assetPath = "OpenWorldObjects/" + assetName;
-                if(assetName == "Terrain")
+                if (assetName == "Terrain")
                 {
-                    Debug.Log("Node " + NodeID);
+                    Debug.Log("Node " + map[x, z].cellID);
                 }
 
                 if (asset == null)
                 {
-                    Debug.Log("error in Xml" + NodeID);
+                    Debug.Log("error in Xml" + map[x, z].cellID);
                 }
-                
+
                 GameObject instance = Instantiate(
                     Resources.Load<GameObject>(assetPath)) as GameObject;
 
@@ -308,28 +227,28 @@ public class WorldGeneration : MonoBehaviour {
                 instance.transform.eulerAngles = asset.Rotation;
 
                 instance.name = asset.Name;
-                cell.objects.Add(instance);
+                map[x, z].objects.Add(instance);
             }
 
-            LoadEnemy(NodeID);
+            LoadEnemy(x,z);
         }
-        Cells[NodeID] = cell;
-        return cell;
     }
 
-    IEnumerator addPlayerNodeColliders(int NodeID)
+    IEnumerator addPlayerNodeColliders()
     {
-        cellObject cell = Cells[NodeID];
-        foreach (GameObject obj in cell.objects)
+        foreach (GameObject obj in map[(int)playerCord.x, (int)playerCord.y].objects)
         {
-            obj.AddComponent<MeshCollider>();
+            if (obj.GetComponent<MeshCollider>() == null)
+            {
+                obj.AddComponent<MeshCollider>();
+            }
         }
         yield return null;
     }
 
-    void LoadEnemy(int cellId)
+    void LoadEnemy(int x,int y)
     {
-        string path = EnemyXMLHandler.TempPath + cellId.ToString() + ".XML";
+        string path = EnemyXMLHandler.TempPath + map[x,y].cellID.ToString() + ".XML";
         EnemyXMLHandler.EnemiesNode ContainerRef = EnemyXMLHandler.EnemiesNode.Load(path);
 
         foreach (EnemyXMLHandler.EnemyAsset EnemeyData in ContainerRef.Enemies)
@@ -337,9 +256,9 @@ public class WorldGeneration : MonoBehaviour {
             // format asset path
             string assetName = EnemeyData.Name.Split(' ')[0];
             string assetPath = "OpenWorldObjects/" + assetName;
-            string enemyHash = cellId.ToString() + assetName + EnemeyData.postion.ToString();
+            string enemyHash = map[x, y].cellID.ToString() + assetName + EnemeyData.postion.ToString();
 
-            if (checkIfEnemyLoaded(enemyHash))
+            if (!isEnemyLoaded(enemyHash))
             {
                 GameObject Enemey = Instantiate(
                   Resources.Load<GameObject>(assetPath)) as GameObject;
@@ -359,7 +278,10 @@ public class WorldGeneration : MonoBehaviour {
                 {
                     AI.PatrolRoute.Add(patrolPoint.postion);
                 }
-                AI.BirthNodeID = FindEnemyBirthNode(AI.PatrolRoute[0]);
+                if (EnemeyData.BirthNode == Vector2.zero)//means enemy cant be placed in square 0,0 but that square is not with in the play space any way 
+                {
+                    AI.BirthNodeID = FindEnemyBirthNode(AI.PatrolRoute[0]);
+                }
                 Enemey.name = EnemeyData.Name;
 
                 ActiveEnemies.Add(Enemey);
@@ -367,62 +289,12 @@ public class WorldGeneration : MonoBehaviour {
         }
     }
 
-    bool checkIfEnemyLoaded(string HashId)
+    bool isEnemyLoaded(string HashId)
     {
-        //GameObject[] Enemeies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject Enemy in ActiveEnemies)
         {
             SkeletonBehaviour skeleton = Enemy.GetComponent<SkeletonBehaviour>();
-            if(skeleton.HashID == HashId)
-            {
-                return false;
-            }
-        }
-            return true;
-    }
-
-    int FindEnemyBirthNode(Vector3 firstPatrolPoint)
-    {
-        for (int i = 0; i < Cells.Count; i++)
-        {
-            cellObject cell = Cells[i];
-            //if objects postion inside of cell then add it cells list 
-            if (cellCollison(cell, firstPatrolPoint.x, firstPatrolPoint.z))
-            {
-                return i;
-            }
-        }
-        return 100;// debug should ever be hit 
-    }
-
-    #endregion
-
-    #region unLoad
-    IEnumerator unLoadNodes()
-    {
-        cellObject LastCell = Cells[playersLastCell];
-        cellObject PlyCell = Cells[playersCurenntCell];
-
-        StartCoroutine(RemovePlayerNodeColliders(playersLastCell));
-        yield return new WaitForSeconds(0.1f);
-        for (int i = 0; i < LastCell.neighbours.Count; i++)
-        {
-            cellObject cell = LastCell.neighbours[i];
-            if ((!isNodeANeighbours(cell)) && (cell.cellID != PlyCell.cellID))
-            {
-                LastCell.neighbours[i] = UnLoadObjects(cell.cellID);
-            }
-        }
-    }
-
-    bool isNodeANeighbours(cellObject cell)
-    {
-        cellObject PlyCell = Cells[playersCurenntCell];
-
-        for (int i = 0; i < PlyCell.neighbours.Count; i++)
-        {
-            cellObject neighbour = PlyCell.neighbours[i];
-            if (cell.cellID == neighbour.cellID)
+            if (skeleton.HashID == HashId)
             {
                 return true;
             }
@@ -430,46 +302,99 @@ public class WorldGeneration : MonoBehaviour {
         return false;
     }
 
-    cellObject UnLoadObjects(int NodeID)
+    Vector2 FindEnemyBirthNode(Vector3 firstPatrolPoint)
     {
-        cellObject cell = Cells[NodeID];
-        //needs to check if neighbours is gonna be loaded wth the next object  
-        if (cell.isLoaded)
+        for (int y = 0; y < gridHeghit; y++)
         {
-            cell.isLoaded = false;
-            cell.cellCube.SetActive(cell.isLoaded);
-
-            //save to temp here
-            unLoadEnemey(NodeID);
-
-            foreach (GameObject obj in cell.objects)
+            for (int x = 0; x < gridwidth; x++)
             {
-                Destroy(obj);//this hsould store to cache for a period
+                //if objects postion inside of cell then add it cells list 
+                if (cellCollison(map[x,y], firstPatrolPoint.x, firstPatrolPoint.z))
+                {
+                    return new Vector2(x,y);
+                }
             }
-            cell.objects.Clear();
         }
-        Cells[NodeID] = cell;
-        return cell;
+        return new Vector2(gridwidth+1, gridHeghit+1); ;// debug should ever be hit 
     }
-    IEnumerator RemovePlayerNodeColliders(int NodeID)
+
+    #endregion
+
+    #region unLoad
+    IEnumerator unLoadNodes()
     {
-        cellObject cell = Cells[NodeID];
-        foreach (GameObject obj in cell.objects)
+        for (int i = -1; i < 2; i++)
         {
-            Destroy(obj.GetComponent<MeshCollider>());
+            for (int j = -1; j < 2; j++)
+            {
+                if ((int)playerLastCord.y + i <= gridHeghit - 1
+                    && (int)playerLastCord.x + j <= gridwidth - 1)
+                {
+                    if ((int)playerLastCord.y + i >= 0 && (int)playerLastCord.x + j >= 0)
+                    {
+                        //check isnt current neghbiour 
+                        if (!isNodePlyNeighbour((int)playerLastCord.x + j, (int)playerLastCord.y + i))
+                        {
+                            UnLoadObjects((int)playerLastCord.x + j, (int)playerLastCord.y + i);
+                        }
+                    }
+                }
+            }
         }
+
         yield return null;
     }
 
-    void unLoadEnemey(int cellID)
+    bool isNodePlyNeighbour(int x, int y)
     {
-        //   GameObject[] Enemeies = GameObject.FindGameObjectsWithTag("Enemy");
+        cellObject PlyCell = map[x, y];
 
-        List<GameObject> Temp = new List<GameObject>(ActiveEnemies);
+        for (int i = -1; i < 2; i++)
+        {
+            for (int j = -1; j < 2; j++)
+            {
+                if ((int)playerCord.y + i <= gridHeghit - 1
+                    && (int)playerCord.x + j <= gridwidth - 1)
+                {
+                    if ((int)playerCord.y + i >= 0 && (int)playerCord.x + j >= 0)
+                    {
+                        if (map[(int)playerCord.x + j, (int)playerCord.y + i].cellID == map[x, y].cellID)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    void UnLoadObjects(int x,int y)
+    {
+        if (map[x, y].isLoaded)
+        {
+            map[x, y].isLoaded = false;
+            map[x, y].cellCube.SetActive(map[x, y].isLoaded);
+
+            //save to temp here
+            unLoadEnemey(x,y);
+
+            foreach (GameObject obj in map[x,y].objects)
+            {
+                Destroy(obj);//this hsould store to cache for a period
+            }
+            map[x, y].objects.Clear();
+        }
+    }
+
+    void unLoadEnemey(int x, int y)
+    {
+
+        GameObject [] Temp = ActiveEnemies.ToArray();
         foreach (GameObject Enemy in Temp)
         {
             SkeletonBehaviour EnemyBehaviour = Enemy.GetComponent<SkeletonBehaviour>();
-            if(EnemyBehaviour.NodeID == cellID)
+            if (EnemyBehaviour.NodeID == map[x, y].cellID)
             {
                 saveEnemiesToXML(Temp);//update temp files//not the most comuputinional efficent way to do it 
                 ActiveEnemies.Remove(Enemy);// changing list in corroutine  it dosnt like it 
@@ -479,48 +404,48 @@ public class WorldGeneration : MonoBehaviour {
     }
     #endregion
 
-    #region EnemyTemp
+    #region create and update Enemy temps
 
     void createEnemyTempFiles()
     {
-        List<EnemyXMLHandler.EnemiesNode> NodeList = new List<EnemyXMLHandler.EnemiesNode>();
-        for (int i = 0; i < Cells.Count; i++)
+      EnemyXMLHandler.EnemiesNode [] NodeList  = new EnemyXMLHandler.EnemiesNode[gridwidth* gridHeghit];
+        for (int z = 0; z < gridHeghit; z++)
         {
-            string path = EnemyXMLHandler.path + i.ToString() + ".XML";
-            NodeList.Add(EnemyXMLHandler.EnemiesNode.Load(path));
+            for (int x = 0; x < gridwidth; x++)
+            {
+                string path = EnemyXMLHandler.path + map[x,z].cellID.ToString() + ".XML";
+                NodeList[map[x, z].cellID] = EnemyXMLHandler.EnemiesNode.Load(path);
+                NodeList[map[x, z].cellID].Save(EnemyXMLHandler.TempPath + map[x, z].cellID.ToString() + ".XML");
+            }
         }
-        SaveEnemyNodes(NodeList);
     }
 
-    //// get all eneimes in the scene 
-    void saveEnemiesToXML(List<GameObject>Enemies)
+    ////// get all eneimes in the scene 
+    void saveEnemiesToXML(GameObject[] Enemies)
     {
-        List<EnemyXMLHandler.EnemiesNode> NodeList = new List<EnemyXMLHandler.EnemiesNode>();
-        for (int i = 0; i < Cells.Count; i++)
-        {
-            NodeList.Add(new EnemyXMLHandler.EnemiesNode());
-        }
-
-        //GameObject[] Enemeies = GameObject.FindGameObjectsWithTag("Enemy");
+        EnemyXMLHandler.EnemiesNode[] NodeList = new EnemyXMLHandler.EnemiesNode[gridwidth * gridHeghit];
 
         foreach (GameObject Enemy in Enemies)
         {
             SkeletonBehaviour skeletonBehaviour = Enemy.GetComponent<SkeletonBehaviour>();
 
+            NodeList[skeletonBehaviour.NodeID] = (new EnemyXMLHandler.EnemiesNode());
+
             List<Vector3> patrolPoints = skeletonBehaviour.PatrolRoute;
 
             NodeList[skeletonBehaviour.NodeID].Enemies.Add(createEnemy(skeletonBehaviour, patrolPoints));
+            NodeList[skeletonBehaviour.NodeID].Save(EnemyXMLHandler.TempPath + skeletonBehaviour.NodeID.ToString() + ".XML");
+
         }
-        SaveEnemyNodes(NodeList);
     }
 
     EnemyXMLHandler.EnemyAsset createEnemy(SkeletonBehaviour Skeleton, List<Vector3> Patrol)
     {
         EnemyXMLHandler.EnemyAsset enemy = new EnemyXMLHandler.EnemyAsset();
         enemy.Name = Skeleton.name;
-        //enemy.hashCode = Skeleton.HashID;
         enemy.health = Skeleton.health;
-        enemy.postion = Skeleton.transform.position;//Patrol[0];
+        enemy.BirthNode = Skeleton.BirthNodeID;
+        enemy.postion = Skeleton.transform.position;
         enemy.Rotation = Skeleton.transform.eulerAngles;
         enemy.Scale = Skeleton.transform.localScale;
         for (int j = 0; j < Patrol.Count; j++)
@@ -538,22 +463,16 @@ public class WorldGeneration : MonoBehaviour {
         return nwpoint;
     }
 
-    void SaveEnemyNodes(List<EnemyXMLHandler.EnemiesNode> NodeList)
-    {
-
-        for (int i = 0; i < NodeList.Count; i++)
-        {
-            EnemyXMLHandler.EnemiesNode node = NodeList[i];
-            node.Save(EnemyXMLHandler.TempPath + i.ToString() + ".XML");
-        }
-    }
 
     void DeleteTemp()
     {
-        for (int i = 0; i < Cells.Count; i++)
+        for (int z = 0; z < gridHeghit; z++)
         {
-            File.Delete(EnemyXMLHandler.TempPath + i.ToString() + ".XML");
-            File.Delete(EnemyXMLHandler.TempPath + i.ToString() + ".XML.meta");
+            for (int x = 0; x < gridwidth; x++)
+            {
+                File.Delete(EnemyXMLHandler.TempPath + map[x, z].cellID.ToString() + ".XML");
+                File.Delete(EnemyXMLHandler.TempPath + map[x, z].cellID.ToString() + ".XML.meta");
+            }
         }
     }
 
