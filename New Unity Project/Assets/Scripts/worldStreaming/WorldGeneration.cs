@@ -17,7 +17,7 @@ public class WorldGeneration : MonoBehaviour
         //neighbours ints in clockwise postions
         public int cellID;
         // public Dictionary<int, cellObject> neighbours;
-        public List<GameObject> objects;
+        public GameObject[] objects;
         public GameObject cellCube; //for debug purpose
         public float PostionX;
         public float PostionZ;
@@ -70,7 +70,7 @@ public class WorldGeneration : MonoBehaviour
             {
                 cellObject cell = new cellObject();
                 cell.isLoaded = false;
-                cell.objects = new List<GameObject>();
+               // cell.objects = new List<GameObject>();
 
                 cell.cellCube = Instantiate(cellCube);
                 cell.Width = scale.x;
@@ -203,10 +203,12 @@ public class WorldGeneration : MonoBehaviour
 
             createXML.Node NodeContainerRef = createXML.Node.Load(
                 createXML.path + map[x, z].cellID.ToString() + ".XML");
+            map[x, z].objects = new GameObject[NodeContainerRef.assets.Count];
 
-            foreach (createXML.StreamingAsset asset in NodeContainerRef.assets)
+            for( int i =0;i < NodeContainerRef.assets.Count;i++)
             {
                 // format asset path
+                createXML.StreamingAsset asset = NodeContainerRef.assets[i];
                 string assetName = asset.Name.Split(' ')[0];
                 string assetPath = "OpenWorldObjects/" + assetName;
                 if (assetName == "Terrain")
@@ -227,7 +229,7 @@ public class WorldGeneration : MonoBehaviour
                 instance.transform.eulerAngles = asset.Rotation;
 
                 instance.name = asset.Name;
-                map[x, z].objects.Add(instance);
+                map[x, z].objects[i] = instance;
             }
 
             LoadEnemy(x,z);
@@ -383,7 +385,7 @@ public class WorldGeneration : MonoBehaviour
             {
                 Destroy(obj);//this hsould store to cache for a period
             }
-            map[x, y].objects.Clear();
+            map[x, y].objects = new GameObject[0];
         }
     }
 
