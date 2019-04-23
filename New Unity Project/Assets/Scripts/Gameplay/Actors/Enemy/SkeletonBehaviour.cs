@@ -106,7 +106,6 @@ public class SkeletonBehaviour : MonoBehaviour {
         }
     }
 
-
     void Patrol(List<Vector3> Patrol)
     {
         navMeshAgent.speed = 2;
