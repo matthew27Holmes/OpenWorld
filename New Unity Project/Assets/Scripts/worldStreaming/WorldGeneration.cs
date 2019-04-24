@@ -14,9 +14,7 @@ public class WorldGeneration : MonoBehaviour
 
     struct cellObject
     {
-        //neighbours ints in clockwise postions
         public int cellID;
-        // public Dictionary<int, cellObject> neighbours;
         public GameObject[] objects;
         public GameObject cellCube; //for debug purpose
         public float PostionX;
@@ -70,9 +68,8 @@ public class WorldGeneration : MonoBehaviour
             {
                 cellObject cell = new cellObject();
                 cell.isLoaded = false;
-               // cell.objects = new List<GameObject>();
 
-                cell.cellCube = Instantiate(cellCube);
+                cell.cellCube = Instantiate(cellCube); // used for AI random point finding and debugging
                 cell.Width = scale.x;
                 cell.Height = scale.z;
 
@@ -84,7 +81,7 @@ public class WorldGeneration : MonoBehaviour
                 cell.PostionX = postionX;
                 cell.PostionZ = postionY;
 
-                cell.cellCube.SetActive(cell.isLoaded);  //used to debug which chuncks the system is loading in//also used for AI random point finding
+                cell.cellCube.SetActive(cell.isLoaded); 
                 cell.cellCube.GetComponent<MeshRenderer>().enabled = false;
                 cell.cellID = Id;
                 cell.cellCube.name = cell.cellID.ToString();
@@ -93,6 +90,7 @@ public class WorldGeneration : MonoBehaviour
             }
         }
     }
+    #endregion
 
     // Update is called once per frame
     void Update()
@@ -117,7 +115,7 @@ public class WorldGeneration : MonoBehaviour
         return false;
     }
 
-    public GameObject getActiveCell(int cellId)
+    public Vector2 getActiveCellWidthHeight(int cellId)
     {
         for (int i = -1; i < 2; i++)
         {
@@ -130,16 +128,16 @@ public class WorldGeneration : MonoBehaviour
                     {
                         if (map[(int)playerCord.x + j, (int)playerCord.y + i].cellID == cellId)
                         {
-                            return map[(int)playerCord.x + j, (int)playerCord.y + i].cellCube;
+                            return new Vector2(map[(int)playerCord.x + j, (int)playerCord.y + i].Width, map[(int)playerCord.x + j, (int)playerCord.y + i].Height);
                         }
                     }
                 }
             }
         }
-        return new GameObject();// this should never be hit
+        return new Vector2();// this should never be hit
     }
 
-    //#region updateWorld
+    #region updateWorld
 
     IEnumerator checkPlayersCell()
     {
@@ -184,13 +182,8 @@ public class WorldGeneration : MonoBehaviour
             }
         }
 
-        StartCoroutine(addPlayerNodeColliders());
+        //StartCoroutine(addPlayerNodeColliders());
         yield return null;
-    }
-
-    public bool isCellLoaded(int x, int y)
-    {
-        return map[x, y].isLoaded;
     }
 
     void LoadObjects(int x, int z)
@@ -247,6 +240,12 @@ public class WorldGeneration : MonoBehaviour
         }
         yield return null;
     }
+
+    public bool isCellLoaded(int x, int y)
+    {
+        return map[x, y].isLoaded;
+    }
+
 
     void LoadEnemy(int x,int y)
     {
@@ -391,14 +390,13 @@ public class WorldGeneration : MonoBehaviour
 
     void unLoadEnemey(int x, int y)
     {
-
         GameObject [] Temp = ActiveEnemies.ToArray();
         foreach (GameObject Enemy in Temp)
         {
             SkeletonBehaviour EnemyBehaviour = Enemy.GetComponent<SkeletonBehaviour>();
             if (EnemyBehaviour.NodeID == map[x, y].cellID)
             {
-                saveEnemiesToXML(Temp);//update temp files//not the most comuputinional efficent way to do it 
+                //saveEnemiesToXML(Temp);//update temp files//not the most comuputinional efficent way to do it 
                 ActiveEnemies.Remove(Enemy);// changing list in corroutine  it dosnt like it 
                 Destroy(Enemy);
             }
@@ -422,7 +420,7 @@ public class WorldGeneration : MonoBehaviour
         }
     }
 
-    ////// get all eneimes in the scene 
+    // get all eneimes in the scene 
     void saveEnemiesToXML(GameObject[] Enemies)
     {
         EnemyXMLHandler.EnemiesNode[] NodeList = new EnemyXMLHandler.EnemiesNode[gridwidth * gridHeghit];

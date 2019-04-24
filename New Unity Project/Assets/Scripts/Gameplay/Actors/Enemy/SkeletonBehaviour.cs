@@ -132,12 +132,12 @@ public class SkeletonBehaviour : MonoBehaviour {
     {
         TempPatrolPoints = new List<Vector3>();
         int PatrolPointNum = Random.Range(2, 5);
-        Transform cell = GM.getActiveCell(NodeID).transform;
+        Vector2 cellWidthHeight = GM.getActiveCellWidthHeight(NodeID);
 
         for (int i = 0; i < PatrolPointNum; i++)
         {
-            float randW = Random.Range(cell.localScale.x / 2, cell.localScale.x / 2 * -1);
-            float randD = Random.Range(cell.localScale.z / 2, cell.localScale.z / 2 * -1);
+            float randW = Random.Range(cellWidthHeight.x / 2, cellWidthHeight.x / 2 * -1);
+            float randD = Random.Range(cellWidthHeight.y / 2, cellWidthHeight.y / 2 * -1);
 
             Vector3 randomDirection = new Vector3(randW, transform.position.y, randD);
 
