@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33807758339563242}
   - component: {fileID: 23751955824949714}
   - component: {fileID: 208285760223531926}
+  - component: {fileID: 64677805055016968}
   m_Layer: 9
   m_Name: citadel_wall_incline
   m_TagString: floor
@@ -84,6 +85,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1629701940924320}
+  m_Mesh: {fileID: 4300000, guid: 7d3e4ed320b637a44aa1dbcd886ad34b, type: 3}
+--- !u!64 &64677805055016968
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1629701940924320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7d3e4ed320b637a44aa1dbcd886ad34b, type: 3}
 --- !u!208 &208285760223531926
 NavMeshObstacle:

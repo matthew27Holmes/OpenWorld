@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33256480582962556}
   - component: {fileID: 23621686598219526}
   - component: {fileID: 208535665808906296}
+  - component: {fileID: 64080974643632228}
   m_Layer: 9
   m_Name: city_tower_a
   m_TagString: floor
@@ -89,6 +90,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605505815187340}
+  m_Mesh: {fileID: 4300000, guid: 32311d0811c6d7d46a7ff6143a99818f, type: 3}
+--- !u!64 &64080974643632228
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605505815187340}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 32311d0811c6d7d46a7ff6143a99818f, type: 3}
 --- !u!208 &208535665808906296
 NavMeshObstacle:

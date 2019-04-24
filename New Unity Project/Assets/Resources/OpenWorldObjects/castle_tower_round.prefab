@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33163394867282774}
   - component: {fileID: 23418103453288870}
   - component: {fileID: 208804740457080054}
+  - component: {fileID: 64765379285171558}
   m_Layer: 9
   m_Name: castle_tower_round
   m_TagString: floor
@@ -84,6 +85,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1356718791037878}
+  m_Mesh: {fileID: 4300000, guid: 3aa8fc45fd385be41b6a3ced702258b3, type: 3}
+--- !u!64 &64765379285171558
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356718791037878}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 3aa8fc45fd385be41b6a3ced702258b3, type: 3}
 --- !u!208 &208804740457080054
 NavMeshObstacle:

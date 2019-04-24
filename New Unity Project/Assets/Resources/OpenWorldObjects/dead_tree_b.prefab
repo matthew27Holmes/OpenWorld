@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4348528248200596}
   - component: {fileID: 33390762770280078}
   - component: {fileID: 23792043275932916}
+  - component: {fileID: 64217707137509888}
   m_Layer: 9
   m_Name: dead_tree_b
   m_TagString: floor
@@ -82,4 +83,18 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1801292862687298}
+  m_Mesh: {fileID: 4300000, guid: cf0371b0eb4cdaf4fbdd9774de46c54f, type: 3}
+--- !u!64 &64217707137509888
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801292862687298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: cf0371b0eb4cdaf4fbdd9774de46c54f, type: 3}

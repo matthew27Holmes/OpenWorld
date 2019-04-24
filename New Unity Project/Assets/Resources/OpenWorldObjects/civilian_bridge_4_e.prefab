@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33647515085496468}
   - component: {fileID: 23598475025072526}
   - component: {fileID: 208165247562412500}
+  - component: {fileID: 64490465806672740}
   m_Layer: 9
   m_Name: civilian_bridge_4_e
   m_TagString: floor
@@ -84,6 +85,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1382032680155862}
+  m_Mesh: {fileID: 4300000, guid: 5041d6962e97a484b97caf0c0d9fc74f, type: 3}
+--- !u!64 &64490465806672740
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1382032680155862}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 5041d6962e97a484b97caf0c0d9fc74f, type: 3}
 --- !u!208 &208165247562412500
 NavMeshObstacle:

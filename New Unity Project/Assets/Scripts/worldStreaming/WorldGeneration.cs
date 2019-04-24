@@ -35,20 +35,21 @@ public class WorldGeneration : MonoBehaviour
     Vector2 playerLastCord = new Vector2(0, 0);
 
     public List<GameObject> ActiveEnemies;
-
+    int LoadUnloadBatchSize = 12;
     void Start()
     {
-        initialiseCells();
-        createEnemyTempFiles();
+        initialise();
     }
 
     #region createNodeGrid
-    void initialiseCells()
+    void initialise()
     {
         // create cells array
         ActiveEnemies = new List<GameObject>();
         //define node postions
         CreateGrid();
+        // create the temp files for the enemies
+        createEnemyTempFiles();
     }
 
     void CreateGrid()
@@ -95,12 +96,7 @@ public class WorldGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(checkPlayersCell()); //should check to see if its inside player view port instead
-    }
-
-    private void OnApplicationQuit()
-    {
-        DeleteTemp();
+       checkPlayersCell(); //should check to see if its inside player view port instead
     }
 
     bool cellCollison(cellObject cell, float px, float pz)
@@ -139,7 +135,7 @@ public class WorldGeneration : MonoBehaviour
 
     #region updateWorld
 
-    IEnumerator checkPlayersCell()
+    private void checkPlayersCell()
     {
         // get players postion
         //check all cells to find which one the player is currently in 
@@ -153,18 +149,17 @@ public class WorldGeneration : MonoBehaviour
                     {
                         playerLastCord = playerCord;
                         playerCord = new Vector2(x, z);
-                        StartCoroutine(LoadNodes());
-                        StartCoroutine(unLoadNodes());
+                        LoadNodes();
+                        unLoadNodes();
                     }
                 }
             }
-            yield return null;
         }
     }
 
     #region Load
     // should be run in corouten
-    IEnumerator LoadNodes()
+    void LoadNodes()
     {
         // load neighbours cells if not done 
         for (int i = -1; i < 2; i++)
@@ -176,24 +171,21 @@ public class WorldGeneration : MonoBehaviour
                 {
                     if ((int)playerCord.y + i >= 0 && (int)playerCord.x + j >= 0)
                     {
-                       LoadObjects((int)playerCord.x + j, (int)playerCord.y + i);
+                       StartCoroutine(LoadObjects((int)playerCord.x + j, (int)playerCord.y + i));
                     }
                 }
             }
         }
-
-        //StartCoroutine(addPlayerNodeColliders());
-        yield return null;
     }
 
-    void LoadObjects(int x, int z)
+    IEnumerator LoadObjects(int x, int z)
     {
         if (!map[x, z].isLoaded)
         {
             //load in cell 
             map[x, z].isLoaded = true;
             map[x, z].cellCube.SetActive(map[x, z].isLoaded);
-
+            int loadingSpilt = 0;
             createXML.Node NodeContainerRef = createXML.Node.Load(
                 createXML.path + map[x, z].cellID.ToString() + ".XML");
             map[x, z].objects = new GameObject[NodeContainerRef.assets.Count];
@@ -223,22 +215,17 @@ public class WorldGeneration : MonoBehaviour
 
                 instance.name = asset.Name;
                 map[x, z].objects[i] = instance;
+                loadingSpilt++;
+                if (loadingSpilt == NodeContainerRef.assets.Count/ LoadUnloadBatchSize)
+                {
+                    loadingSpilt = 0;
+                    yield return new WaitForSecondsRealtime(0.1f);
+                }
+               
             }
 
             LoadEnemy(x,z);
         }
-    }
-
-    IEnumerator addPlayerNodeColliders()
-    {
-        foreach (GameObject obj in map[(int)playerCord.x, (int)playerCord.y].objects)
-        {
-            if (obj.GetComponent<MeshCollider>() == null)
-            {
-                obj.AddComponent<MeshCollider>();
-            }
-        }
-        yield return null;
     }
 
     public bool isCellLoaded(int x, int y)
@@ -322,7 +309,7 @@ public class WorldGeneration : MonoBehaviour
     #endregion
 
     #region unLoad
-    IEnumerator unLoadNodes()
+    void unLoadNodes()
     {
         for (int i = -1; i < 2; i++)
         {
@@ -336,14 +323,12 @@ public class WorldGeneration : MonoBehaviour
                         //check isnt current neghbiour 
                         if (!isNodePlyNeighbour((int)playerLastCord.x + j, (int)playerLastCord.y + i))
                         {
-                            UnLoadObjects((int)playerLastCord.x + j, (int)playerLastCord.y + i);
+                            StartCoroutine(UnLoadObjects((int)playerLastCord.x + j, (int)playerLastCord.y + i));
                         }
                     }
                 }
             }
         }
-
-        yield return null;
     }
 
     bool isNodePlyNeighbour(int x, int y)
@@ -370,19 +355,27 @@ public class WorldGeneration : MonoBehaviour
         return false;
     }
 
-    void UnLoadObjects(int x,int y)
+    IEnumerator UnLoadObjects(int x,int y)
     {
         if (map[x, y].isLoaded)
         {
             map[x, y].isLoaded = false;
             map[x, y].cellCube.SetActive(map[x, y].isLoaded);
-
+            int unloadingSpilt = 0;
             //save to temp here
             unLoadEnemey(x,y);
-
-            foreach (GameObject obj in map[x,y].objects)
+            for (int i = 0; i < map[x, y].objects.Length; i++)
             {
+                //foreach (GameObject obj in map[x,y].objects)
+                // {
+                GameObject obj = map[x, y].objects[i];
                 Destroy(obj);//this hsould store to cache for a period
+                unloadingSpilt++;
+                if (unloadingSpilt == map[x, y].objects.Length / LoadUnloadBatchSize)
+                {
+                    unloadingSpilt = 0;
+                    yield return new WaitForSecondsRealtime(0.1f);
+                }
             }
             map[x, y].objects = new GameObject[0];
         }
@@ -396,7 +389,7 @@ public class WorldGeneration : MonoBehaviour
             SkeletonBehaviour EnemyBehaviour = Enemy.GetComponent<SkeletonBehaviour>();
             if (EnemyBehaviour.NodeID == map[x, y].cellID)
             {
-                //saveEnemiesToXML(Temp);//update temp files//not the most comuputinional efficent way to do it 
+                saveEnemiesToXML(Temp);//update temp files//not the most comuputinional efficent way to do it 
                 ActiveEnemies.Remove(Enemy);// changing list in corroutine  it dosnt like it 
                 Destroy(Enemy);
             }
@@ -477,6 +470,11 @@ public class WorldGeneration : MonoBehaviour
     }
 
     #endregion
+
+    private void OnApplicationQuit()
+    {
+        DeleteTemp();
+    }
 
     #endregion
 }

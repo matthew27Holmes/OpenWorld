@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33272519626784582}
   - component: {fileID: 23215949828005744}
   - component: {fileID: 208826673366266640}
+  - component: {fileID: 64520754818380348}
   m_Layer: 9
   m_Name: fountain_a
   m_TagString: floor
@@ -85,6 +86,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1686617328011624}
+  m_Mesh: {fileID: 4300000, guid: e23e514ed6a52a64184507a15e7f6a61, type: 3}
+--- !u!64 &64520754818380348
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1686617328011624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: e23e514ed6a52a64184507a15e7f6a61, type: 3}
 --- !u!208 &208826673366266640
 NavMeshObstacle:

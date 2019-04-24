@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33303892561254238}
   - component: {fileID: 23083508712761604}
   - component: {fileID: 208377769880502610}
+  - component: {fileID: 65670219628083466}
   m_Layer: 9
   m_Name: ladder_1
   m_TagString: floor
@@ -84,6 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1538739009629034}
   m_Mesh: {fileID: 4300000, guid: 6aae6b211169b464c9d12725b568fc16, type: 3}
+--- !u!65 &65670219628083466
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538739009629034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2259576, y: 1.2345823, z: 8.310117}
+  m_Center: {x: -0.000009775166, y: -0.0000059104977, z: 4.290418}
 --- !u!208 &208377769880502610
 NavMeshObstacle:
   m_ObjectHideFlags: 1

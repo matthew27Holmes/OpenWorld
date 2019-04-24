@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33873992269839554}
   - component: {fileID: 23272190874922610}
   - component: {fileID: 208603888317706634}
+  - component: {fileID: 64693019971753780}
   m_Layer: 9
   m_Name: castle_wall_incline_lower
   m_TagString: floor
@@ -84,6 +85,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1401219410458876}
+  m_Mesh: {fileID: 4300000, guid: 0204f868ad22d9f45a5b4b577e99d1cf, type: 3}
+--- !u!64 &64693019971753780
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1401219410458876}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 0204f868ad22d9f45a5b4b577e99d1cf, type: 3}
 --- !u!208 &208603888317706634
 NavMeshObstacle:

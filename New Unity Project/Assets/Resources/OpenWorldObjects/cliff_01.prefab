@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33399223745085276}
   - component: {fileID: 23747263323672336}
   - component: {fileID: 208846486699883948}
+  - component: {fileID: 65858691249471340}
   m_Layer: 9
   m_Name: cliff_01
   m_TagString: floor
@@ -84,6 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1512402997361328}
   m_Mesh: {fileID: 4300000, guid: 58379ff237ae7ef4082fb2cc1cb3b1b6, type: 3}
+--- !u!65 &65858691249471340
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512402997361328}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 47.312393, y: 13.720088, z: 25.38818}
+  m_Center: {x: -0.05982876, y: 0.7690758, z: 12.673922}
 --- !u!208 &208846486699883948
 NavMeshObstacle:
   m_ObjectHideFlags: 1

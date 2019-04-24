@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33835168637786416}
   - component: {fileID: 23444894064246960}
   - component: {fileID: 208483896605692414}
+  - component: {fileID: 64716846775956516}
   m_Layer: 9
   m_Name: citadel_wall_a
   m_TagString: floor
@@ -84,6 +85,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1066124637356120}
+  m_Mesh: {fileID: 4300000, guid: 0d2f9593c52242b4da8e97c09e209d51, type: 3}
+--- !u!64 &64716846775956516
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1066124637356120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 0d2f9593c52242b4da8e97c09e209d51, type: 3}
 --- !u!208 &208483896605692414
 NavMeshObstacle:

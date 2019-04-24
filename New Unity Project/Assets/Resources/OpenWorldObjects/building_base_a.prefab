@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33050940450146646}
   - component: {fileID: 23735438180678904}
   - component: {fileID: 208555879253751244}
+  - component: {fileID: 64306316481129914}
   m_Layer: 9
   m_Name: building_base_a
   m_TagString: floor
@@ -86,6 +87,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1063850222108496}
+  m_Mesh: {fileID: 4300000, guid: d0df16f92c0bef94a80314539b15eab6, type: 3}
+--- !u!64 &64306316481129914
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1063850222108496}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: d0df16f92c0bef94a80314539b15eab6, type: 3}
 --- !u!208 &208555879253751244
 NavMeshObstacle:

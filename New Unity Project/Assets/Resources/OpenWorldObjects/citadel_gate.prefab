@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23056460776456280}
   - component: {fileID: 114695462308425312}
   - component: {fileID: 208543319798121770}
+  - component: {fileID: 64088705480978218}
   m_Layer: 9
   m_Name: citadel_gate
   m_TagString: floor
@@ -88,6 +89,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827498319948078}
+  m_Mesh: {fileID: 4300000, guid: 53f5c35ca2434cf4ba2f1bc5b0a8384f, type: 3}
+--- !u!64 &64088705480978218
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827498319948078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 53f5c35ca2434cf4ba2f1bc5b0a8384f, type: 3}
 --- !u!114 &114695462308425312
 MonoBehaviour:

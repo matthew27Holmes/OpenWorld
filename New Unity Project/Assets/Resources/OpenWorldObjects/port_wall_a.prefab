@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33536021731472144}
   - component: {fileID: 23806153004812908}
   - component: {fileID: 208633152069632878}
+  - component: {fileID: 64366645995608126}
   m_Layer: 9
   m_Name: port_wall_a
   m_TagString: floor
@@ -84,6 +85,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1828159152814562}
+  m_Mesh: {fileID: 4300000, guid: 9f516970ad8408846a941eb61b7b932f, type: 3}
+--- !u!64 &64366645995608126
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1828159152814562}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 9f516970ad8408846a941eb61b7b932f, type: 3}
 --- !u!208 &208633152069632878
 NavMeshObstacle:

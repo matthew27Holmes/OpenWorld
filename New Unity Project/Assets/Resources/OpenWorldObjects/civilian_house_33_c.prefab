@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33985593545821426}
   - component: {fileID: 23851966352731112}
   - component: {fileID: 208041519732565784}
+  - component: {fileID: 64458585869424686}
   m_Layer: 9
   m_Name: civilian_house_33_c
   m_TagString: floor
@@ -87,6 +88,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1648562109037960}
+  m_Mesh: {fileID: 4300000, guid: 99ea6a7c23b134243ba6cb6d123a35d7, type: 3}
+--- !u!64 &64458585869424686
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1648562109037960}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 99ea6a7c23b134243ba6cb6d123a35d7, type: 3}
 --- !u!208 &208041519732565784
 NavMeshObstacle:

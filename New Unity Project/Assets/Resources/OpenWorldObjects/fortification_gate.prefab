@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33359253739584808}
   - component: {fileID: 23421097856458718}
   - component: {fileID: 208078589871911292}
+  - component: {fileID: 64670859502230996}
   m_Layer: 9
   m_Name: fortification_gate
   m_TagString: floor
@@ -88,6 +89,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976321354576030}
+  m_Mesh: {fileID: 4300000, guid: 0648d4361d8a07d44921f1db2e15b9e0, type: 3}
+--- !u!64 &64670859502230996
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976321354576030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 0648d4361d8a07d44921f1db2e15b9e0, type: 3}
 --- !u!208 &208078589871911292
 NavMeshObstacle:

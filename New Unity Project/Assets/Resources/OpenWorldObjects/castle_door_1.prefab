@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33145333094219722}
   - component: {fileID: 23538375128331724}
   - component: {fileID: 208137668657888940}
+  - component: {fileID: 64706340546421292}
   m_Layer: 9
   m_Name: castle_door_1
   m_TagString: floor
@@ -85,6 +86,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1508777150811568}
+  m_Mesh: {fileID: 4300000, guid: 71a99689b3357f847a20ce395f70afef, type: 3}
+--- !u!64 &64706340546421292
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1508777150811568}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 71a99689b3357f847a20ce395f70afef, type: 3}
 --- !u!208 &208137668657888940
 NavMeshObstacle:
