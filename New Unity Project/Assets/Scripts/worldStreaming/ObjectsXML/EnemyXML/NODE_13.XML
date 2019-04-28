@@ -13,9 +13,9 @@
         <z>0</z>
       </Rotation>
       <Scale>
-        <x>30</x>
-        <y>30</y>
-        <z>30</z>
+        <x>15</x>
+        <y>15</y>
+        <z>15</z>
       </Scale>
       <PatrolPoints>
         <Point>
@@ -39,9 +39,9 @@
         <z>0</z>
       </Rotation>
       <Scale>
-        <x>30</x>
-        <y>30</y>
-        <z>30</z>
+        <x>15</x>
+        <y>15</y>
+        <z>15</z>
       </Scale>
       <PatrolPoints>
         <Point>
@@ -100,9 +100,9 @@
         <z>0</z>
       </Rotation>
       <Scale>
-        <x>30</x>
-        <y>30</y>
-        <z>30</z>
+        <x>15</x>
+        <y>15</y>
+        <z>15</z>
       </Scale>
       <PatrolPoints>
         <Point>

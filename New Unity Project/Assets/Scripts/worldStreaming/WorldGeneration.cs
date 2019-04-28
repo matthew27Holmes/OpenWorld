@@ -35,13 +35,13 @@ public class WorldGeneration : MonoBehaviour
     Vector2 playerLastCord = new Vector2(0, 0);
 
     public List<GameObject> ActiveEnemies;
-    int LoadUnloadBatchSize = 12;
+    int LoadUnloadBatchSize = 8;
     void Start()
     {
         initialise();
     }
 
-    #region createNodeGrid
+    #region initialise
     void initialise()
     {
         // create cells array
@@ -171,6 +171,7 @@ public class WorldGeneration : MonoBehaviour
                 {
                     if ((int)playerCord.y + i >= 0 && (int)playerCord.x + j >= 0)
                     {
+
                        StartCoroutine(LoadObjects((int)playerCord.x + j, (int)playerCord.y + i));
                     }
                 }
@@ -190,7 +191,7 @@ public class WorldGeneration : MonoBehaviour
                 createXML.path + map[x, z].cellID.ToString() + ".XML");
             map[x, z].objects = new GameObject[NodeContainerRef.assets.Count];
 
-            for( int i =0;i < NodeContainerRef.assets.Count;i++)
+            for (int i = 0; i < map[x, z].objects.Length/*NodeContainerRef.assets.Count*/; i++)
             {
                 // format asset path
                 createXML.StreamingAsset asset = NodeContainerRef.assets[i];
@@ -216,12 +217,11 @@ public class WorldGeneration : MonoBehaviour
                 instance.name = asset.Name;
                 map[x, z].objects[i] = instance;
                 loadingSpilt++;
-                if (loadingSpilt == NodeContainerRef.assets.Count/ LoadUnloadBatchSize)
+                if (loadingSpilt == NodeContainerRef.assets.Count / LoadUnloadBatchSize)
                 {
                     loadingSpilt = 0;
                     yield return new WaitForSecondsRealtime(0.1f);
                 }
-               
             }
 
             LoadEnemy(x,z);
@@ -244,7 +244,7 @@ public class WorldGeneration : MonoBehaviour
             // format asset path
             string assetName = EnemeyData.Name.Split(' ')[0];
             string assetPath = "OpenWorldObjects/" + assetName;
-            string enemyHash = map[x, y].cellID.ToString() + assetName + EnemeyData.postion.ToString();
+            string enemyHash = map[x, y].cellID.ToString() + assetName + EnemeyData.postion.ToString();// this isnt gonna work have to store in XML
 
             if (!isEnemyLoaded(enemyHash))
             {
@@ -366,10 +366,10 @@ public class WorldGeneration : MonoBehaviour
             unLoadEnemey(x,y);
             for (int i = 0; i < map[x, y].objects.Length; i++)
             {
-                //foreach (GameObject obj in map[x,y].objects)
-                // {
+
                 GameObject obj = map[x, y].objects[i];
-                Destroy(obj);//this hsould store to cache for a period
+                Destroy(obj);
+                map[x, y].objects[i] = null; 
                 unloadingSpilt++;
                 if (unloadingSpilt == map[x, y].objects.Length / LoadUnloadBatchSize)
                 {
@@ -377,22 +377,26 @@ public class WorldGeneration : MonoBehaviour
                     yield return new WaitForSecondsRealtime(0.1f);
                 }
             }
-            map[x, y].objects = new GameObject[0];
         }
     }
 
     void unLoadEnemey(int x, int y)
     {
         GameObject [] Temp = ActiveEnemies.ToArray();
+        List<GameObject> SavingArray = new List<GameObject>();
         foreach (GameObject Enemy in Temp)
         {
             SkeletonBehaviour EnemyBehaviour = Enemy.GetComponent<SkeletonBehaviour>();
             if (EnemyBehaviour.NodeID == map[x, y].cellID)
             {
-                saveEnemiesToXML(Temp);//update temp files//not the most comuputinional efficent way to do it 
+                SavingArray.Add(Enemy);
                 ActiveEnemies.Remove(Enemy);// changing list in corroutine  it dosnt like it 
                 Destroy(Enemy);
             }
+        }
+        if (SavingArray.Count > 0)
+        {
+            saveEnemiesToXML(SavingArray.ToArray());//update temp files//not the most comuputinional efficent way to do it 
         }
     }
     #endregion
@@ -417,18 +421,18 @@ public class WorldGeneration : MonoBehaviour
     void saveEnemiesToXML(GameObject[] Enemies)
     {
         EnemyXMLHandler.EnemiesNode[] NodeList = new EnemyXMLHandler.EnemiesNode[gridwidth * gridHeghit];
+        for (int i = 0; i < NodeList.Length; i++)
+        {
+            NodeList[i] = (new EnemyXMLHandler.EnemiesNode());
+        }
 
         foreach (GameObject Enemy in Enemies)
         {
             SkeletonBehaviour skeletonBehaviour = Enemy.GetComponent<SkeletonBehaviour>();
-
-            NodeList[skeletonBehaviour.NodeID] = (new EnemyXMLHandler.EnemiesNode());
-
             List<Vector3> patrolPoints = skeletonBehaviour.PatrolRoute;
 
             NodeList[skeletonBehaviour.NodeID].Enemies.Add(createEnemy(skeletonBehaviour, patrolPoints));
-            NodeList[skeletonBehaviour.NodeID].Save(EnemyXMLHandler.TempPath + skeletonBehaviour.NodeID.ToString() + ".XML");
-
+            NodeList[skeletonBehaviour.NodeID].Save(EnemyXMLHandler.TempPath + skeletonBehaviour.NodeID.ToString() + ".XML");// need to get eneimes from this first and then save
         }
     }
 
@@ -456,7 +460,6 @@ public class WorldGeneration : MonoBehaviour
         return nwpoint;
     }
 
-
     void DeleteTemp()
     {
         for (int z = 0; z < gridHeghit; z++)
@@ -468,7 +471,6 @@ public class WorldGeneration : MonoBehaviour
             }
         }
     }
-
     #endregion
 
     private void OnApplicationQuit()
