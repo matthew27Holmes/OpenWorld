@@ -191,7 +191,7 @@ public class WorldGeneration : MonoBehaviour
                 createXML.path + map[x, z].cellID.ToString() + ".XML");
             map[x, z].objects = new GameObject[NodeContainerRef.assets.Count];
 
-            for (int i = 0; i < map[x, z].objects.Length/*NodeContainerRef.assets.Count*/; i++)
+            for (int i = 0; i < map[x, z].objects.Length; i++)
             {
                 // format asset path
                 createXML.StreamingAsset asset = NodeContainerRef.assets[i];
@@ -217,10 +217,11 @@ public class WorldGeneration : MonoBehaviour
                 instance.name = asset.Name;
                 map[x, z].objects[i] = instance;
                 loadingSpilt++;
+
                 if (loadingSpilt == NodeContainerRef.assets.Count / LoadUnloadBatchSize)
                 {
                     loadingSpilt = 0;
-                    yield return new WaitForSecondsRealtime(0.1f);
+                    yield return new WaitForSecondsRealtime(0.05f);
                 }
             }
 
