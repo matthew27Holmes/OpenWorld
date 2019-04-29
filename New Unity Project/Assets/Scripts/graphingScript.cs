@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 
 public class graphingScript : MonoBehaviour {
-    float dataTime= 0.0f, dataTimer=0.05f,dataStoreTime= 0.0f;
+    float dataTime= 0.0f, dataTimer=1f,dataStoreTime= 0.0f;
     List<float> frameTimes = new List<float>();
     // Update is called once per frame
     void Update () {
@@ -18,7 +18,7 @@ public class graphingScript : MonoBehaviour {
         dataTime += Time.deltaTime;
         dataStoreTime += Time.deltaTime;
 
-        if(dataStoreTime>5)
+        if(dataStoreTime>60)
         {
             string path = "Assets/Resources/FrameData.txt";
             StreamWriter writer = new StreamWriter(path, true);

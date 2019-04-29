@@ -82,7 +82,8 @@ public class WorldGeneration : MonoBehaviour
                 cell.PostionX = postionX;
                 cell.PostionZ = postionY;
 
-                cell.cellCube.SetActive(cell.isLoaded); 
+                cell.cellCube.SetActive(cell.isLoaded);
+                cell.objects = new GameObject[0];
                 cell.cellCube.GetComponent<MeshRenderer>().enabled = false;
                 cell.cellID = Id;
                 cell.cellCube.name = cell.cellID.ToString();
@@ -171,7 +172,6 @@ public class WorldGeneration : MonoBehaviour
                 {
                     if ((int)playerCord.y + i >= 0 && (int)playerCord.x + j >= 0)
                     {
-
                        StartCoroutine(LoadObjects((int)playerCord.x + j, (int)playerCord.y + i));
                     }
                 }
@@ -189,10 +189,18 @@ public class WorldGeneration : MonoBehaviour
             int loadingSpilt = 0;
             createXML.Node NodeContainerRef = createXML.Node.Load(
                 createXML.path + map[x, z].cellID.ToString() + ".XML");
+
+            for (int k = 0; k < map[x, z].objects.Length; k++)
+            {
+                if (map[x, z].objects[k] != null)
+                {
+                    Debug.Log("not all objects unloaded");
+                }
+            }
             map[x, z].objects = new GameObject[NodeContainerRef.assets.Count];
 
             for (int i = 0; i < map[x, z].objects.Length; i++)
-            {
+            {           
                 // format asset path
                 createXML.StreamingAsset asset = NodeContainerRef.assets[i];
                 string assetName = asset.Name.Split(' ')[0];
@@ -367,7 +375,6 @@ public class WorldGeneration : MonoBehaviour
             unLoadEnemey(x,y);
             for (int i = 0; i < map[x, y].objects.Length; i++)
             {
-
                 GameObject obj = map[x, y].objects[i];
                 Destroy(obj);
                 map[x, y].objects[i] = null; 
@@ -375,9 +382,10 @@ public class WorldGeneration : MonoBehaviour
                 if (unloadingSpilt == map[x, y].objects.Length / LoadUnloadBatchSize)
                 {
                     unloadingSpilt = 0;
-                    yield return new WaitForSecondsRealtime(0.1f);
+                    yield return new WaitForSecondsRealtime(0.05f);
                 }
             }
+            //map[x, y].objects = new GameObject[0];
         }
     }
 
