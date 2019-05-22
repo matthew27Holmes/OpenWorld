@@ -32,7 +32,7 @@ public class graphingScript : MonoBehaviour {
 	}
     void FrameDatacollection()
     {
-        frameTimes.Add(UnityStats.renderTime * 10000);
+       // frameTimes.Add(UnityStats.renderTime * 10000);
     }
 
 }

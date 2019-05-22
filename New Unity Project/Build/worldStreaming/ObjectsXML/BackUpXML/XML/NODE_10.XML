@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Streaming_GameObjects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <Assets>
+    <Asset name="Plane(Clone)">
+      <postion>
+        <x>-205</x>
+        <y>0</y>
+        <z>-110</z>
+      </postion>
+      <Rotation>
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </Rotation>
+      <Scale>
+        <x>10</x>
+        <y>1</y>
+        <z>10</z>
+      </Scale>
+    </Asset>
+  </Assets>
+</Streaming_GameObjects>

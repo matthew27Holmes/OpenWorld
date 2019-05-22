@@ -151,7 +151,7 @@ public class SkeletonBehaviour : MonoBehaviour {
     void moveToPlayer()
     {
 
-        navMeshAgent.speed = 5;
+        navMeshAgent.speed = 20;
         navMeshAgent.SetDestination(LastPlayerPostion);
 
         anim.SetBool("Idel", false);

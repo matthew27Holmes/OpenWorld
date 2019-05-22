@@ -987,7 +987,7 @@ Transform:
   m_GameObject: {fileID: 1665139086760410}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0.136, z: -0.03}
-  m_LocalScale: {x: 1, y: 1.0625, z: 1}
+  m_LocalScale: {x: 1.9059, y: 2.0250187, z: 1.9059}
   m_Children: []
   m_Father: {fileID: 4722525679647488}
   m_RootOrder: 0
@@ -1097,7 +1097,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1656776608693172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.16, y: 0.53, z: 230.66}
+  m_LocalPosition: {x: -8.224541, y: 4.658412, z: 126.838356}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children:
   - {fileID: 4564245227541678}
@@ -1347,7 +1347,7 @@ MonoBehaviour:
   damage: 0
   health: 0
   alive: 0
-  BirthNodeID: 0
+  BirthNodeID: {x: 0, y: 0}
   NodeID: 0
   HashID: 
 --- !u!114 &114773251172201206
@@ -1511,7 +1511,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.1
-  m_Speed: 3
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

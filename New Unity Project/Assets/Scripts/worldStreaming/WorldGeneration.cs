@@ -35,7 +35,7 @@ public class WorldGeneration : MonoBehaviour
     Vector2 playerLastCord = new Vector2(0, 0);
 
     public List<GameObject> ActiveEnemies;
-    int LoadUnloadBatchSize = 8;
+    int LoadUnloadBatchSize = 16;
     void Start()
     {
         initialise();
